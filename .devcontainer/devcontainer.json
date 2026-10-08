@@ -1,0 +1,22 @@
+{
+  "name": "CARGO ONE (private preview)",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:1-22-bookworm",
+  "containerEnv": {
+    "PORT": "3000",
+    "DATA_DIR": "/workspaces/.cargo-one-data",
+    "TRUST_PROXY": "1",
+    "COOKIE_SECURE": "1",
+    "IMAGE_HOSTS": "alicdn.com",
+    "OTAPI_PROVIDER": "Aliexpress",
+    "OTAPI_LANG": "ru",
+    "OTAPI_DAILY_CALL_LIMIT": "60",
+    "PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD": "1"
+  },
+  "secrets": {
+    "OTAPI_KEY": { "description": "OT Commerce key (Settings → Codespaces → Secrets). Never commit it." }
+  },
+  "postCreateCommand": "npm install --no-audit --no-fund && npm run build",
+  "postStartCommand": "bash .devcontainer/start.sh",
+  "forwardPorts": [3000],
+  "portsAttributes": { "3000": { "label": "CARGO ONE", "onAutoForward": "notify" } }
+}

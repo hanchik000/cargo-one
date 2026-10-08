@@ -1,0 +1,69 @@
+{
+  "note": "SAMPLE DATA for tests and development. These are not real marketplace listings, prices or sellers.",
+  "listings": [
+    {
+      "sourceProductId": "FX-1001", "url": "https://example.com/sample/FX-1001", "lang": "zh",
+      "title": "头戴式蓝牙耳机 主动降噪 40小时续航", "description": "示例数据。头戴式无线耳机，主动降噪，Type-C 充电。",
+      "brand": "Sample Audio", "categoryHint": "数码 > 耳机",
+      "images": ["img/products/p37-0.webp", "img/products/p37-1.webp", "http://insecure.example.com/a.jpg"],
+      "price": { "amount": "129.00", "currency": "CNY" }, "moq": 2, "stock": 340, "availability": "in_stock",
+      "variants": [{ "sku": "FX-1001-BK", "name": "黑色" }, { "sku": "FX-1001-WH", "name": "白色", "priceDelta": "10.00" }],
+      "specs": [{ "name": "蓝牙版本", "value": "5.3" }, { "name": "续航", "value": "40 h" }],
+      "weightG": 380, "volumeCm3": 2400, "leadDays": 3,
+      "seller": { "sellerId": "S-77", "name": "Sample Audio Factory", "nameCn": "示例音频工厂", "city": "Shenzhen", "province": "Guangdong" },
+      "translations": { "en": { "title": "Over-ear Bluetooth headphones, ANC, 40 h battery", "description": "Sample data. Wireless over-ear headphones with active noise cancelling and USB-C charging." },
+                        "ru": { "title": "Полноразмерные Bluetooth-наушники, шумоподавление, 40 ч", "description": "Пример данных. Беспроводные наушники с активным шумоподавлением и зарядкой USB-C." } }
+    },
+    {
+      "sourceProductId": "FX-1002", "url": "https://example.com/sample/FX-1002", "lang": "zh",
+      "title": "USB-C 数据线 1米 快充", "brand": null, "categoryHint": "数码 > 数据线",
+      "images": ["img/products/p3-1.webp"],
+      "price": { "amount": "9.90", "currency": "CNY" }, "moq": 10, "stock": 5000,
+      "specs": [{ "name": "长度", "value": "1 m" }], "weightG": 45, "volumeCm3": 150, "leadDays": 2,
+      "seller": { "sellerId": "S-78", "name": "Sample Cable Co." },
+      "translations": { "en": { "title": "USB-C cable, 1 m, fast charging" } }
+    },
+    {
+      "sourceProductId": "FX-1003", "url": "https://example.com/sample/FX-1003", "lang": "zh",
+      "title": "不锈钢保温杯 500ml", "categoryHint": "家居 > 水杯",
+      "images": ["img/products/p17-0.webp"],
+      "price": { "amount": "35.50", "currency": "CNY" }, "moq": 1, "stock": null, "availability": null,
+      "weightG": null, "leadDays": null,
+      "seller": null,
+      "translations": { "en": { "title": "Stainless steel thermos cup, 500 ml" } }
+    },
+    {
+      "sourceProductId": "FX-1004", "url": "https://example.com/sample/FX-1004", "lang": "en",
+      "title": "LED desk lamp with dimmer", "brand": "Sample Light", "categoryHint": "Home > Lighting",
+      "images": ["img/products/p14-0.webp"],
+      "price": { "amount": "12.50", "currency": "USD" }, "moq": 5, "stock": 120, "availability": "in_stock",
+      "weightG": 900, "volumeCm3": 6000, "leadDays": 5,
+      "seller": { "sellerId": "S-79", "name": "Sample Lighting Ltd" }
+    },
+    {
+      "sourceProductId": "FX-1005", "url": "https://example.com/sample/FX-1005", "lang": "zh",
+      "title": "儿童雨衣 防水", "categoryHint": "母婴 > 儿童服装",
+      "images": ["img/products/p23-0.webp"], "price": null, "weightG": 250, "volumeCm3": 900,
+      "seller": { "sellerId": "S-80", "name": "Sample Kids Wear" },
+      "translations": { "en": { "title": "Kids' waterproof raincoat" } }
+    },
+    {
+      "sourceProductId": "FX-1006", "url": "https://example.com/sample/FX-1006", "lang": "zh",
+      "title": "价格异常的示例商品", "categoryHint": "数码 > 配件",
+      "images": [], "price": { "amount": "-5", "currency": "CNY" }, "weightG": 100
+    },
+    {
+      "sourceProductId": "FX-1007", "url": "javascript:alert(1)", "lang": "en",
+      "title": "<b>Phone stand</b><script>alert('x')</script> adjustable", "description": "Aluminium <img src=x onerror=alert(1)> stand.‮evil",
+      "categoryHint": "Electronics > Accessories",
+      "images": ["javascript:alert(1)", "img/products/p3-0.webp"],
+      "price": { "amount": "18", "currency": "CNY" }, "weightG": 160, "volumeCm3": 500,
+      "seller": { "sellerId": "S-81", "name": "Sample <i>Stands</i>" }
+    },
+    {
+      "sourceProductId": "FX-1008", "url": "https://example.com/sample/FX-1008", "lang": "zh",
+      "title": "未知类目的示例商品", "categoryHint": "其他 > 杂项",
+      "images": [], "price": { "amount": "20", "currency": "CNY" }, "weightG": 100
+    }
+  ]
+}

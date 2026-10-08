@@ -1,0 +1,92 @@
+{
+  "_note": "SYNTHETIC test data shaped after the OT API documentation and the official client (BatchSearchItemsFrame / BatchGetItemFullInfo). NOT a recorded response and NOT real listings. Replace with recorded responses from scripts/otapi-probe.mjs once available.",
+  "search": {
+    "ErrorCode": "Ok",
+    "Result": {
+      "Items": {
+        "Items": {
+          "TotalCount": 1234,
+          "Content": [
+            {
+              "Id": "ae-1005000000000001",
+              "Title": "Беспроводные наушники TWS, Bluetooth 5.3",
+              "OriginalTitle": "TWS Wireless Earbuds Bluetooth 5.3 Noise Cancelling",
+              "CategoryId": "otc-test-1",
+              "VendorId": "store-900001",
+              "VendorName": "Test Audio Store",
+              "VendorDisplayName": "Test Audio Store",
+              "VendorScore": 4.8,
+              "BrandName": "TestBrand",
+              "ExternalItemUrl": "https://www.aliexpress.com/item/1005000000000001.html",
+              "MainPictureUrl": "https://ae01.alicdn.com/kf/test-main.jpg",
+              "Pictures": [
+                { "Url": "https://ae01.alicdn.com/kf/test-1.jpg", "Large": { "Url": "https://ae01.alicdn.com/kf/test-1-large.jpg" } },
+                { "Url": "//ae04.alicdn.com/kf/test-2.jpg" },
+                { "Url": "http://insecure.example.com/x.jpg" }
+              ],
+              "Price": { "OriginalPrice": 12.349999999, "OriginalCurrencyCode": "USD", "ConvertedPriceList": { "Internal": { "Price": 12.35, "Sign": "$", "Code": "USD" } } },
+              "MasterQuantity": 870,
+              "Volume": 15234,
+              "Location": { "City": "Shenzhen", "State": "Guangdong" },
+              "PhysicalParameters": { "Weight": 0.12, "Length": 10, "Width": 8, "Height": 4 },
+              "IsSellAllowed": true
+            },
+            {
+              "Id": "ae-1005000000000002",
+              "Title": "Термокружка 500 мл <script>alert(1)</script>",
+              "OriginalTitle": "Thermos cup 500ml stainless",
+              "VendorId": "store-900002",
+              "VendorName": "Test Home Store",
+              "Price": { "OriginalPrice": 6.5, "OriginalCurrencyCode": "USD" },
+              "Pictures": [],
+              "MainPictureUrl": "javascript:alert(1)",
+              "MasterQuantity": 0,
+              "IsSellAllowed": false
+            },
+            {
+              "Id": "ae-1005000000000003",
+              "Title": "Товар без цены",
+              "OriginalTitle": "Item without price",
+              "VendorId": "store-900003",
+              "VendorName": "Test Store 3",
+              "Price": null
+            },
+            {
+              "Id": "ae-1005000000000004",
+              "Title": "Товар в евро",
+              "OriginalTitle": "Item priced in EUR",
+              "Price": { "OriginalPrice": 3, "OriginalCurrencyCode": "EUR" }
+            }
+          ]
+        }
+      }
+    }
+  },
+  "full": {
+    "ErrorCode": "Ok",
+    "Result": {
+      "Item": {
+        "Id": "ae-1005000000000001",
+        "Title": "Беспроводные наушники TWS, Bluetooth 5.3",
+        "OriginalTitle": "TWS Wireless Earbuds Bluetooth 5.3 Noise Cancelling",
+        "Description": "<p>Наушники с шумоподавлением</p><img src=x onerror=alert(1)>",
+        "Price": { "OriginalPrice": 12.35, "OriginalCurrencyCode": "USD" },
+        "Attributes": [
+          { "Pid": "14", "Vid": "1", "PropertyName": "Цвет", "Value": "Чёрный", "IsConfigurator": true },
+          { "Pid": "14", "Vid": "2", "PropertyName": "Цвет", "Value": "Белый", "IsConfigurator": true },
+          { "Pid": "200", "Vid": "9", "PropertyName": "Версия Bluetooth", "Value": "5.3", "IsConfigurator": false },
+          { "Pid": "201", "Vid": "9", "PropertyName": "Ёмкость батареи", "Value": "40 mAh", "IsConfigurator": false }
+        ],
+        "ConfiguredItems": [
+          { "Id": "sku-1", "Quantity": 500, "Price": { "OriginalPrice": 12.35, "OriginalCurrencyCode": "USD" }, "Configurators": [{ "Pid": "14", "Vid": "1" }] },
+          { "Id": "sku-2", "Quantity": 370, "Price": { "OriginalPrice": 13.1, "OriginalCurrencyCode": "USD" }, "Configurators": [{ "Pid": "14", "Vid": "2" }] }
+        ],
+        "PhysicalParameters": { "Weight": 0.12 }
+      }
+    }
+  },
+  "errors": {
+    "ban": { "ErrorCode": "InstanceKeyBan", "ErrorDescription": "Key is blocked" },
+    "expired": { "ErrorCode": "AccessDenied", "ErrorDescription": "Trial period is over" }
+  }
+}

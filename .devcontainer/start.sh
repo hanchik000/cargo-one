@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# Starts the CARGO ONE server in the background on every Codespace start. Log: $DATA_DIR/server.log
+set -e
+mkdir -p "${DATA_DIR:-.data}"
+[ -d dist ] || npm run build
+# Session secret generated once per Codespace and kept in the data directory (not in the repository).
+SECRET_FILE="${DATA_DIR:-.data}/auth-secret"
+[ -f "$SECRET_FILE" ] || head -c 48 /dev/urandom | base64 > "$SECRET_FILE"
+export AUTH_SECRET="$(cat "$SECRET_FILE")"
+pkill -f "server/server.mjs" 2>/dev/null || true
+nohup setsid node --disable-warning=ExperimentalWarning server/server.mjs > "${DATA_DIR:-.data}/server.log" 2>&1 &
+echo "CARGO ONE starting on port ${PORT:-3000} (open the Ports tab)."

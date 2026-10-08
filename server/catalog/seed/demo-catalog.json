@@ -1,0 +1,5562 @@
+{
+ "generatedFrom": "src/data/seed.ts",
+ "note": "DEMO DATA — fictional products and suppliers for development and demos.",
+ "categories": [
+  {
+   "id": "electronics",
+   "icon": "Smartphone",
+   "order": 0,
+   "visible": true,
+   "names": {
+    "en": "Electronics",
+    "ru": "Электроника",
+    "tk": "Elektronika"
+   }
+  },
+  {
+   "id": "fashion",
+   "icon": "Shirt",
+   "order": 1,
+   "visible": true,
+   "names": {
+    "en": "Fashion",
+    "ru": "Одежда и аксессуары",
+    "tk": "Moda"
+   }
+  },
+  {
+   "id": "home",
+   "icon": "Sofa",
+   "order": 2,
+   "visible": true,
+   "names": {
+    "en": "Home",
+    "ru": "Дом",
+    "tk": "Öý"
+   }
+  },
+  {
+   "id": "beauty",
+   "icon": "Sparkles",
+   "order": 3,
+   "visible": true,
+   "names": {
+    "en": "Beauty",
+    "ru": "Красота",
+    "tk": "Gözellik"
+   }
+  },
+  {
+   "id": "kids",
+   "icon": "Baby",
+   "order": 4,
+   "visible": true,
+   "names": {
+    "en": "Kids",
+    "ru": "Детям",
+    "tk": "Çagalar"
+   }
+  },
+  {
+   "id": "auto",
+   "icon": "Car",
+   "order": 5,
+   "visible": true,
+   "names": {
+    "en": "Auto",
+    "ru": "Авто",
+    "tk": "Awto"
+   }
+  },
+  {
+   "id": "tools",
+   "icon": "Wrench",
+   "order": 6,
+   "visible": true,
+   "names": {
+    "en": "Tools",
+    "ru": "Инструменты",
+    "tk": "Gurallar"
+   }
+  },
+  {
+   "id": "industrial",
+   "icon": "Factory",
+   "order": 7,
+   "visible": true,
+   "names": {
+    "en": "Industrial",
+    "ru": "Промышленность",
+    "tk": "Senagat"
+   }
+  },
+  {
+   "id": "business",
+   "icon": "Briefcase",
+   "order": 8,
+   "visible": true,
+   "names": {
+    "en": "Business",
+    "ru": "Для бизнеса",
+    "tk": "Biznes üçin"
+   }
+  }
+ ],
+ "suppliers": [
+  {
+   "id": "s1",
+   "name": "Shenzhen Lumen Electronics",
+   "nameCn": "深圳流明电子有限公司",
+   "city": "Shenzhen",
+   "province": "Guangdong",
+   "categories": [
+    "electronics"
+   ],
+   "score": 94,
+   "yearsActive": 11,
+   "moq": 50,
+   "responseRate": 98,
+   "responseHours": 3,
+   "certifications": [
+    "CE",
+    "FCC",
+    "RoHS"
+   ],
+   "verified": true,
+   "status": "approved",
+   "complaints": 1,
+   "ordersCount": 1646,
+   "disputeRate": 0.2,
+   "onTimeRate": 97,
+   "monogram": "SL",
+   "description": "Consumer audio, wearables and charging accessories. In-house QC line and export packaging.",
+   "documents": [
+    {
+     "id": "s1-d1",
+     "name": "Business license.pdf",
+     "kind": "license",
+     "uploadedAt": "2026-03-22T21:32:13.872Z",
+     "status": "approved"
+    },
+    {
+     "id": "s1-d2",
+     "name": "Bank account confirmation.pdf",
+     "kind": "bank",
+     "uploadedAt": "2026-04-01T21:32:13.872Z",
+     "status": "approved"
+    },
+    {
+     "id": "s1-d3",
+     "name": "CE certificate.pdf",
+     "kind": "certificate",
+     "uploadedAt": "2026-06-10T21:32:13.872Z",
+     "status": "approved"
+    }
+   ],
+   "reviews": [
+    {
+     "id": "s1-r1",
+     "author": "Merdan A.",
+     "rating": 5,
+     "text": "Samples matched the final batch. Packaging was solid for rail transit.",
+     "date": "2026-08-29T21:32:13.872Z"
+    },
+    {
+     "id": "s1-r2",
+     "author": "Ogulgerek B.",
+     "rating": 5,
+     "text": "Responded within a day and adjusted MOQ for a first order.",
+     "date": "2026-07-25T21:32:13.872Z"
+    },
+    {
+     "id": "s1-r3",
+     "author": "Dovlet K.",
+     "rating": 4,
+     "text": "Production took two days longer than quoted, quality was fine.",
+     "date": "2026-05-31T21:32:13.872Z"
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "name": "Yiwu Everbright Trading",
+   "nameCn": "义乌永明商贸有限公司",
+   "city": "Yiwu",
+   "province": "Zhejiang",
+   "categories": [
+    "home",
+    "kids",
+    "fashion"
+   ],
+   "score": 88,
+   "yearsActive": 8,
+   "moq": 30,
+   "responseRate": 95,
+   "responseHours": 5,
+   "certifications": [
+    "EN71",
+    "CE"
+   ],
+   "verified": true,
+   "status": "approved",
+   "complaints": 2,
+   "ordersCount": 1472,
+   "disputeRate": 0.3,
+   "onTimeRate": 91,
+   "monogram": "YE",
+   "description": "General merchandise consolidator in Yiwu market. Toys, storage and everyday goods.",
+   "documents": [
+    {
+     "id": "s2-d1",
+     "name": "Business license.pdf",
+     "kind": "license",
+     "uploadedAt": "2026-03-22T21:32:13.872Z",
+     "status": "approved"
+    },
+    {
+     "id": "s2-d2",
+     "name": "Bank account confirmation.pdf",
+     "kind": "bank",
+     "uploadedAt": "2026-04-01T21:32:13.872Z",
+     "status": "approved"
+    },
+    {
+     "id": "s2-d3",
+     "name": "EN71 certificate.pdf",
+     "kind": "certificate",
+     "uploadedAt": "2026-06-10T21:32:13.872Z",
+     "status": "approved"
+    }
+   ],
+   "reviews": [
+    {
+     "id": "s2-r1",
+     "author": "Merdan A.",
+     "rating": 4,
+     "text": "Samples matched the final batch. Packaging was solid for rail transit.",
+     "date": "2026-08-29T21:32:13.872Z"
+    },
+    {
+     "id": "s2-r2",
+     "author": "Ogulgerek B.",
+     "rating": 5,
+     "text": "Responded within a day and adjusted MOQ for a first order.",
+     "date": "2026-07-25T21:32:13.872Z"
+    },
+    {
+     "id": "s2-r3",
+     "author": "Dovlet K.",
+     "rating": 4,
+     "text": "Production took two days longer than quoted, quality was fine.",
+     "date": "2026-05-31T21:32:13.872Z"
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "name": "Guangzhou Silkroad Apparel",
+   "nameCn": "广州丝路服饰有限公司",
+   "city": "Guangzhou",
+   "province": "Guangdong",
+   "categories": [
+    "fashion",
+    "beauty"
+   ],
+   "score": 91,
+   "yearsActive": 9,
+   "moq": 20,
+   "responseRate": 97,
+   "responseHours": 4,
+   "certifications": [
+    "BSCI"
+   ],
+   "verified": true,
+   "status": "approved",
+   "complaints": 2,
+   "ordersCount": 1544,
+   "disputeRate": 0.2,
+   "onTimeRate": 94,
+   "monogram": "GS",
+   "description": "Leather goods, bags and outerwear for regional retailers.",
+   "documents": [
+    {
+     "id": "s3-d1",
+     "name": "Business license.pdf",
+     "kind": "license",
+     "uploadedAt": "2026-03-22T21:32:13.872Z",
+     "status": "approved"
+    },
+    {
+     "id": "s3-d2",
+     "name": "Bank account confirmation.pdf",
+     "kind": "bank",
+     "uploadedAt": "2026-04-01T21:32:13.872Z",
+     "status": "approved"
+    },
+    {
+     "id": "s3-d3",
+     "name": "BSCI certificate.pdf",
+     "kind": "certificate",
+     "uploadedAt": "2026-06-10T21:32:13.872Z",
+     "status": "approved"
+    }
+   ],
+   "reviews": [
+    {
+     "id": "s3-r1",
+     "author": "Merdan A.",
+     "rating": 5,
+     "text": "Samples matched the final batch. Packaging was solid for rail transit.",
+     "date": "2026-08-29T21:32:13.872Z"
+    },
+    {
+     "id": "s3-r2",
+     "author": "Ogulgerek B.",
+     "rating": 5,
+     "text": "Responded within a day and adjusted MOQ for a first order.",
+     "date": "2026-07-25T21:32:13.872Z"
+    },
+    {
+     "id": "s3-r3",
+     "author": "Dovlet K.",
+     "rating": 4,
+     "text": "Production took two days longer than quoted, quality was fine.",
+     "date": "2026-05-31T21:32:13.872Z"
+    }
+   ]
+  },
+  {
+   "id": "s4",
+   "name": "Dongguan Precision Tools",
+   "nameCn": "东莞精工工具有限公司",
+   "city": "Dongguan",
+   "province": "Guangdong",
+   "categories": [
+    "tools",
+    "industrial"
+   ],
+   "score": 89,
+   "yearsActive": 14,
+   "moq": 10,
+   "responseRate": 93,
+   "responseHours": 6,
+   "certifications": [
+    "ISO 9001",
+    "CE"
+   ],
+   "verified": true,
+   "status": "approved",
+   "complaints": 2,
+   "ordersCount": 1666,
+   "disputeRate": 0.3,
+   "onTimeRate": 92,
+   "monogram": "DP",
+   "description": "Power tools, hand tools and industrial lighting.",
+   "documents": [
+    {
+     "id": "s4-d1",
+     "name": "Business license.pdf",
+     "kind": "license",
+     "uploadedAt": "2026-03-22T21:32:13.872Z",
+     "status": "approved"
+    },
+    {
+     "id": "s4-d2",
+     "name": "Bank account confirmation.pdf",
+     "kind": "bank",
+     "uploadedAt": "2026-04-01T21:32:13.872Z",
+     "status": "approved"
+    },
+    {
+     "id": "s4-d3",
+     "name": "ISO 9001 certificate.pdf",
+     "kind": "certificate",
+     "uploadedAt": "2026-06-10T21:32:13.872Z",
+     "status": "approved"
+    }
+   ],
+   "reviews": [
+    {
+     "id": "s4-r1",
+     "author": "Merdan A.",
+     "rating": 5,
+     "text": "Samples matched the final batch. Packaging was solid for rail transit.",
+     "date": "2026-08-29T21:32:13.872Z"
+    },
+    {
+     "id": "s4-r2",
+     "author": "Ogulgerek B.",
+     "rating": 5,
+     "text": "Responded within a day and adjusted MOQ for a first order.",
+     "date": "2026-07-25T21:32:13.872Z"
+    },
+    {
+     "id": "s4-r3",
+     "author": "Dovlet K.",
+     "rating": 4,
+     "text": "Production took two days longer than quoted, quality was fine.",
+     "date": "2026-05-31T21:32:13.872Z"
+    }
+   ]
+  },
+  {
+   "id": "s5",
+   "name": "Ningbo Harbor Home",
+   "nameCn": "宁波港湾家居用品有限公司",
+   "city": "Ningbo",
+   "province": "Zhejiang",
+   "categories": [
+    "home"
+   ],
+   "score": 86,
+   "yearsActive": 7,
+   "moq": 40,
+   "responseRate": 92,
+   "responseHours": 8,
+   "certifications": [
+    "LFGB"
+   ],
+   "verified": true,
+   "status": "approved",
+   "complaints": 2,
+   "ordersCount": 1414,
+   "disputeRate": 0.4,
+   "onTimeRate": 89,
+   "monogram": "NH",
+   "description": "Cookware, lighting and bedding for home retail.",
+   "documents": [
+    {
+     "id": "s5-d1",
+     "name": "Business license.pdf",
+     "kind": "license",
+     "uploadedAt": "2026-03-22T21:32:13.872Z",
+     "status": "approved"
+    },
+    {
+     "id": "s5-d2",
+     "name": "Bank account confirmation.pdf",
+     "kind": "bank",
+     "uploadedAt": "2026-04-01T21:32:13.872Z",
+     "status": "approved"
+    },
+    {
+     "id": "s5-d3",
+     "name": "LFGB certificate.pdf",
+     "kind": "certificate",
+     "uploadedAt": "2026-06-10T21:32:13.872Z",
+     "status": "approved"
+    }
+   ],
+   "reviews": [
+    {
+     "id": "s5-r1",
+     "author": "Merdan A.",
+     "rating": 4,
+     "text": "Samples matched the final batch. Packaging was solid for rail transit.",
+     "date": "2026-08-29T21:32:13.872Z"
+    },
+    {
+     "id": "s5-r2",
+     "author": "Ogulgerek B.",
+     "rating": 5,
+     "text": "Responded within a day and adjusted MOQ for a first order.",
+     "date": "2026-07-25T21:32:13.872Z"
+    },
+    {
+     "id": "s5-r3",
+     "author": "Dovlet K.",
+     "rating": 4,
+     "text": "Production took two days longer than quoted, quality was fine.",
+     "date": "2026-05-31T21:32:13.872Z"
+    }
+   ]
+  },
+  {
+   "id": "s6",
+   "name": "Hangzhou Bloom Cosmetics",
+   "nameCn": "杭州花漾化妆品有限公司",
+   "city": "Hangzhou",
+   "province": "Zhejiang",
+   "categories": [
+    "beauty"
+   ],
+   "score": 82,
+   "yearsActive": 5,
+   "moq": 100,
+   "responseRate": 90,
+   "responseHours": 9,
+   "certifications": [
+    "GMPC"
+   ],
+   "verified": true,
+   "status": "approved",
+   "complaints": 3,
+   "ordersCount": 1298,
+   "disputeRate": 0.5,
+   "onTimeRate": 85,
+   "monogram": "HB",
+   "description": "Skincare OEM/ODM and small appliances for beauty.",
+   "documents": [
+    {
+     "id": "s6-d1",
+     "name": "Business license.pdf",
+     "kind": "license",
+     "uploadedAt": "2026-03-22T21:32:13.872Z",
+     "status": "approved"
+    },
+    {
+     "id": "s6-d2",
+     "name": "Bank account confirmation.pdf",
+     "kind": "bank",
+     "uploadedAt": "2026-04-01T21:32:13.872Z",
+     "status": "approved"
+    },
+    {
+     "id": "s6-d3",
+     "name": "GMPC certificate.pdf",
+     "kind": "certificate",
+     "uploadedAt": "2026-06-10T21:32:13.872Z",
+     "status": "approved"
+    }
+   ],
+   "reviews": [
+    {
+     "id": "s6-r1",
+     "author": "Merdan A.",
+     "rating": 4,
+     "text": "Samples matched the final batch. Packaging was solid for rail transit.",
+     "date": "2026-08-29T21:32:13.872Z"
+    },
+    {
+     "id": "s6-r2",
+     "author": "Ogulgerek B.",
+     "rating": 3,
+     "text": "Responded within a day and adjusted MOQ for a first order.",
+     "date": "2026-07-25T21:32:13.872Z"
+    },
+    {
+     "id": "s6-r3",
+     "author": "Dovlet K.",
+     "rating": 4,
+     "text": "Production took two days longer than quoted, quality was fine.",
+     "date": "2026-05-31T21:32:13.872Z"
+    }
+   ]
+  },
+  {
+   "id": "s7",
+   "name": "Foshan Crown Furniture",
+   "nameCn": "佛山皇冠家具有限公司",
+   "city": "Foshan",
+   "province": "Guangdong",
+   "categories": [
+    "home",
+    "business"
+   ],
+   "score": 90,
+   "yearsActive": 16,
+   "moq": 5,
+   "responseRate": 96,
+   "responseHours": 4,
+   "certifications": [
+    "ISO 9001",
+    "FSC"
+   ],
+   "verified": true,
+   "status": "approved",
+   "complaints": 2,
+   "ordersCount": 1740,
+   "disputeRate": 0.3,
+   "onTimeRate": 93,
+   "monogram": "FC",
+   "description": "Upholstered and office furniture with flat-pack export.",
+   "documents": [
+    {
+     "id": "s7-d1",
+     "name": "Business license.pdf",
+     "kind": "license",
+     "uploadedAt": "2026-03-22T21:32:13.872Z",
+     "status": "approved"
+    },
+    {
+     "id": "s7-d2",
+     "name": "Bank account confirmation.pdf",
+     "kind": "bank",
+     "uploadedAt": "2026-04-01T21:32:13.872Z",
+     "status": "approved"
+    },
+    {
+     "id": "s7-d3",
+     "name": "ISO 9001 certificate.pdf",
+     "kind": "certificate",
+     "uploadedAt": "2026-06-10T21:32:13.872Z",
+     "status": "approved"
+    }
+   ],
+   "reviews": [
+    {
+     "id": "s7-r1",
+     "author": "Merdan A.",
+     "rating": 5,
+     "text": "Samples matched the final batch. Packaging was solid for rail transit.",
+     "date": "2026-08-29T21:32:13.872Z"
+    },
+    {
+     "id": "s7-r2",
+     "author": "Ogulgerek B.",
+     "rating": 5,
+     "text": "Responded within a day and adjusted MOQ for a first order.",
+     "date": "2026-07-25T21:32:13.872Z"
+    },
+    {
+     "id": "s7-r3",
+     "author": "Dovlet K.",
+     "rating": 4,
+     "text": "Production took two days longer than quoted, quality was fine.",
+     "date": "2026-05-31T21:32:13.872Z"
+    }
+   ]
+  },
+  {
+   "id": "s8",
+   "name": "Qingdao Northstar Industrial",
+   "nameCn": "青岛北极星工业有限公司",
+   "city": "Qingdao",
+   "province": "Shandong",
+   "categories": [
+    "industrial",
+    "auto"
+   ],
+   "score": 85,
+   "yearsActive": 12,
+   "moq": 20,
+   "responseRate": 91,
+   "responseHours": 7,
+   "certifications": [
+    "ISO 9001"
+   ],
+   "verified": true,
+   "status": "approved",
+   "complaints": 3,
+   "ordersCount": 1550,
+   "disputeRate": 0.4,
+   "onTimeRate": 88,
+   "monogram": "QN",
+   "description": "Storage systems, automotive accessories and steel products.",
+   "documents": [
+    {
+     "id": "s8-d1",
+     "name": "Business license.pdf",
+     "kind": "license",
+     "uploadedAt": "2026-03-22T21:32:13.872Z",
+     "status": "approved"
+    },
+    {
+     "id": "s8-d2",
+     "name": "Bank account confirmation.pdf",
+     "kind": "bank",
+     "uploadedAt": "2026-04-01T21:32:13.872Z",
+     "status": "approved"
+    },
+    {
+     "id": "s8-d3",
+     "name": "ISO 9001 certificate.pdf",
+     "kind": "certificate",
+     "uploadedAt": "2026-06-10T21:32:13.872Z",
+     "status": "approved"
+    }
+   ],
+   "reviews": [
+    {
+     "id": "s8-r1",
+     "author": "Merdan A.",
+     "rating": 4,
+     "text": "Samples matched the final batch. Packaging was solid for rail transit.",
+     "date": "2026-08-29T21:32:13.872Z"
+    },
+    {
+     "id": "s8-r2",
+     "author": "Ogulgerek B.",
+     "rating": 3,
+     "text": "Responded within a day and adjusted MOQ for a first order.",
+     "date": "2026-07-25T21:32:13.872Z"
+    },
+    {
+     "id": "s8-r3",
+     "author": "Dovlet K.",
+     "rating": 4,
+     "text": "Production took two days longer than quoted, quality was fine.",
+     "date": "2026-05-31T21:32:13.872Z"
+    }
+   ]
+  },
+  {
+   "id": "s9",
+   "name": "Xiamen Packwell Packaging",
+   "nameCn": "厦门包润包装有限公司",
+   "city": "Xiamen",
+   "province": "Fujian",
+   "categories": [
+    "business"
+   ],
+   "score": 92,
+   "yearsActive": 10,
+   "moq": 300,
+   "responseRate": 99,
+   "responseHours": 2,
+   "certifications": [
+    "FSC",
+    "ISO 14001"
+   ],
+   "verified": true,
+   "status": "approved",
+   "complaints": 1,
+   "ordersCount": 1588,
+   "disputeRate": 0.2,
+   "onTimeRate": 95,
+   "monogram": "XP",
+   "description": "Custom rigid boxes, magnetic gift boxes, shipping cartons and labels.",
+   "documents": [
+    {
+     "id": "s9-d1",
+     "name": "Business license.pdf",
+     "kind": "license",
+     "uploadedAt": "2026-03-22T21:32:13.872Z",
+     "status": "approved"
+    },
+    {
+     "id": "s9-d2",
+     "name": "Bank account confirmation.pdf",
+     "kind": "bank",
+     "uploadedAt": "2026-04-01T21:32:13.872Z",
+     "status": "approved"
+    },
+    {
+     "id": "s9-d3",
+     "name": "FSC certificate.pdf",
+     "kind": "certificate",
+     "uploadedAt": "2026-06-10T21:32:13.872Z",
+     "status": "approved"
+    }
+   ],
+   "reviews": [
+    {
+     "id": "s9-r1",
+     "author": "Merdan A.",
+     "rating": 5,
+     "text": "Samples matched the final batch. Packaging was solid for rail transit.",
+     "date": "2026-08-29T21:32:13.872Z"
+    },
+    {
+     "id": "s9-r2",
+     "author": "Ogulgerek B.",
+     "rating": 5,
+     "text": "Responded within a day and adjusted MOQ for a first order.",
+     "date": "2026-07-25T21:32:13.872Z"
+    },
+    {
+     "id": "s9-r3",
+     "author": "Dovlet K.",
+     "rating": 4,
+     "text": "Production took two days longer than quoted, quality was fine.",
+     "date": "2026-05-31T21:32:13.872Z"
+    }
+   ]
+  },
+  {
+   "id": "s10",
+   "name": "Wenzhou Stride Footwear",
+   "nameCn": "温州步履鞋业有限公司",
+   "city": "Wenzhou",
+   "province": "Zhejiang",
+   "categories": [
+    "fashion",
+    "kids"
+   ],
+   "score": 78,
+   "yearsActive": 4,
+   "moq": 60,
+   "responseRate": 84,
+   "responseHours": 14,
+   "certifications": [],
+   "verified": false,
+   "status": "pending",
+   "complaints": 4,
+   "ordersCount": 1212,
+   "disputeRate": 0.6,
+   "onTimeRate": 81,
+   "monogram": "WS",
+   "description": "Sports and casual footwear. Verification documents under review.",
+   "documents": [
+    {
+     "id": "s10-d1",
+     "name": "Business license.pdf",
+     "kind": "license",
+     "uploadedAt": "2026-03-22T21:32:13.872Z",
+     "status": "pending"
+    },
+    {
+     "id": "s10-d2",
+     "name": "Bank account confirmation.pdf",
+     "kind": "bank",
+     "uploadedAt": "2026-04-01T21:32:13.872Z",
+     "status": "pending"
+    }
+   ],
+   "reviews": [
+    {
+     "id": "s10-r1",
+     "author": "Merdan A.",
+     "rating": 4,
+     "text": "Samples matched the final batch. Packaging was solid for rail transit.",
+     "date": "2026-08-29T21:32:13.872Z"
+    },
+    {
+     "id": "s10-r2",
+     "author": "Ogulgerek B.",
+     "rating": 3,
+     "text": "Responded within a day and adjusted MOQ for a first order.",
+     "date": "2026-07-25T21:32:13.872Z"
+    },
+    {
+     "id": "s10-r3",
+     "author": "Dovlet K.",
+     "rating": 4,
+     "text": "Production took two days longer than quoted, quality was fine.",
+     "date": "2026-05-31T21:32:13.872Z"
+    }
+   ]
+  }
+ ],
+ "products": [
+  {
+   "id": "p1",
+   "title": "Wireless Earbuds Pro ANC",
+   "categoryId": "electronics",
+   "supplierId": "s1",
+   "icon": "Headphones",
+   "priceCNY": 189,
+   "oldPriceCNY": 229,
+   "images": [
+    {
+     "id": "p1-img0",
+     "tone": 0,
+     "angle": "front",
+     "src": "img/products/p1-0.webp"
+    },
+    {
+     "id": "p1-img1",
+     "tone": 11,
+     "angle": "side",
+     "src": "img/products/p1-1.webp"
+    },
+    {
+     "id": "p1-img2",
+     "tone": 22,
+     "angle": "detail",
+     "src": "img/products/p1-2.webp"
+    },
+    {
+     "id": "p1-img3",
+     "tone": 33,
+     "angle": "pack",
+     "src": "img/products/p1-3.webp"
+    }
+   ],
+   "variants": [
+    {
+     "id": "p1-v0",
+     "name": "Black",
+     "priceDeltaCNY": 0,
+     "stock": 523
+    },
+    {
+     "id": "p1-v1",
+     "name": "White",
+     "priceDeltaCNY": 0,
+     "stock": 215
+    },
+    {
+     "id": "p1-v2",
+     "name": "Graphite",
+     "priceDeltaCNY": 10,
+     "stock": 382
+    }
+   ],
+   "specs": [
+    [
+     "Battery",
+     "500 mAh"
+    ],
+    [
+     "Connectivity",
+     "Bluetooth 5.3"
+    ],
+    [
+     "Warranty",
+     "12 months (supplier)"
+    ],
+    [
+     "Plug",
+     "EU type C"
+    ],
+    [
+     "Weight",
+     "0.2 kg"
+    ],
+    [
+     "Supplier SKU",
+     "SL-1000"
+    ]
+   ],
+   "stock": 1866,
+   "moq": 1,
+   "leadDays": 2,
+   "weightKg": 0.2,
+   "volumeM3": 0.001,
+   "score": 92,
+   "verified": true,
+   "published": true,
+   "featured": true,
+   "rating": 4.5,
+   "reviews": [
+    {
+     "id": "p1-rv0",
+     "author": "Dovlet T.",
+     "city": "Dashoguz",
+     "rating": 4,
+     "text": "Bought a second one for my brother. Recommend.",
+     "date": "2026-08-07T21:32:13.872Z"
+    },
+    {
+     "id": "p1-rv1",
+     "author": "Merdan C.",
+     "city": "Turkmenbashi",
+     "rating": 5,
+     "text": "Supplier answered questions quickly through CARGO ONE support.",
+     "date": "2026-07-25T21:32:13.872Z"
+    }
+   ],
+   "tags": [
+    "popular",
+    "price_drop"
+   ],
+   "popularityAshgabat": 428,
+   "createdAt": "2026-09-28T21:32:13.872Z",
+   "keywords": [
+    "earbuds",
+    "headphones",
+    "audio",
+    "наушники"
+   ],
+   "tryOn": "earbuds"
+  },
+  {
+   "id": "p2",
+   "title": "Smart Watch S9 AMOLED",
+   "categoryId": "electronics",
+   "supplierId": "s1",
+   "icon": "Watch",
+   "priceCNY": 268,
+   "images": [
+    {
+     "id": "p2-img0",
+     "tone": 37,
+     "angle": "front",
+     "src": "img/products/p2-0.webp"
+    },
+    {
+     "id": "p2-img1",
+     "tone": 48,
+     "angle": "side",
+     "src": "img/products/p2-1.webp"
+    },
+    {
+     "id": "p2-img2",
+     "tone": 59,
+     "angle": "detail",
+     "src": "img/products/p2-2.webp"
+    },
+    {
+     "id": "p2-img3",
+     "tone": 70,
+     "angle": "pack",
+     "src": "img/products/p2-3.webp"
+    }
+   ],
+   "variants": [
+    {
+     "id": "p2-v0",
+     "name": "Black",
+     "priceDeltaCNY": 0,
+     "stock": 258
+    },
+    {
+     "id": "p2-v1",
+     "name": "White",
+     "priceDeltaCNY": 0,
+     "stock": 84
+    },
+    {
+     "id": "p2-v2",
+     "name": "Graphite",
+     "priceDeltaCNY": 10,
+     "stock": 207
+    }
+   ],
+   "specs": [
+    [
+     "Battery",
+     "500 mAh"
+    ],
+    [
+     "Connectivity",
+     "Bluetooth 5.3"
+    ],
+    [
+     "Warranty",
+     "12 months (supplier)"
+    ],
+    [
+     "Plug",
+     "EU type C"
+    ],
+    [
+     "Weight",
+     "0.25 kg"
+    ],
+    [
+     "Supplier SKU",
+     "SL-1007"
+    ]
+   ],
+   "stock": 1972,
+   "moq": 1,
+   "leadDays": 3,
+   "weightKg": 0.25,
+   "volumeM3": 0.001,
+   "score": 83,
+   "verified": true,
+   "published": true,
+   "featured": false,
+   "rating": 3.3,
+   "reviews": [
+    {
+     "id": "p2-rv0",
+     "author": "Rustam K.",
+     "city": "Ashgabat",
+     "rating": 4,
+     "text": "Arrived in Ashgabat in 19 days, exactly as described.",
+     "date": "2026-08-24T21:32:13.872Z"
+    },
+    {
+     "id": "p2-rv1",
+     "author": "Serdar D.",
+     "city": "Mary",
+     "rating": 3,
+     "text": "Colour slightly different from photos, otherwise great.",
+     "date": "2026-09-09T21:32:13.872Z"
+    },
+    {
+     "id": "p2-rv2",
+     "author": "Jeren S.",
+     "city": "Turkmenabat",
+     "rating": 3,
+     "text": "Supplier answered questions quickly through CARGO ONE support.",
+     "date": "2026-08-21T21:32:13.872Z"
+    }
+   ],
+   "tags": [
+    "popular"
+   ],
+   "popularityAshgabat": 41,
+   "createdAt": "2026-09-25T21:32:13.872Z",
+   "keywords": [
+    "watch",
+    "smartwatch",
+    "часы"
+   ],
+   "tryOn": "watch"
+  },
+  {
+   "id": "p3",
+   "title": "65W GaN Fast Charger",
+   "categoryId": "electronics",
+   "supplierId": "s1",
+   "icon": "Plug",
+   "priceCNY": 59,
+   "images": [
+    {
+     "id": "p3-img0",
+     "tone": 74,
+     "angle": "front",
+     "src": "img/products/p3-0.webp"
+    },
+    {
+     "id": "p3-img1",
+     "tone": 85,
+     "angle": "side",
+     "src": "img/products/p3-1.webp"
+    },
+    {
+     "id": "p3-img2",
+     "tone": 96,
+     "angle": "detail",
+     "src": "img/products/p3-2.webp"
+    },
+    {
+     "id": "p3-img3",
+     "tone": 7,
+     "angle": "pack",
+     "src": "img/products/p3-3.webp"
+    }
+   ],
+   "variants": [
+    {
+     "id": "p3-v0",
+     "name": "Black",
+     "priceDeltaCNY": 0,
+     "stock": 263
+    },
+    {
+     "id": "p3-v1",
+     "name": "White",
+     "priceDeltaCNY": 0,
+     "stock": 62
+    },
+    {
+     "id": "p3-v2",
+     "name": "Graphite",
+     "priceDeltaCNY": 10,
+     "stock": 471
+    }
+   ],
+   "specs": [
+    [
+     "Battery",
+     "500 mAh"
+    ],
+    [
+     "Connectivity",
+     "Bluetooth 5.3"
+    ],
+    [
+     "Warranty",
+     "12 months (supplier)"
+    ],
+    [
+     "Plug",
+     "EU type C"
+    ],
+    [
+     "Weight",
+     "0.15 kg"
+    ],
+    [
+     "Supplier SKU",
+     "SL-1014"
+    ]
+   ],
+   "stock": 2537,
+   "moq": 1,
+   "leadDays": 4,
+   "weightKg": 0.15,
+   "volumeM3": 0.0005,
+   "score": 95,
+   "verified": true,
+   "published": true,
+   "featured": false,
+   "rating": 4.8,
+   "reviews": [
+    {
+     "id": "p3-rv0",
+     "author": "Selbi H.",
+     "city": "Dashoguz",
+     "rating": 5,
+     "text": "Good quality for the price. Final cost matched the estimate.",
+     "date": "2026-08-18T21:32:13.872Z"
+    },
+    {
+     "id": "p3-rv1",
+     "author": "Aylar C.",
+     "city": "Mary",
+     "rating": 4,
+     "text": "Good quality for the price. Final cost matched the estimate.",
+     "date": "2026-07-01T21:32:13.872Z"
+    },
+    {
+     "id": "p3-rv2",
+     "author": "Ogulgerek M.",
+     "city": "Dashoguz",
+     "rating": 5,
+     "text": "Packaging was a bit dented but the product works perfectly.",
+     "date": "2026-06-09T21:32:13.872Z"
+    },
+    {
+     "id": "p3-rv3",
+     "author": "Aylar C.",
+     "city": "Mary",
+     "rating": 5,
+     "text": "Packaging was a bit dented but the product works perfectly.",
+     "date": "2026-06-15T21:32:13.872Z"
+    }
+   ],
+   "tags": [],
+   "popularityAshgabat": 295,
+   "createdAt": "2026-09-22T21:32:13.872Z",
+   "keywords": [
+    "charger",
+    "usb",
+    "зарядка"
+   ]
+  },
+  {
+   "id": "p4",
+   "title": "Portable Bluetooth Speaker 20W",
+   "categoryId": "electronics",
+   "supplierId": "s1",
+   "icon": "Speaker",
+   "priceCNY": 145,
+   "oldPriceCNY": 179,
+   "images": [
+    {
+     "id": "p4-img0",
+     "tone": 11,
+     "angle": "front",
+     "src": "img/products/p4-0.webp"
+    },
+    {
+     "id": "p4-img1",
+     "tone": 22,
+     "angle": "side",
+     "src": "img/products/p4-1.webp"
+    },
+    {
+     "id": "p4-img2",
+     "tone": 33,
+     "angle": "detail",
+     "src": "img/products/p4-2.webp"
+    },
+    {
+     "id": "p4-img3",
+     "tone": 44,
+     "angle": "pack",
+     "src": "img/products/p4-3.webp"
+    }
+   ],
+   "variants": [
+    {
+     "id": "p4-v0",
+     "name": "Black",
+     "priceDeltaCNY": 0,
+     "stock": 291
+    },
+    {
+     "id": "p4-v1",
+     "name": "White",
+     "priceDeltaCNY": 0,
+     "stock": 278
+    },
+    {
+     "id": "p4-v2",
+     "name": "Graphite",
+     "priceDeltaCNY": 10,
+     "stock": 69
+    }
+   ],
+   "specs": [
+    [
+     "Battery",
+     "500 mAh"
+    ],
+    [
+     "Connectivity",
+     "Bluetooth 5.3"
+    ],
+    [
+     "Warranty",
+     "12 months (supplier)"
+    ],
+    [
+     "Plug",
+     "EU type C"
+    ],
+    [
+     "Weight",
+     "0.8 kg"
+    ],
+    [
+     "Supplier SKU",
+     "SL-1021"
+    ]
+   ],
+   "stock": 2895,
+   "moq": 1,
+   "leadDays": 5,
+   "weightKg": 0.8,
+   "volumeM3": 0.003,
+   "score": 88,
+   "verified": true,
+   "published": true,
+   "featured": false,
+   "rating": 4,
+   "reviews": [
+    {
+     "id": "p4-rv0",
+     "author": "Maral O.",
+     "city": "Dashoguz",
+     "rating": 3,
+     "text": "Arrived in Ashgabat in 19 days, exactly as described.",
+     "date": "2026-10-01T21:32:13.872Z"
+    },
+    {
+     "id": "p4-rv1",
+     "author": "Ogulgerek J.",
+     "city": "Mary",
+     "rating": 5,
+     "text": "Packaging was a bit dented but the product works perfectly.",
+     "date": "2026-09-18T21:32:13.872Z"
+    }
+   ],
+   "tags": [
+    "price_drop"
+   ],
+   "popularityAshgabat": 595,
+   "createdAt": "2026-09-19T21:32:13.872Z",
+   "keywords": [
+    "speaker",
+    "bluetooth",
+    "колонка"
+   ]
+  },
+  {
+   "id": "p5",
+   "title": "Mechanical Keyboard 75% Hot-swap",
+   "categoryId": "electronics",
+   "supplierId": "s1",
+   "icon": "Keyboard",
+   "priceCNY": 239,
+   "images": [
+    {
+     "id": "p5-img0",
+     "tone": 48,
+     "angle": "front",
+     "src": "img/products/p5-0.webp"
+    },
+    {
+     "id": "p5-img1",
+     "tone": 59,
+     "angle": "side",
+     "src": "img/products/p5-1.webp"
+    },
+    {
+     "id": "p5-img2",
+     "tone": 70,
+     "angle": "detail",
+     "src": "img/products/p5-2.webp"
+    },
+    {
+     "id": "p5-img3",
+     "tone": 81,
+     "angle": "pack",
+     "src": "img/products/p5-3.webp"
+    }
+   ],
+   "variants": [
+    {
+     "id": "p5-v0",
+     "name": "Black",
+     "priceDeltaCNY": 0,
+     "stock": 155
+    },
+    {
+     "id": "p5-v1",
+     "name": "White",
+     "priceDeltaCNY": 0,
+     "stock": 492
+    },
+    {
+     "id": "p5-v2",
+     "name": "Graphite",
+     "priceDeltaCNY": 10,
+     "stock": 439
+    }
+   ],
+   "specs": [
+    [
+     "Battery",
+     "500 mAh"
+    ],
+    [
+     "Connectivity",
+     "Bluetooth 5.3"
+    ],
+    [
+     "Warranty",
+     "12 months (supplier)"
+    ],
+    [
+     "Plug",
+     "EU type C"
+    ],
+    [
+     "Weight",
+     "1.1 kg"
+    ],
+    [
+     "Supplier SKU",
+     "SL-1028"
+    ]
+   ],
+   "stock": 3056,
+   "moq": 1,
+   "leadDays": 6,
+   "weightKg": 1.1,
+   "volumeM3": 0.006,
+   "score": 91,
+   "verified": true,
+   "published": true,
+   "featured": false,
+   "rating": 4.3,
+   "reviews": [
+    {
+     "id": "p5-rv0",
+     "author": "Maral R.",
+     "city": "Balkanabat",
+     "rating": 4,
+     "text": "Supplier answered questions quickly through CARGO ONE support.",
+     "date": "2026-08-26T21:32:13.872Z"
+    },
+    {
+     "id": "p5-rv1",
+     "author": "Aylar P.",
+     "city": "Ashgabat",
+     "rating": 4,
+     "text": "Good quality for the price. Final cost matched the estimate.",
+     "date": "2026-09-11T21:32:13.872Z"
+    },
+    {
+     "id": "p5-rv2",
+     "author": "Merdan G.",
+     "city": "Dashoguz",
+     "rating": 5,
+     "text": "Colour slightly different from photos, otherwise great.",
+     "date": "2026-07-26T21:32:13.872Z"
+    }
+   ],
+   "tags": [],
+   "popularityAshgabat": 989,
+   "createdAt": "2026-09-16T21:32:13.872Z",
+   "keywords": [
+    "keyboard",
+    "клавиатура"
+   ]
+  },
+  {
+   "id": "p6",
+   "title": "4K Action Camera Waterproof",
+   "categoryId": "electronics",
+   "supplierId": "s1",
+   "icon": "Camera",
+   "priceCNY": 399,
+   "images": [
+    {
+     "id": "p6-img0",
+     "tone": 85,
+     "angle": "front",
+     "src": "img/products/p6-0.webp"
+    },
+    {
+     "id": "p6-img1",
+     "tone": 96,
+     "angle": "side",
+     "src": "img/products/p6-1.webp"
+    },
+    {
+     "id": "p6-img2",
+     "tone": 7,
+     "angle": "detail",
+     "src": "img/products/p6-2.webp"
+    },
+    {
+     "id": "p6-img3",
+     "tone": 18,
+     "angle": "pack",
+     "src": "img/products/p6-3.webp"
+    }
+   ],
+   "variants": [
+    {
+     "id": "p6-v0",
+     "name": "Black",
+     "priceDeltaCNY": 0,
+     "stock": 374
+    },
+    {
+     "id": "p6-v1",
+     "name": "White",
+     "priceDeltaCNY": 0,
+     "stock": 340
+    },
+    {
+     "id": "p6-v2",
+     "name": "Graphite",
+     "priceDeltaCNY": 10,
+     "stock": 295
+    }
+   ],
+   "specs": [
+    [
+     "Battery",
+     "500 mAh"
+    ],
+    [
+     "Connectivity",
+     "Bluetooth 5.3"
+    ],
+    [
+     "Warranty",
+     "12 months (supplier)"
+    ],
+    [
+     "Plug",
+     "EU type C"
+    ],
+    [
+     "Weight",
+     "0.4 kg"
+    ],
+    [
+     "Supplier SKU",
+     "SL-1035"
+    ]
+   ],
+   "stock": 1284,
+   "moq": 1,
+   "leadDays": 7,
+   "weightKg": 0.4,
+   "volumeM3": 0.002,
+   "score": 87,
+   "verified": true,
+   "published": true,
+   "featured": false,
+   "rating": 3.8,
+   "reviews": [
+    {
+     "id": "p6-rv0",
+     "author": "Kerim A.",
+     "city": "Mary",
+     "rating": 3,
+     "text": "Packaging was a bit dented but the product works perfectly.",
+     "date": "2026-09-03T21:32:13.872Z"
+    },
+    {
+     "id": "p6-rv1",
+     "author": "Kerim G.",
+     "city": "Mary",
+     "rating": 4,
+     "text": "Good quality for the price. Final cost matched the estimate.",
+     "date": "2026-08-04T21:32:13.872Z"
+    },
+    {
+     "id": "p6-rv2",
+     "author": "Serdar E.",
+     "city": "Turkmenabat",
+     "rating": 4,
+     "text": "Packaging was a bit dented but the product works perfectly.",
+     "date": "2026-07-07T21:32:13.872Z"
+    },
+    {
+     "id": "p6-rv3",
+     "author": "Merdan O.",
+     "city": "Mary",
+     "rating": 4,
+     "text": "Supplier answered questions quickly through CARGO ONE support.",
+     "date": "2026-08-21T21:32:13.872Z"
+    }
+   ],
+   "tags": [
+    "popular"
+   ],
+   "popularityAshgabat": 523,
+   "createdAt": "2026-09-13T21:32:13.872Z",
+   "keywords": [
+    "camera",
+    "action",
+    "камера"
+   ]
+  },
+  {
+   "id": "p7",
+   "title": "Leather Crossbody Bag",
+   "categoryId": "fashion",
+   "supplierId": "s3",
+   "icon": "ShoppingBag",
+   "priceCNY": 168,
+   "images": [
+    {
+     "id": "p7-img0",
+     "tone": 22,
+     "angle": "front",
+     "src": "img/products/p7-0.webp"
+    },
+    {
+     "id": "p7-img1",
+     "tone": 33,
+     "angle": "side",
+     "src": "img/products/p7-1.webp"
+    },
+    {
+     "id": "p7-img2",
+     "tone": 44,
+     "angle": "detail",
+     "src": "img/products/p7-2.webp"
+    },
+    {
+     "id": "p7-img3",
+     "tone": 55,
+     "angle": "pack",
+     "src": "img/products/p7-3.webp"
+    }
+   ],
+   "variants": [
+    {
+     "id": "p7-v0",
+     "name": "Black",
+     "priceDeltaCNY": 0,
+     "stock": 199
+    },
+    {
+     "id": "p7-v1",
+     "name": "Taupe",
+     "priceDeltaCNY": 0,
+     "stock": 42
+    },
+    {
+     "id": "p7-v2",
+     "name": "Ivory",
+     "priceDeltaCNY": 12,
+     "stock": 450
+    }
+   ],
+   "specs": [
+    [
+     "Material",
+     "PU leather / cotton"
+    ],
+    [
+     "Sizes",
+     "S–XL"
+    ],
+    [
+     "Origin",
+     "Guangdong, CN"
+    ],
+    [
+     "Weight",
+     "0.6 kg"
+    ],
+    [
+     "Supplier SKU",
+     "GS-1042"
+    ]
+   ],
+   "stock": 878,
+   "moq": 1,
+   "leadDays": 2,
+   "weightKg": 0.6,
+   "volumeM3": 0.004,
+   "score": 87,
+   "verified": true,
+   "published": true,
+   "featured": false,
+   "rating": 4,
+   "reviews": [
+    {
+     "id": "p7-rv0",
+     "author": "Kerim K.",
+     "city": "Turkmenabat",
+     "rating": 5,
+     "text": "Colour slightly different from photos, otherwise great.",
+     "date": "2026-06-26T21:32:13.872Z"
+    },
+    {
+     "id": "p7-rv1",
+     "author": "Serdar L.",
+     "city": "Turkmenbashi",
+     "rating": 3,
+     "text": "Arrived in Ashgabat in 19 days, exactly as described.",
+     "date": "2026-09-20T21:32:13.872Z"
+    }
+   ],
+   "tags": [
+    "popular"
+   ],
+   "popularityAshgabat": 568,
+   "createdAt": "2026-09-10T21:32:13.872Z",
+   "keywords": [
+    "bag",
+    "crossbody",
+    "leather",
+    "douyin",
+    "сумка"
+   ],
+   "tryOn": "bag"
+  },
+  {
+   "id": "p8",
+   "title": "Quilted Shoulder Bag Premium",
+   "categoryId": "fashion",
+   "supplierId": "s3",
+   "icon": "ShoppingBag",
+   "priceCNY": 298,
+   "images": [
+    {
+     "id": "p8-img0",
+     "tone": 59,
+     "angle": "front",
+     "src": "img/products/p8-0.webp"
+    },
+    {
+     "id": "p8-img1",
+     "tone": 70,
+     "angle": "side",
+     "src": "img/products/p8-1.webp"
+    },
+    {
+     "id": "p8-img2",
+     "tone": 81,
+     "angle": "detail",
+     "src": "img/products/p8-2.webp"
+    },
+    {
+     "id": "p8-img3",
+     "tone": 92,
+     "angle": "pack",
+     "src": "img/products/p8-3.webp"
+    }
+   ],
+   "variants": [
+    {
+     "id": "p8-v0",
+     "name": "Black",
+     "priceDeltaCNY": 0,
+     "stock": 51
+    },
+    {
+     "id": "p8-v1",
+     "name": "Taupe",
+     "priceDeltaCNY": 0,
+     "stock": 234
+    },
+    {
+     "id": "p8-v2",
+     "name": "Ivory",
+     "priceDeltaCNY": 12,
+     "stock": 343
+    }
+   ],
+   "specs": [
+    [
+     "Material",
+     "PU leather / cotton"
+    ],
+    [
+     "Sizes",
+     "S–XL"
+    ],
+    [
+     "Origin",
+     "Guangdong, CN"
+    ],
+    [
+     "Weight",
+     "0.7 kg"
+    ],
+    [
+     "Supplier SKU",
+     "GS-1049"
+    ]
+   ],
+   "stock": 1019,
+   "moq": 1,
+   "leadDays": 3,
+   "weightKg": 0.7,
+   "volumeM3": 0.005,
+   "score": 84,
+   "verified": true,
+   "published": true,
+   "featured": true,
+   "rating": 3.7,
+   "reviews": [
+    {
+     "id": "p8-rv0",
+     "author": "Gulnara T.",
+     "city": "Turkmenabat",
+     "rating": 4,
+     "text": "Good quality for the price. Final cost matched the estimate.",
+     "date": "2026-06-11T21:32:13.872Z"
+    },
+    {
+     "id": "p8-rv1",
+     "author": "Dovlet O.",
+     "city": "Balkanabat",
+     "rating": 3,
+     "text": "Packaging was a bit dented but the product works perfectly.",
+     "date": "2026-08-15T21:32:13.872Z"
+    },
+    {
+     "id": "p8-rv2",
+     "author": "Rustam R.",
+     "city": "Turkmenabat",
+     "rating": 4,
+     "text": "Arrived in Ashgabat in 19 days, exactly as described.",
+     "date": "2026-09-19T21:32:13.872Z"
+    }
+   ],
+   "tags": [],
+   "popularityAshgabat": 318,
+   "createdAt": "2026-09-07T21:32:13.872Z",
+   "keywords": [
+    "bag",
+    "shoulder",
+    "quilted",
+    "premium",
+    "сумка"
+   ]
+  },
+  {
+   "id": "p9",
+   "title": "Canvas Mini Tote Bag",
+   "categoryId": "fashion",
+   "supplierId": "s2",
+   "icon": "ShoppingBag",
+   "priceCNY": 49,
+   "images": [
+    {
+     "id": "p9-img0",
+     "tone": 96,
+     "angle": "front",
+     "src": "img/products/p9-0.webp"
+    },
+    {
+     "id": "p9-img1",
+     "tone": 7,
+     "angle": "side",
+     "src": "img/products/p9-1.webp"
+    },
+    {
+     "id": "p9-img2",
+     "tone": 18,
+     "angle": "detail",
+     "src": "img/products/p9-2.webp"
+    },
+    {
+     "id": "p9-img3",
+     "tone": 29,
+     "angle": "pack",
+     "src": "img/products/p9-3.webp"
+    }
+   ],
+   "variants": [
+    {
+     "id": "p9-v0",
+     "name": "Black",
+     "priceDeltaCNY": 0,
+     "stock": 41
+    },
+    {
+     "id": "p9-v1",
+     "name": "Taupe",
+     "priceDeltaCNY": 0,
+     "stock": 417
+    },
+    {
+     "id": "p9-v2",
+     "name": "Ivory",
+     "priceDeltaCNY": 12,
+     "stock": 425
+    }
+   ],
+   "specs": [
+    [
+     "Material",
+     "PU leather / cotton"
+    ],
+    [
+     "Sizes",
+     "S–XL"
+    ],
+    [
+     "Origin",
+     "Guangdong, CN"
+    ],
+    [
+     "Weight",
+     "0.3 kg"
+    ],
+    [
+     "Supplier SKU",
+     "YE-1056"
+    ]
+   ],
+   "stock": 488,
+   "moq": 1,
+   "leadDays": 4,
+   "weightKg": 0.3,
+   "volumeM3": 0.002,
+   "score": 89,
+   "verified": true,
+   "published": true,
+   "featured": false,
+   "rating": 4.5,
+   "reviews": [
+    {
+     "id": "p9-rv0",
+     "author": "Aylar T.",
+     "city": "Mary",
+     "rating": 5,
+     "text": "Bought a second one for my brother. Recommend.",
+     "date": "2026-06-14T21:32:13.872Z"
+    },
+    {
+     "id": "p9-rv1",
+     "author": "Selbi C.",
+     "city": "Dashoguz",
+     "rating": 4,
+     "text": "Good quality for the price. Final cost matched the estimate.",
+     "date": "2026-07-21T21:32:13.872Z"
+    },
+    {
+     "id": "p9-rv2",
+     "author": "Rustam F.",
+     "city": "Balkanabat",
+     "rating": 4,
+     "text": "Arrived in Ashgabat in 19 days, exactly as described.",
+     "date": "2026-08-28T21:32:13.872Z"
+    },
+    {
+     "id": "p9-rv3",
+     "author": "Merdan A.",
+     "city": "Turkmenbashi",
+     "rating": 5,
+     "text": "Good quality for the price. Final cost matched the estimate.",
+     "date": "2026-08-10T21:32:13.872Z"
+    }
+   ],
+   "tags": [],
+   "popularityAshgabat": 452,
+   "createdAt": "2026-09-04T21:32:13.872Z",
+   "keywords": [
+    "bag",
+    "tote",
+    "canvas",
+    "сумка"
+   ]
+  },
+  {
+   "id": "p10",
+   "title": "Wool Blend Overcoat",
+   "categoryId": "fashion",
+   "supplierId": "s3",
+   "icon": "Shirt",
+   "priceCNY": 420,
+   "images": [
+    {
+     "id": "p10-img0",
+     "tone": 33,
+     "angle": "front",
+     "src": "img/products/p10-0.webp"
+    },
+    {
+     "id": "p10-img1",
+     "tone": 44,
+     "angle": "side",
+     "src": "img/products/p10-1.webp"
+    },
+    {
+     "id": "p10-img2",
+     "tone": 55,
+     "angle": "detail",
+     "src": "img/products/p10-2.webp"
+    },
+    {
+     "id": "p10-img3",
+     "tone": 66,
+     "angle": "pack",
+     "src": "img/products/p10-3.webp"
+    }
+   ],
+   "variants": [
+    {
+     "id": "p10-v0",
+     "name": "Black",
+     "priceDeltaCNY": 0,
+     "stock": 357
+    },
+    {
+     "id": "p10-v1",
+     "name": "Taupe",
+     "priceDeltaCNY": 0,
+     "stock": 65
+    },
+    {
+     "id": "p10-v2",
+     "name": "Ivory",
+     "priceDeltaCNY": 12,
+     "stock": 533
+    }
+   ],
+   "specs": [
+    [
+     "Material",
+     "PU leather / cotton"
+    ],
+    [
+     "Sizes",
+     "S–XL"
+    ],
+    [
+     "Origin",
+     "Guangdong, CN"
+    ],
+    [
+     "Weight",
+     "1.4 kg"
+    ],
+    [
+     "Supplier SKU",
+     "GS-1063"
+    ]
+   ],
+   "stock": 2853,
+   "moq": 1,
+   "leadDays": 5,
+   "weightKg": 1.4,
+   "volumeM3": 0.01,
+   "score": 87,
+   "verified": true,
+   "published": true,
+   "featured": false,
+   "rating": 4,
+   "reviews": [
+    {
+     "id": "p10-rv0",
+     "author": "Batyr L.",
+     "city": "Turkmenbashi",
+     "rating": 5,
+     "text": "Bought a second one for my brother. Recommend.",
+     "date": "2026-08-25T21:32:13.872Z"
+    },
+    {
+     "id": "p10-rv1",
+     "author": "Aylar Q.",
+     "city": "Turkmenbashi",
+     "rating": 3,
+     "text": "Good quality for the price. Final cost matched the estimate.",
+     "date": "2026-09-21T21:32:13.872Z"
+    }
+   ],
+   "tags": [],
+   "popularityAshgabat": 639,
+   "createdAt": "2026-09-01T21:32:13.872Z",
+   "keywords": [
+    "coat",
+    "overcoat",
+    "пальто"
+   ],
+   "tryOn": "coat"
+  },
+  {
+   "id": "p11",
+   "title": "Running Sneakers Air Mesh",
+   "categoryId": "fashion",
+   "supplierId": "s10",
+   "icon": "Footprints",
+   "priceCNY": 139,
+   "oldPriceCNY": 169,
+   "images": [
+    {
+     "id": "p11-img0",
+     "tone": 70,
+     "angle": "front",
+     "src": "img/products/p11-0.webp"
+    },
+    {
+     "id": "p11-img1",
+     "tone": 81,
+     "angle": "side",
+     "src": "img/products/p11-1.webp"
+    },
+    {
+     "id": "p11-img2",
+     "tone": 92,
+     "angle": "detail",
+     "src": "img/products/p11-2.webp"
+    },
+    {
+     "id": "p11-img3",
+     "tone": 3,
+     "angle": "pack",
+     "src": "img/products/p11-3.webp"
+    }
+   ],
+   "variants": [
+    {
+     "id": "p11-v0",
+     "name": "Black",
+     "priceDeltaCNY": 0,
+     "stock": 515
+    },
+    {
+     "id": "p11-v1",
+     "name": "Taupe",
+     "priceDeltaCNY": 0,
+     "stock": 187
+    },
+    {
+     "id": "p11-v2",
+     "name": "Ivory",
+     "priceDeltaCNY": 12,
+     "stock": 177
+    }
+   ],
+   "specs": [
+    [
+     "Material",
+     "PU leather / cotton"
+    ],
+    [
+     "Sizes",
+     "S–XL"
+    ],
+    [
+     "Origin",
+     "Guangdong, CN"
+    ],
+    [
+     "Weight",
+     "0.9 kg"
+    ],
+    [
+     "Supplier SKU",
+     "WS-1070"
+    ]
+   ],
+   "stock": 425,
+   "moq": 1,
+   "leadDays": 6,
+   "weightKg": 0.9,
+   "volumeM3": 0.008,
+   "score": 84,
+   "verified": false,
+   "published": true,
+   "featured": false,
+   "rating": 4.7,
+   "reviews": [
+    {
+     "id": "p11-rv0",
+     "author": "Kerim B.",
+     "city": "Ashgabat",
+     "rating": 4,
+     "text": "Arrived in Ashgabat in 19 days, exactly as described.",
+     "date": "2026-06-24T21:32:13.872Z"
+    },
+    {
+     "id": "p11-rv1",
+     "author": "Gulnara N.",
+     "city": "Dashoguz",
+     "rating": 5,
+     "text": "Good quality for the price. Final cost matched the estimate.",
+     "date": "2026-08-13T21:32:13.872Z"
+    },
+    {
+     "id": "p11-rv2",
+     "author": "Ogulgerek B.",
+     "city": "Mary",
+     "rating": 5,
+     "text": "Packaging was a bit dented but the product works perfectly.",
+     "date": "2026-07-12T21:32:13.872Z"
+    }
+   ],
+   "tags": [
+    "price_drop"
+   ],
+   "popularityAshgabat": 312,
+   "createdAt": "2026-08-29T21:32:13.872Z",
+   "keywords": [
+    "sneakers",
+    "shoes",
+    "кроссовки"
+   ],
+   "tryOn": "shoes"
+  },
+  {
+   "id": "p12",
+   "title": "Polarized Sunglasses",
+   "categoryId": "fashion",
+   "supplierId": "s3",
+   "icon": "Glasses",
+   "priceCNY": 39,
+   "images": [
+    {
+     "id": "p12-img0",
+     "tone": 7,
+     "angle": "front",
+     "src": "img/products/p12-0.webp"
+    },
+    {
+     "id": "p12-img1",
+     "tone": 18,
+     "angle": "side",
+     "src": "img/products/p12-1.webp"
+    },
+    {
+     "id": "p12-img2",
+     "tone": 29,
+     "angle": "detail",
+     "src": "img/products/p12-2.webp"
+    },
+    {
+     "id": "p12-img3",
+     "tone": 40,
+     "angle": "pack",
+     "src": "img/products/p12-3.webp"
+    }
+   ],
+   "variants": [
+    {
+     "id": "p12-v0",
+     "name": "Black",
+     "priceDeltaCNY": 0,
+     "stock": 144
+    },
+    {
+     "id": "p12-v1",
+     "name": "Taupe",
+     "priceDeltaCNY": 0,
+     "stock": 387
+    },
+    {
+     "id": "p12-v2",
+     "name": "Ivory",
+     "priceDeltaCNY": 12,
+     "stock": 410
+    }
+   ],
+   "specs": [
+    [
+     "Material",
+     "PU leather / cotton"
+    ],
+    [
+     "Sizes",
+     "S–XL"
+    ],
+    [
+     "Origin",
+     "Guangdong, CN"
+    ],
+    [
+     "Weight",
+     "0.1 kg"
+    ],
+    [
+     "Supplier SKU",
+     "GS-1077"
+    ]
+   ],
+   "stock": 345,
+   "moq": 1,
+   "leadDays": 7,
+   "weightKg": 0.1,
+   "volumeM3": 0.0005,
+   "score": 85,
+   "verified": true,
+   "published": true,
+   "featured": false,
+   "rating": 3.8,
+   "reviews": [
+    {
+     "id": "p12-rv0",
+     "author": "Rustam F.",
+     "city": "Turkmenabat",
+     "rating": 4,
+     "text": "Packaging was a bit dented but the product works perfectly.",
+     "date": "2026-06-19T21:32:13.872Z"
+    },
+    {
+     "id": "p12-rv1",
+     "author": "Jeren N.",
+     "city": "Turkmenabat",
+     "rating": 4,
+     "text": "Bought a second one for my brother. Recommend.",
+     "date": "2026-07-23T21:32:13.872Z"
+    },
+    {
+     "id": "p12-rv2",
+     "author": "Merdan G.",
+     "city": "Mary",
+     "rating": 3,
+     "text": "Colour slightly different from photos, otherwise great.",
+     "date": "2026-07-17T21:32:13.872Z"
+    },
+    {
+     "id": "p12-rv3",
+     "author": "Batyr R.",
+     "city": "Turkmenabat",
+     "rating": 4,
+     "text": "Packaging was a bit dented but the product works perfectly.",
+     "date": "2026-06-26T21:32:13.872Z"
+    }
+   ],
+   "tags": [],
+   "popularityAshgabat": 339,
+   "createdAt": "2026-08-26T21:32:13.872Z",
+   "keywords": [
+    "sunglasses",
+    "glasses",
+    "очки"
+   ],
+   "tryOn": "glasses"
+  },
+  {
+   "id": "p13",
+   "title": "Ceramic Cookware Set 8 pcs",
+   "categoryId": "home",
+   "supplierId": "s5",
+   "icon": "CookingPot",
+   "priceCNY": 356,
+   "images": [
+    {
+     "id": "p13-img0",
+     "tone": 44,
+     "angle": "front",
+     "src": "img/products/p13-0.webp"
+    },
+    {
+     "id": "p13-img1",
+     "tone": 55,
+     "angle": "side",
+     "src": "img/products/p13-1.webp"
+    },
+    {
+     "id": "p13-img2",
+     "tone": 66,
+     "angle": "detail",
+     "src": "img/products/p13-2.webp"
+    },
+    {
+     "id": "p13-img3",
+     "tone": 77,
+     "angle": "pack",
+     "src": "img/products/p13-3.webp"
+    }
+   ],
+   "variants": [
+    {
+     "id": "p13-v0",
+     "name": "Standard",
+     "priceDeltaCNY": 0,
+     "stock": 332
+    },
+    {
+     "id": "p13-v1",
+     "name": "Large",
+     "priceDeltaCNY": 40,
+     "stock": 75
+    }
+   ],
+   "specs": [
+    [
+     "Material",
+     "Ceramic / steel"
+    ],
+    [
+     "Care",
+     "Dishwasher safe"
+    ],
+    [
+     "Origin",
+     "Zhejiang, CN"
+    ],
+    [
+     "Weight",
+     "6.5 kg"
+    ],
+    [
+     "Supplier SKU",
+     "NH-1084"
+    ]
+   ],
+   "stock": 374,
+   "moq": 1,
+   "leadDays": 2,
+   "weightKg": 6.5,
+   "volumeM3": 0.04,
+   "score": 92,
+   "verified": true,
+   "published": true,
+   "featured": false,
+   "rating": 5,
+   "reviews": [
+    {
+     "id": "p13-rv0",
+     "author": "Maral C.",
+     "city": "Turkmenbashi",
+     "rating": 5,
+     "text": "Packaging was a bit dented but the product works perfectly.",
+     "date": "2026-07-01T21:32:13.872Z"
+    },
+    {
+     "id": "p13-rv1",
+     "author": "Aylar A.",
+     "city": "Turkmenabat",
+     "rating": 5,
+     "text": "Supplier answered questions quickly through CARGO ONE support.",
+     "date": "2026-08-13T21:32:13.872Z"
+    }
+   ],
+   "tags": [
+    "popular"
+   ],
+   "popularityAshgabat": 457,
+   "createdAt": "2026-08-23T21:32:13.872Z",
+   "keywords": [
+    "cookware",
+    "pan",
+    "pot",
+    "посуда"
+   ]
+  },
+  {
+   "id": "p14",
+   "title": "Nordic Floor Lamp",
+   "categoryId": "home",
+   "supplierId": "s5",
+   "icon": "Lamp",
+   "priceCNY": 189,
+   "images": [
+    {
+     "id": "p14-img0",
+     "tone": 81,
+     "angle": "front",
+     "src": "img/products/p14-0.webp"
+    },
+    {
+     "id": "p14-img1",
+     "tone": 92,
+     "angle": "side",
+     "src": "img/products/p14-1.webp"
+    },
+    {
+     "id": "p14-img2",
+     "tone": 3,
+     "angle": "detail",
+     "src": "img/products/p14-2.webp"
+    },
+    {
+     "id": "p14-img3",
+     "tone": 14,
+     "angle": "pack",
+     "src": "img/products/p14-3.webp"
+    }
+   ],
+   "variants": [
+    {
+     "id": "p14-v0",
+     "name": "Standard",
+     "priceDeltaCNY": 0,
+     "stock": 536
+    },
+    {
+     "id": "p14-v1",
+     "name": "Large",
+     "priceDeltaCNY": 40,
+     "stock": 168
+    }
+   ],
+   "specs": [
+    [
+     "Material",
+     "Ceramic / steel"
+    ],
+    [
+     "Care",
+     "Dishwasher safe"
+    ],
+    [
+     "Origin",
+     "Zhejiang, CN"
+    ],
+    [
+     "Weight",
+     "4.2 kg"
+    ],
+    [
+     "Supplier SKU",
+     "NH-1091"
+    ]
+   ],
+   "stock": 2411,
+   "moq": 1,
+   "leadDays": 3,
+   "weightKg": 4.2,
+   "volumeM3": 0.03,
+   "score": 81,
+   "verified": true,
+   "published": true,
+   "featured": false,
+   "rating": 3.7,
+   "reviews": [
+    {
+     "id": "p14-rv0",
+     "author": "Maral Q.",
+     "city": "Turkmenbashi",
+     "rating": 4,
+     "text": "Arrived in Ashgabat in 19 days, exactly as described.",
+     "date": "2026-07-04T21:32:13.872Z"
+    },
+    {
+     "id": "p14-rv1",
+     "author": "Aylar P.",
+     "city": "Turkmenbashi",
+     "rating": 4,
+     "text": "Supplier answered questions quickly through CARGO ONE support.",
+     "date": "2026-09-24T21:32:13.872Z"
+    },
+    {
+     "id": "p14-rv2",
+     "author": "Serdar E.",
+     "city": "Dashoguz",
+     "rating": 3,
+     "text": "Colour slightly different from photos, otherwise great.",
+     "date": "2026-07-25T21:32:13.872Z"
+    }
+   ],
+   "tags": [],
+   "popularityAshgabat": 147,
+   "createdAt": "2026-08-20T21:32:13.872Z",
+   "keywords": [
+    "lamp",
+    "light",
+    "лампа"
+   ]
+  },
+  {
+   "id": "p15",
+   "title": "Velvet Accent Armchair",
+   "categoryId": "home",
+   "supplierId": "s7",
+   "icon": "Armchair",
+   "priceCNY": 890,
+   "images": [
+    {
+     "id": "p15-img0",
+     "tone": 18,
+     "angle": "front",
+     "src": "img/products/p15-0.webp"
+    },
+    {
+     "id": "p15-img1",
+     "tone": 29,
+     "angle": "side",
+     "src": "img/products/p15-1.webp"
+    },
+    {
+     "id": "p15-img2",
+     "tone": 40,
+     "angle": "detail",
+     "src": "img/products/p15-2.webp"
+    },
+    {
+     "id": "p15-img3",
+     "tone": 51,
+     "angle": "pack",
+     "src": "img/products/p15-3.webp"
+    }
+   ],
+   "variants": [
+    {
+     "id": "p15-v0",
+     "name": "Standard",
+     "priceDeltaCNY": 0,
+     "stock": 88
+    },
+    {
+     "id": "p15-v1",
+     "name": "Large",
+     "priceDeltaCNY": 40,
+     "stock": 153
+    }
+   ],
+   "specs": [
+    [
+     "Material",
+     "Ceramic / steel"
+    ],
+    [
+     "Care",
+     "Dishwasher safe"
+    ],
+    [
+     "Origin",
+     "Zhejiang, CN"
+    ],
+    [
+     "Weight",
+     "18 kg"
+    ],
+    [
+     "Supplier SKU",
+     "FC-1098"
+    ]
+   ],
+   "stock": 923,
+   "moq": 1,
+   "leadDays": 4,
+   "weightKg": 18,
+   "volumeM3": 0.35,
+   "score": 88,
+   "verified": true,
+   "published": true,
+   "featured": true,
+   "rating": 4.3,
+   "reviews": [
+    {
+     "id": "p15-rv0",
+     "author": "Jeren Q.",
+     "city": "Mary",
+     "rating": 3,
+     "text": "Colour slightly different from photos, otherwise great.",
+     "date": "2026-07-27T21:32:13.872Z"
+    },
+    {
+     "id": "p15-rv1",
+     "author": "Dovlet I.",
+     "city": "Mary",
+     "rating": 4,
+     "text": "Supplier answered questions quickly through CARGO ONE support.",
+     "date": "2026-08-12T21:32:13.872Z"
+    },
+    {
+     "id": "p15-rv2",
+     "author": "Kerim N.",
+     "city": "Turkmenabat",
+     "rating": 5,
+     "text": "Colour slightly different from photos, otherwise great.",
+     "date": "2026-06-12T21:32:13.872Z"
+    },
+    {
+     "id": "p15-rv3",
+     "author": "Dovlet R.",
+     "city": "Turkmenabat",
+     "rating": 5,
+     "text": "Supplier answered questions quickly through CARGO ONE support.",
+     "date": "2026-09-02T21:32:13.872Z"
+    }
+   ],
+   "tags": [],
+   "popularityAshgabat": 167,
+   "createdAt": "2026-08-17T21:32:13.872Z",
+   "keywords": [
+    "armchair",
+    "chair",
+    "кресло"
+   ]
+  },
+  {
+   "id": "p16",
+   "title": "Memory Foam Pillow (2 pcs)",
+   "categoryId": "home",
+   "supplierId": "s5",
+   "icon": "BedDouble",
+   "priceCNY": 89,
+   "images": [
+    {
+     "id": "p16-img0",
+     "tone": 55,
+     "angle": "front",
+     "src": "img/products/p16-0.webp"
+    },
+    {
+     "id": "p16-img1",
+     "tone": 66,
+     "angle": "side",
+     "src": "img/products/p16-1.webp"
+    },
+    {
+     "id": "p16-img2",
+     "tone": 77,
+     "angle": "detail",
+     "src": "img/products/p16-2.webp"
+    },
+    {
+     "id": "p16-img3",
+     "tone": 88,
+     "angle": "pack",
+     "src": "img/products/p16-3.webp"
+    }
+   ],
+   "variants": [
+    {
+     "id": "p16-v0",
+     "name": "Standard",
+     "priceDeltaCNY": 0,
+     "stock": 107
+    },
+    {
+     "id": "p16-v1",
+     "name": "Large",
+     "priceDeltaCNY": 40,
+     "stock": 83
+    }
+   ],
+   "specs": [
+    [
+     "Material",
+     "Ceramic / steel"
+    ],
+    [
+     "Care",
+     "Dishwasher safe"
+    ],
+    [
+     "Origin",
+     "Zhejiang, CN"
+    ],
+    [
+     "Weight",
+     "1.6 kg"
+    ],
+    [
+     "Supplier SKU",
+     "NH-1105"
+    ]
+   ],
+   "stock": 3111,
+   "moq": 1,
+   "leadDays": 5,
+   "weightKg": 1.6,
+   "volumeM3": 0.03,
+   "score": 84,
+   "verified": true,
+   "published": true,
+   "featured": false,
+   "rating": 4,
+   "reviews": [
+    {
+     "id": "p16-rv0",
+     "author": "Kerim K.",
+     "city": "Turkmenbashi",
+     "rating": 4,
+     "text": "Packaging was a bit dented but the product works perfectly.",
+     "date": "2026-06-10T21:32:13.872Z"
+    },
+    {
+     "id": "p16-rv1",
+     "author": "Kerim Q.",
+     "city": "Turkmenbashi",
+     "rating": 4,
+     "text": "Bought a second one for my brother. Recommend.",
+     "date": "2026-08-06T21:32:13.872Z"
+    }
+   ],
+   "tags": [],
+   "popularityAshgabat": 63,
+   "createdAt": "2026-08-14T21:32:13.872Z",
+   "keywords": [
+    "pillow",
+    "подушка"
+   ]
+  },
+  {
+   "id": "p17",
+   "title": "Glass Storage Containers (10)",
+   "categoryId": "home",
+   "supplierId": "s2",
+   "icon": "Boxes",
+   "priceCNY": 69,
+   "images": [
+    {
+     "id": "p17-img0",
+     "tone": 92,
+     "angle": "front",
+     "src": "img/products/p17-0.webp"
+    },
+    {
+     "id": "p17-img1",
+     "tone": 3,
+     "angle": "side",
+     "src": "img/products/p17-1.webp"
+    },
+    {
+     "id": "p17-img2",
+     "tone": 14,
+     "angle": "detail",
+     "src": "img/products/p17-2.webp"
+    },
+    {
+     "id": "p17-img3",
+     "tone": 25,
+     "angle": "pack",
+     "src": "img/products/p17-3.webp"
+    }
+   ],
+   "variants": [
+    {
+     "id": "p17-v0",
+     "name": "Standard",
+     "priceDeltaCNY": 0,
+     "stock": 285
+    },
+    {
+     "id": "p17-v1",
+     "name": "Large",
+     "priceDeltaCNY": 40,
+     "stock": 425
+    }
+   ],
+   "specs": [
+    [
+     "Material",
+     "Ceramic / steel"
+    ],
+    [
+     "Care",
+     "Dishwasher safe"
+    ],
+    [
+     "Origin",
+     "Zhejiang, CN"
+    ],
+    [
+     "Weight",
+     "3 kg"
+    ],
+    [
+     "Supplier SKU",
+     "YE-1112"
+    ]
+   ],
+   "stock": 544,
+   "moq": 1,
+   "leadDays": 6,
+   "weightKg": 3,
+   "volumeM3": 0.02,
+   "score": 82,
+   "verified": true,
+   "published": true,
+   "featured": false,
+   "rating": 3.7,
+   "reviews": [
+    {
+     "id": "p17-rv0",
+     "author": "Maral E.",
+     "city": "Balkanabat",
+     "rating": 4,
+     "text": "Packaging was a bit dented but the product works perfectly.",
+     "date": "2026-09-28T21:32:13.872Z"
+    },
+    {
+     "id": "p17-rv1",
+     "author": "Dovlet K.",
+     "city": "Balkanabat",
+     "rating": 3,
+     "text": "Good quality for the price. Final cost matched the estimate.",
+     "date": "2026-06-20T21:32:13.872Z"
+    },
+    {
+     "id": "p17-rv2",
+     "author": "Ogulgerek C.",
+     "city": "Dashoguz",
+     "rating": 4,
+     "text": "Colour slightly different from photos, otherwise great.",
+     "date": "2026-09-15T21:32:13.872Z"
+    }
+   ],
+   "tags": [
+    "popular"
+   ],
+   "popularityAshgabat": 49,
+   "createdAt": "2026-08-11T21:32:13.872Z",
+   "keywords": [
+    "containers",
+    "storage",
+    "контейнеры"
+   ]
+  },
+  {
+   "id": "p18",
+   "title": "Vitamin C Brightening Serum 30ml",
+   "categoryId": "beauty",
+   "supplierId": "s6",
+   "icon": "Droplet",
+   "priceCNY": 79,
+   "images": [
+    {
+     "id": "p18-img0",
+     "tone": 29,
+     "angle": "front",
+     "src": "img/products/p18-0.webp"
+    },
+    {
+     "id": "p18-img1",
+     "tone": 40,
+     "angle": "side",
+     "src": "img/products/p18-1.webp"
+    },
+    {
+     "id": "p18-img2",
+     "tone": 51,
+     "angle": "detail",
+     "src": "img/products/p18-2.webp"
+    },
+    {
+     "id": "p18-img3",
+     "tone": 62,
+     "angle": "pack",
+     "src": "img/products/p18-3.webp"
+    }
+   ],
+   "variants": [
+    {
+     "id": "p18-v0",
+     "name": "Standard",
+     "priceDeltaCNY": 0,
+     "stock": 92
+    },
+    {
+     "id": "p18-v1",
+     "name": "Duo pack",
+     "priceDeltaCNY": 60,
+     "stock": 222
+    }
+   ],
+   "specs": [
+    [
+     "Volume",
+     "30 ml"
+    ],
+    [
+     "Shelf life",
+     "24 months"
+    ],
+    [
+     "Certification",
+     "GMPC"
+    ],
+    [
+     "Weight",
+     "0.1 kg"
+    ],
+    [
+     "Supplier SKU",
+     "HB-1119"
+    ]
+   ],
+   "stock": 3016,
+   "moq": 1,
+   "leadDays": 7,
+   "weightKg": 0.1,
+   "volumeM3": 0.0004,
+   "score": 84,
+   "verified": true,
+   "published": true,
+   "featured": false,
+   "rating": 4.3,
+   "reviews": [
+    {
+     "id": "p18-rv0",
+     "author": "Ogulgerek F.",
+     "city": "Balkanabat",
+     "rating": 4,
+     "text": "Good quality for the price. Final cost matched the estimate.",
+     "date": "2026-10-03T21:32:13.872Z"
+    },
+    {
+     "id": "p18-rv1",
+     "author": "Maral T.",
+     "city": "Dashoguz",
+     "rating": 5,
+     "text": "Arrived in Ashgabat in 19 days, exactly as described.",
+     "date": "2026-06-07T21:32:13.872Z"
+    },
+    {
+     "id": "p18-rv2",
+     "author": "Rustam N.",
+     "city": "Balkanabat",
+     "rating": 5,
+     "text": "Colour slightly different from photos, otherwise great.",
+     "date": "2026-07-10T21:32:13.872Z"
+    },
+    {
+     "id": "p18-rv3",
+     "author": "Gulnara O.",
+     "city": "Ashgabat",
+     "rating": 3,
+     "text": "Colour slightly different from photos, otherwise great.",
+     "date": "2026-08-07T21:32:13.872Z"
+    }
+   ],
+   "tags": [
+    "popular"
+   ],
+   "popularityAshgabat": 973,
+   "createdAt": "2026-08-08T21:32:13.872Z",
+   "keywords": [
+    "serum",
+    "skincare",
+    "сыворотка"
+   ]
+  },
+  {
+   "id": "p19",
+   "title": "Ionic Hair Dryer 1800W",
+   "categoryId": "beauty",
+   "supplierId": "s6",
+   "icon": "Sparkles",
+   "priceCNY": 159,
+   "oldPriceCNY": 199,
+   "images": [
+    {
+     "id": "p19-img0",
+     "tone": 66,
+     "angle": "front",
+     "src": "img/products/p19-0.webp"
+    },
+    {
+     "id": "p19-img1",
+     "tone": 77,
+     "angle": "side",
+     "src": "img/products/p19-1.webp"
+    },
+    {
+     "id": "p19-img2",
+     "tone": 88,
+     "angle": "detail",
+     "src": "img/products/p19-2.webp"
+    },
+    {
+     "id": "p19-img3",
+     "tone": 99,
+     "angle": "pack",
+     "src": "img/products/p19-3.webp"
+    }
+   ],
+   "variants": [
+    {
+     "id": "p19-v0",
+     "name": "Standard",
+     "priceDeltaCNY": 0,
+     "stock": 126
+    },
+    {
+     "id": "p19-v1",
+     "name": "Duo pack",
+     "priceDeltaCNY": 60,
+     "stock": 282
+    }
+   ],
+   "specs": [
+    [
+     "Volume",
+     "30 ml"
+    ],
+    [
+     "Shelf life",
+     "24 months"
+    ],
+    [
+     "Certification",
+     "GMPC"
+    ],
+    [
+     "Weight",
+     "0.9 kg"
+    ],
+    [
+     "Supplier SKU",
+     "HB-1126"
+    ]
+   ],
+   "stock": 2029,
+   "moq": 1,
+   "leadDays": 2,
+   "weightKg": 0.9,
+   "volumeM3": 0.006,
+   "score": 81,
+   "verified": true,
+   "published": true,
+   "featured": false,
+   "rating": 4,
+   "reviews": [
+    {
+     "id": "p19-rv0",
+     "author": "Ogulgerek N.",
+     "city": "Dashoguz",
+     "rating": 4,
+     "text": "Supplier answered questions quickly through CARGO ONE support.",
+     "date": "2026-10-02T21:32:13.872Z"
+    },
+    {
+     "id": "p19-rv1",
+     "author": "Jeren M.",
+     "city": "Turkmenbashi",
+     "rating": 4,
+     "text": "Supplier answered questions quickly through CARGO ONE support.",
+     "date": "2026-06-25T21:32:13.872Z"
+    }
+   ],
+   "tags": [
+    "price_drop"
+   ],
+   "popularityAshgabat": 252,
+   "createdAt": "2026-08-05T21:32:13.872Z",
+   "keywords": [
+    "hair dryer",
+    "фен"
+   ]
+  },
+  {
+   "id": "p20",
+   "title": "Skincare Gift Set",
+   "categoryId": "beauty",
+   "supplierId": "s6",
+   "icon": "Gift",
+   "priceCNY": 229,
+   "images": [
+    {
+     "id": "p20-img0",
+     "tone": 3,
+     "angle": "front",
+     "src": "img/products/p20-0.webp"
+    },
+    {
+     "id": "p20-img1",
+     "tone": 14,
+     "angle": "side",
+     "src": "img/products/p20-1.webp"
+    },
+    {
+     "id": "p20-img2",
+     "tone": 25,
+     "angle": "detail",
+     "src": "img/products/p20-2.webp"
+    },
+    {
+     "id": "p20-img3",
+     "tone": 36,
+     "angle": "pack",
+     "src": "img/products/p20-3.webp"
+    }
+   ],
+   "variants": [
+    {
+     "id": "p20-v0",
+     "name": "Standard",
+     "priceDeltaCNY": 0,
+     "stock": 499
+    },
+    {
+     "id": "p20-v1",
+     "name": "Duo pack",
+     "priceDeltaCNY": 60,
+     "stock": 332
+    }
+   ],
+   "specs": [
+    [
+     "Volume",
+     "30 ml"
+    ],
+    [
+     "Shelf life",
+     "24 months"
+    ],
+    [
+     "Certification",
+     "GMPC"
+    ],
+    [
+     "Weight",
+     "0.8 kg"
+    ],
+    [
+     "Supplier SKU",
+     "HB-1133"
+    ]
+   ],
+   "stock": 723,
+   "moq": 1,
+   "leadDays": 3,
+   "weightKg": 0.8,
+   "volumeM3": 0.005,
+   "score": 81,
+   "verified": true,
+   "published": true,
+   "featured": false,
+   "rating": 4,
+   "reviews": [
+    {
+     "id": "p20-rv0",
+     "author": "Ogulgerek O.",
+     "city": "Turkmenabat",
+     "rating": 4,
+     "text": "Arrived in Ashgabat in 19 days, exactly as described.",
+     "date": "2026-08-12T21:32:13.872Z"
+    },
+    {
+     "id": "p20-rv1",
+     "author": "Selbi M.",
+     "city": "Balkanabat",
+     "rating": 5,
+     "text": "Bought a second one for my brother. Recommend.",
+     "date": "2026-09-30T21:32:13.872Z"
+    },
+    {
+     "id": "p20-rv2",
+     "author": "Serdar G.",
+     "city": "Balkanabat",
+     "rating": 3,
+     "text": "Colour slightly different from photos, otherwise great.",
+     "date": "2026-06-22T21:32:13.872Z"
+    }
+   ],
+   "tags": [],
+   "popularityAshgabat": 227,
+   "createdAt": "2026-08-02T21:32:13.872Z",
+   "keywords": [
+    "gift",
+    "skincare",
+    "набор"
+   ]
+  },
+  {
+   "id": "p21",
+   "title": "Building Blocks City Set 1200 pcs",
+   "categoryId": "kids",
+   "supplierId": "s2",
+   "icon": "Blocks",
+   "priceCNY": 199,
+   "images": [
+    {
+     "id": "p21-img0",
+     "tone": 40,
+     "angle": "front",
+     "src": "img/products/p21-0.webp"
+    },
+    {
+     "id": "p21-img1",
+     "tone": 51,
+     "angle": "side",
+     "src": "img/products/p21-1.webp"
+    },
+    {
+     "id": "p21-img2",
+     "tone": 62,
+     "angle": "detail",
+     "src": "img/products/p21-2.webp"
+    },
+    {
+     "id": "p21-img3",
+     "tone": 73,
+     "angle": "pack",
+     "src": "img/products/p21-3.webp"
+    }
+   ],
+   "variants": [
+    {
+     "id": "p21-v0",
+     "name": "Standard",
+     "priceDeltaCNY": 0,
+     "stock": 149
+    }
+   ],
+   "specs": [
+    [
+     "Age",
+     "3+"
+    ],
+    [
+     "Certification",
+     "EN71"
+    ],
+    [
+     "Material",
+     "ABS plastic"
+    ],
+    [
+     "Weight",
+     "1.8 kg"
+    ],
+    [
+     "Supplier SKU",
+     "YE-1140"
+    ]
+   ],
+   "stock": 929,
+   "moq": 1,
+   "leadDays": 4,
+   "weightKg": 1.8,
+   "volumeM3": 0.01,
+   "score": 85,
+   "verified": true,
+   "published": true,
+   "featured": false,
+   "rating": 4,
+   "reviews": [
+    {
+     "id": "p21-rv0",
+     "author": "Jeren G.",
+     "city": "Turkmenabat",
+     "rating": 4,
+     "text": "Bought a second one for my brother. Recommend.",
+     "date": "2026-09-18T21:32:13.872Z"
+    },
+    {
+     "id": "p21-rv1",
+     "author": "Gulnara G.",
+     "city": "Turkmenbashi",
+     "rating": 4,
+     "text": "Supplier answered questions quickly through CARGO ONE support.",
+     "date": "2026-09-21T21:32:13.872Z"
+    },
+    {
+     "id": "p21-rv2",
+     "author": "Gulnara O.",
+     "city": "Turkmenbashi",
+     "rating": 4,
+     "text": "Supplier answered questions quickly through CARGO ONE support.",
+     "date": "2026-08-05T21:32:13.872Z"
+    },
+    {
+     "id": "p21-rv3",
+     "author": "Gulnara A.",
+     "city": "Turkmenbashi",
+     "rating": 4,
+     "text": "Packaging was a bit dented but the product works perfectly.",
+     "date": "2026-09-19T21:32:13.872Z"
+    }
+   ],
+   "tags": [
+    "popular"
+   ],
+   "popularityAshgabat": 691,
+   "createdAt": "2026-07-30T21:32:13.872Z",
+   "keywords": [
+    "blocks",
+    "lego",
+    "toy",
+    "конструктор"
+   ]
+  },
+  {
+   "id": "p22",
+   "title": "Kids Balance Bike",
+   "categoryId": "kids",
+   "supplierId": "s2",
+   "icon": "Bike",
+   "priceCNY": 245,
+   "images": [
+    {
+     "id": "p22-img0",
+     "tone": 77,
+     "angle": "front",
+     "src": "img/products/p22-0.webp"
+    },
+    {
+     "id": "p22-img1",
+     "tone": 88,
+     "angle": "side",
+     "src": "img/products/p22-1.webp"
+    },
+    {
+     "id": "p22-img2",
+     "tone": 99,
+     "angle": "detail",
+     "src": "img/products/p22-2.webp"
+    },
+    {
+     "id": "p22-img3",
+     "tone": 10,
+     "angle": "pack",
+     "src": "img/products/p22-3.webp"
+    }
+   ],
+   "variants": [
+    {
+     "id": "p22-v0",
+     "name": "Standard",
+     "priceDeltaCNY": 0,
+     "stock": 199
+    }
+   ],
+   "specs": [
+    [
+     "Age",
+     "3+"
+    ],
+    [
+     "Certification",
+     "EN71"
+    ],
+    [
+     "Material",
+     "ABS plastic"
+    ],
+    [
+     "Weight",
+     "4.5 kg"
+    ],
+    [
+     "Supplier SKU",
+     "YE-1147"
+    ]
+   ],
+   "stock": 3031,
+   "moq": 1,
+   "leadDays": 5,
+   "weightKg": 4.5,
+   "volumeM3": 0.06,
+   "score": 81,
+   "verified": true,
+   "published": true,
+   "featured": true,
+   "rating": 3.5,
+   "reviews": [
+    {
+     "id": "p22-rv0",
+     "author": "Serdar T.",
+     "city": "Mary",
+     "rating": 3,
+     "text": "Supplier answered questions quickly through CARGO ONE support.",
+     "date": "2026-09-09T21:32:13.872Z"
+    },
+    {
+     "id": "p22-rv1",
+     "author": "Maral J.",
+     "city": "Turkmenabat",
+     "rating": 4,
+     "text": "Packaging was a bit dented but the product works perfectly.",
+     "date": "2026-08-12T21:32:13.872Z"
+    }
+   ],
+   "tags": [],
+   "popularityAshgabat": 997,
+   "createdAt": "2026-07-27T21:32:13.872Z",
+   "keywords": [
+    "bike",
+    "velosiped",
+    "велосипед"
+   ]
+  },
+  {
+   "id": "p23",
+   "title": "3D Educational Puzzle",
+   "categoryId": "kids",
+   "supplierId": "s2",
+   "icon": "Puzzle",
+   "priceCNY": 45,
+   "images": [
+    {
+     "id": "p23-img0",
+     "tone": 14,
+     "angle": "front",
+     "src": "img/products/p23-0.webp"
+    },
+    {
+     "id": "p23-img1",
+     "tone": 25,
+     "angle": "side",
+     "src": "img/products/p23-1.webp"
+    },
+    {
+     "id": "p23-img2",
+     "tone": 36,
+     "angle": "detail",
+     "src": "img/products/p23-2.webp"
+    },
+    {
+     "id": "p23-img3",
+     "tone": 47,
+     "angle": "pack",
+     "src": "img/products/p23-3.webp"
+    }
+   ],
+   "variants": [
+    {
+     "id": "p23-v0",
+     "name": "Standard",
+     "priceDeltaCNY": 0,
+     "stock": 295
+    }
+   ],
+   "specs": [
+    [
+     "Age",
+     "3+"
+    ],
+    [
+     "Certification",
+     "EN71"
+    ],
+    [
+     "Material",
+     "ABS plastic"
+    ],
+    [
+     "Weight",
+     "0.5 kg"
+    ],
+    [
+     "Supplier SKU",
+     "YE-1154"
+    ]
+   ],
+   "stock": 668,
+   "moq": 1,
+   "leadDays": 6,
+   "weightKg": 0.5,
+   "volumeM3": 0.003,
+   "score": 79,
+   "verified": true,
+   "published": true,
+   "featured": false,
+   "rating": 3.3,
+   "reviews": [
+    {
+     "id": "p23-rv0",
+     "author": "Selbi O.",
+     "city": "Turkmenbashi",
+     "rating": 3,
+     "text": "Supplier answered questions quickly through CARGO ONE support.",
+     "date": "2026-09-12T21:32:13.872Z"
+    },
+    {
+     "id": "p23-rv1",
+     "author": "Serdar T.",
+     "city": "Dashoguz",
+     "rating": 4,
+     "text": "Packaging was a bit dented but the product works perfectly.",
+     "date": "2026-06-10T21:32:13.872Z"
+    },
+    {
+     "id": "p23-rv2",
+     "author": "Kerim I.",
+     "city": "Turkmenabat",
+     "rating": 3,
+     "text": "Colour slightly different from photos, otherwise great.",
+     "date": "2026-08-31T21:32:13.872Z"
+    }
+   ],
+   "tags": [],
+   "popularityAshgabat": 888,
+   "createdAt": "2026-07-24T21:32:13.872Z",
+   "keywords": [
+    "puzzle",
+    "пазл"
+   ]
+  },
+  {
+   "id": "p24",
+   "title": "4K Dual Dash Cam",
+   "categoryId": "auto",
+   "supplierId": "s8",
+   "icon": "Camera",
+   "priceCNY": 219,
+   "images": [
+    {
+     "id": "p24-img0",
+     "tone": 51,
+     "angle": "front",
+     "src": "img/products/p24-0.webp"
+    },
+    {
+     "id": "p24-img1",
+     "tone": 62,
+     "angle": "side",
+     "src": "img/products/p24-1.webp"
+    },
+    {
+     "id": "p24-img2",
+     "tone": 73,
+     "angle": "detail",
+     "src": "img/products/p24-2.webp"
+    },
+    {
+     "id": "p24-img3",
+     "tone": 84,
+     "angle": "pack",
+     "src": "img/products/p24-3.webp"
+    }
+   ],
+   "variants": [
+    {
+     "id": "p24-v0",
+     "name": "Standard",
+     "priceDeltaCNY": 0,
+     "stock": 77
+    },
+    {
+     "id": "p24-v1",
+     "name": "Pro",
+     "priceDeltaCNY": 45,
+     "stock": 299
+    }
+   ],
+   "specs": [
+    [
+     "Voltage",
+     "12V"
+    ],
+    [
+     "Compatibility",
+     "Universal"
+    ],
+    [
+     "Warranty",
+     "12 months"
+    ],
+    [
+     "Weight",
+     "0.3 kg"
+    ],
+    [
+     "Supplier SKU",
+     "QN-1161"
+    ]
+   ],
+   "stock": 2626,
+   "moq": 1,
+   "leadDays": 7,
+   "weightKg": 0.3,
+   "volumeM3": 0.002,
+   "score": 85,
+   "verified": true,
+   "published": true,
+   "featured": false,
+   "rating": 4.3,
+   "reviews": [
+    {
+     "id": "p24-rv0",
+     "author": "Merdan A.",
+     "city": "Dashoguz",
+     "rating": 4,
+     "text": "Bought a second one for my brother. Recommend.",
+     "date": "2026-06-07T21:32:13.872Z"
+    },
+    {
+     "id": "p24-rv1",
+     "author": "Jeren G.",
+     "city": "Turkmenabat",
+     "rating": 5,
+     "text": "Bought a second one for my brother. Recommend.",
+     "date": "2026-08-01T21:32:13.872Z"
+    },
+    {
+     "id": "p24-rv2",
+     "author": "Rustam O.",
+     "city": "Turkmenbashi",
+     "rating": 4,
+     "text": "Supplier answered questions quickly through CARGO ONE support.",
+     "date": "2026-07-22T21:32:13.872Z"
+    },
+    {
+     "id": "p24-rv3",
+     "author": "Dovlet S.",
+     "city": "Mary",
+     "rating": 4,
+     "text": "Good quality for the price. Final cost matched the estimate.",
+     "date": "2026-07-01T21:32:13.872Z"
+    }
+   ],
+   "tags": [
+    "popular"
+   ],
+   "popularityAshgabat": 540,
+   "createdAt": "2026-07-21T21:32:13.872Z",
+   "keywords": [
+    "dash cam",
+    "dashcam",
+    "видеорегистратор"
+   ]
+  },
+  {
+   "id": "p25",
+   "title": "Car Jump Starter 2000A",
+   "categoryId": "auto",
+   "supplierId": "s8",
+   "icon": "BatteryCharging",
+   "priceCNY": 265,
+   "images": [
+    {
+     "id": "p25-img0",
+     "tone": 88,
+     "angle": "front",
+     "src": "img/products/p25-0.webp"
+    },
+    {
+     "id": "p25-img1",
+     "tone": 99,
+     "angle": "side",
+     "src": "img/products/p25-1.webp"
+    },
+    {
+     "id": "p25-img2",
+     "tone": 10,
+     "angle": "detail",
+     "src": "img/products/p25-2.webp"
+    },
+    {
+     "id": "p25-img3",
+     "tone": 21,
+     "angle": "pack",
+     "src": "img/products/p25-3.webp"
+    }
+   ],
+   "variants": [
+    {
+     "id": "p25-v0",
+     "name": "Standard",
+     "priceDeltaCNY": 0,
+     "stock": 55
+    },
+    {
+     "id": "p25-v1",
+     "name": "Pro",
+     "priceDeltaCNY": 45,
+     "stock": 516
+    }
+   ],
+   "specs": [
+    [
+     "Voltage",
+     "12V"
+    ],
+    [
+     "Compatibility",
+     "Universal"
+    ],
+    [
+     "Warranty",
+     "12 months"
+    ],
+    [
+     "Weight",
+     "1 kg"
+    ],
+    [
+     "Supplier SKU",
+     "QN-1168"
+    ]
+   ],
+   "stock": 672,
+   "moq": 1,
+   "leadDays": 2,
+   "weightKg": 1,
+   "volumeM3": 0.004,
+   "score": 79,
+   "verified": true,
+   "published": true,
+   "featured": false,
+   "rating": 3.5,
+   "reviews": [
+    {
+     "id": "p25-rv0",
+     "author": "Kerim F.",
+     "city": "Ashgabat",
+     "rating": 4,
+     "text": "Bought a second one for my brother. Recommend.",
+     "date": "2026-07-08T21:32:13.872Z"
+    },
+    {
+     "id": "p25-rv1",
+     "author": "Serdar T.",
+     "city": "Dashoguz",
+     "rating": 3,
+     "text": "Arrived in Ashgabat in 19 days, exactly as described.",
+     "date": "2026-07-30T21:32:13.872Z"
+    }
+   ],
+   "tags": [],
+   "popularityAshgabat": 108,
+   "createdAt": "2026-07-18T21:32:13.872Z",
+   "keywords": [
+    "jump starter",
+    "battery",
+    "пусковое"
+   ]
+  },
+  {
+   "id": "p26",
+   "title": "Cordless Tire Inflator",
+   "categoryId": "auto",
+   "supplierId": "s8",
+   "icon": "Gauge",
+   "priceCNY": 129,
+   "images": [
+    {
+     "id": "p26-img0",
+     "tone": 25,
+     "angle": "front",
+     "src": "img/products/p26-0.webp"
+    },
+    {
+     "id": "p26-img1",
+     "tone": 36,
+     "angle": "side",
+     "src": "img/products/p26-1.webp"
+    },
+    {
+     "id": "p26-img2",
+     "tone": 47,
+     "angle": "detail",
+     "src": "img/products/p26-2.webp"
+    },
+    {
+     "id": "p26-img3",
+     "tone": 58,
+     "angle": "pack",
+     "src": "img/products/p26-3.webp"
+    }
+   ],
+   "variants": [
+    {
+     "id": "p26-v0",
+     "name": "Standard",
+     "priceDeltaCNY": 0,
+     "stock": 454
+    },
+    {
+     "id": "p26-v1",
+     "name": "Pro",
+     "priceDeltaCNY": 45,
+     "stock": 86
+    }
+   ],
+   "specs": [
+    [
+     "Voltage",
+     "12V"
+    ],
+    [
+     "Compatibility",
+     "Universal"
+    ],
+    [
+     "Warranty",
+     "12 months"
+    ],
+    [
+     "Weight",
+     "0.7 kg"
+    ],
+    [
+     "Supplier SKU",
+     "QN-1175"
+    ]
+   ],
+   "stock": 206,
+   "moq": 1,
+   "leadDays": 3,
+   "weightKg": 0.7,
+   "volumeM3": 0.003,
+   "score": 85,
+   "verified": true,
+   "published": true,
+   "featured": false,
+   "rating": 4.3,
+   "reviews": [
+    {
+     "id": "p26-rv0",
+     "author": "Ogulgerek E.",
+     "city": "Mary",
+     "rating": 5,
+     "text": "Arrived in Ashgabat in 19 days, exactly as described.",
+     "date": "2026-08-25T21:32:13.872Z"
+    },
+    {
+     "id": "p26-rv1",
+     "author": "Gulnara G.",
+     "city": "Balkanabat",
+     "rating": 5,
+     "text": "Good quality for the price. Final cost matched the estimate.",
+     "date": "2026-06-26T21:32:13.872Z"
+    },
+    {
+     "id": "p26-rv2",
+     "author": "Gulnara T.",
+     "city": "Turkmenbashi",
+     "rating": 3,
+     "text": "Arrived in Ashgabat in 19 days, exactly as described.",
+     "date": "2026-06-30T21:32:13.872Z"
+    }
+   ],
+   "tags": [],
+   "popularityAshgabat": 102,
+   "createdAt": "2026-07-15T21:32:13.872Z",
+   "keywords": [
+    "inflator",
+    "compressor",
+    "компрессор"
+   ]
+  },
+  {
+   "id": "p27",
+   "title": "Cordless Drill 20V Kit",
+   "categoryId": "tools",
+   "supplierId": "s4",
+   "icon": "Drill",
+   "priceCNY": 319,
+   "oldPriceCNY": 369,
+   "images": [
+    {
+     "id": "p27-img0",
+     "tone": 62,
+     "angle": "front",
+     "src": "img/products/p27-0.webp"
+    },
+    {
+     "id": "p27-img1",
+     "tone": 73,
+     "angle": "side",
+     "src": "img/products/p27-1.webp"
+    },
+    {
+     "id": "p27-img2",
+     "tone": 84,
+     "angle": "detail",
+     "src": "img/products/p27-2.webp"
+    },
+    {
+     "id": "p27-img3",
+     "tone": 95,
+     "angle": "pack",
+     "src": "img/products/p27-3.webp"
+    }
+   ],
+   "variants": [
+    {
+     "id": "p27-v0",
+     "name": "Kit",
+     "priceDeltaCNY": 0,
+     "stock": 205
+    },
+    {
+     "id": "p27-v1",
+     "name": "Tool only",
+     "priceDeltaCNY": -80,
+     "stock": 232
+    }
+   ],
+   "specs": [
+    [
+     "Voltage",
+     "20V"
+    ],
+    [
+     "Battery",
+     "2 × 2.0Ah Li-ion"
+    ],
+    [
+     "Warranty",
+     "24 months"
+    ],
+    [
+     "Weight",
+     "2.4 kg"
+    ],
+    [
+     "Supplier SKU",
+     "DP-1182"
+    ]
+   ],
+   "stock": 272,
+   "moq": 1,
+   "leadDays": 4,
+   "weightKg": 2.4,
+   "volumeM3": 0.012,
+   "score": 84,
+   "verified": true,
+   "published": true,
+   "featured": false,
+   "rating": 3.8,
+   "reviews": [
+    {
+     "id": "p27-rv0",
+     "author": "Aylar P.",
+     "city": "Turkmenabat",
+     "rating": 4,
+     "text": "Supplier answered questions quickly through CARGO ONE support.",
+     "date": "2026-07-07T21:32:13.872Z"
+    },
+    {
+     "id": "p27-rv1",
+     "author": "Dovlet K.",
+     "city": "Turkmenabat",
+     "rating": 4,
+     "text": "Arrived in Ashgabat in 19 days, exactly as described.",
+     "date": "2026-07-19T21:32:13.872Z"
+    },
+    {
+     "id": "p27-rv2",
+     "author": "Jeren I.",
+     "city": "Balkanabat",
+     "rating": 3,
+     "text": "Good quality for the price. Final cost matched the estimate.",
+     "date": "2026-08-21T21:32:13.872Z"
+    },
+    {
+     "id": "p27-rv3",
+     "author": "Selbi A.",
+     "city": "Mary",
+     "rating": 4,
+     "text": "Arrived in Ashgabat in 19 days, exactly as described.",
+     "date": "2026-09-20T21:32:13.872Z"
+    }
+   ],
+   "tags": [
+    "price_drop",
+    "business"
+   ],
+   "popularityAshgabat": 564,
+   "createdAt": "2026-07-12T21:32:13.872Z",
+   "keywords": [
+    "drill",
+    "дрель"
+   ]
+  },
+  {
+   "id": "p28",
+   "title": "Mechanic Tool Set 108 pcs",
+   "categoryId": "tools",
+   "supplierId": "s4",
+   "icon": "Wrench",
+   "priceCNY": 189,
+   "images": [
+    {
+     "id": "p28-img0",
+     "tone": 99,
+     "angle": "front",
+     "src": "img/products/p28-0.webp"
+    },
+    {
+     "id": "p28-img1",
+     "tone": 10,
+     "angle": "side",
+     "src": "img/products/p28-1.webp"
+    },
+    {
+     "id": "p28-img2",
+     "tone": 21,
+     "angle": "detail",
+     "src": "img/products/p28-2.webp"
+    },
+    {
+     "id": "p28-img3",
+     "tone": 32,
+     "angle": "pack",
+     "src": "img/products/p28-3.webp"
+    }
+   ],
+   "variants": [
+    {
+     "id": "p28-v0",
+     "name": "Kit",
+     "priceDeltaCNY": 0,
+     "stock": 433
+    },
+    {
+     "id": "p28-v1",
+     "name": "Tool only",
+     "priceDeltaCNY": -80,
+     "stock": 288
+    }
+   ],
+   "specs": [
+    [
+     "Voltage",
+     "20V"
+    ],
+    [
+     "Battery",
+     "2 × 2.0Ah Li-ion"
+    ],
+    [
+     "Warranty",
+     "24 months"
+    ],
+    [
+     "Weight",
+     "5.5 kg"
+    ],
+    [
+     "Supplier SKU",
+     "DP-1189"
+    ]
+   ],
+   "stock": 609,
+   "moq": 1,
+   "leadDays": 5,
+   "weightKg": 5.5,
+   "volumeM3": 0.015,
+   "score": 81,
+   "verified": true,
+   "published": true,
+   "featured": false,
+   "rating": 3.5,
+   "reviews": [
+    {
+     "id": "p28-rv0",
+     "author": "Serdar S.",
+     "city": "Mary",
+     "rating": 3,
+     "text": "Arrived in Ashgabat in 19 days, exactly as described.",
+     "date": "2026-07-19T21:32:13.872Z"
+    },
+    {
+     "id": "p28-rv1",
+     "author": "Aylar A.",
+     "city": "Balkanabat",
+     "rating": 4,
+     "text": "Packaging was a bit dented but the product works perfectly.",
+     "date": "2026-08-18T21:32:13.872Z"
+    }
+   ],
+   "tags": [],
+   "popularityAshgabat": 79,
+   "createdAt": "2026-07-09T21:32:13.872Z",
+   "keywords": [
+    "tools",
+    "tool set",
+    "инструменты"
+   ]
+  },
+  {
+   "id": "p29",
+   "title": "Laser Distance Meter 60m",
+   "categoryId": "tools",
+   "supplierId": "s4",
+   "icon": "Ruler",
+   "priceCNY": 99,
+   "images": [
+    {
+     "id": "p29-img0",
+     "tone": 36,
+     "angle": "front",
+     "src": "img/products/p29-0.webp"
+    },
+    {
+     "id": "p29-img1",
+     "tone": 47,
+     "angle": "side",
+     "src": "img/products/p29-1.webp"
+    },
+    {
+     "id": "p29-img2",
+     "tone": 58,
+     "angle": "detail",
+     "src": "img/products/p29-2.webp"
+    },
+    {
+     "id": "p29-img3",
+     "tone": 69,
+     "angle": "pack",
+     "src": "img/products/p29-3.webp"
+    }
+   ],
+   "variants": [
+    {
+     "id": "p29-v0",
+     "name": "Kit",
+     "priceDeltaCNY": 0,
+     "stock": 280
+    },
+    {
+     "id": "p29-v1",
+     "name": "Tool only",
+     "priceDeltaCNY": -80,
+     "stock": 475
+    }
+   ],
+   "specs": [
+    [
+     "Voltage",
+     "20V"
+    ],
+    [
+     "Battery",
+     "2 × 2.0Ah Li-ion"
+    ],
+    [
+     "Warranty",
+     "24 months"
+    ],
+    [
+     "Weight",
+     "0.3 kg"
+    ],
+    [
+     "Supplier SKU",
+     "DP-1196"
+    ]
+   ],
+   "stock": 1467,
+   "moq": 1,
+   "leadDays": 6,
+   "weightKg": 0.3,
+   "volumeM3": 0.001,
+   "score": 88,
+   "verified": true,
+   "published": true,
+   "featured": true,
+   "rating": 4.3,
+   "reviews": [
+    {
+     "id": "p29-rv0",
+     "author": "Dovlet R.",
+     "city": "Turkmenbashi",
+     "rating": 4,
+     "text": "Packaging was a bit dented but the product works perfectly.",
+     "date": "2026-08-09T21:32:13.872Z"
+    },
+    {
+     "id": "p29-rv1",
+     "author": "Serdar R.",
+     "city": "Turkmenabat",
+     "rating": 4,
+     "text": "Good quality for the price. Final cost matched the estimate.",
+     "date": "2026-07-03T21:32:13.872Z"
+    },
+    {
+     "id": "p29-rv2",
+     "author": "Aylar C.",
+     "city": "Balkanabat",
+     "rating": 5,
+     "text": "Supplier answered questions quickly through CARGO ONE support.",
+     "date": "2026-08-13T21:32:13.872Z"
+    }
+   ],
+   "tags": [],
+   "popularityAshgabat": 207,
+   "createdAt": "2026-07-06T21:32:13.872Z",
+   "keywords": [
+    "laser",
+    "meter",
+    "дальномер"
+   ]
+  },
+  {
+   "id": "p30",
+   "title": "Industrial Shelving Unit 5-tier",
+   "categoryId": "industrial",
+   "supplierId": "s8",
+   "icon": "Warehouse",
+   "priceCNY": 560,
+   "images": [
+    {
+     "id": "p30-img0",
+     "tone": 73,
+     "angle": "front",
+     "src": "img/products/p30-0.webp"
+    },
+    {
+     "id": "p30-img1",
+     "tone": 84,
+     "angle": "side",
+     "src": "img/products/p30-1.webp"
+    },
+    {
+     "id": "p30-img2",
+     "tone": 95,
+     "angle": "detail",
+     "src": "img/products/p30-2.webp"
+    },
+    {
+     "id": "p30-img3",
+     "tone": 6,
+     "angle": "pack",
+     "src": "img/products/p30-3.webp"
+    }
+   ],
+   "variants": [
+    {
+     "id": "p30-v0",
+     "name": "Standard",
+     "priceDeltaCNY": 0,
+     "stock": 532
+    }
+   ],
+   "specs": [
+    [
+     "Material",
+     "Steel Q235"
+    ],
+    [
+     "Load",
+     "200 kg/shelf"
+    ],
+    [
+     "Standard",
+     "ISO 9001"
+    ],
+    [
+     "Weight",
+     "32 kg"
+    ],
+    [
+     "Supplier SKU",
+     "QN-1203"
+    ]
+   ],
+   "stock": 423,
+   "moq": 1,
+   "leadDays": 7,
+   "weightKg": 32,
+   "volumeM3": 0.12,
+   "score": 85,
+   "verified": true,
+   "published": true,
+   "featured": false,
+   "rating": 4.3,
+   "reviews": [
+    {
+     "id": "p30-rv0",
+     "author": "Batyr R.",
+     "city": "Balkanabat",
+     "rating": 4,
+     "text": "Bought a second one for my brother. Recommend.",
+     "date": "2026-06-11T21:32:13.872Z"
+    },
+    {
+     "id": "p30-rv1",
+     "author": "Ogulgerek N.",
+     "city": "Turkmenbashi",
+     "rating": 4,
+     "text": "Good quality for the price. Final cost matched the estimate.",
+     "date": "2026-09-22T21:32:13.872Z"
+    },
+    {
+     "id": "p30-rv2",
+     "author": "Ogulgerek R.",
+     "city": "Turkmenabat",
+     "rating": 5,
+     "text": "Bought a second one for my brother. Recommend.",
+     "date": "2026-06-07T21:32:13.872Z"
+    },
+    {
+     "id": "p30-rv3",
+     "author": "Merdan B.",
+     "city": "Turkmenabat",
+     "rating": 4,
+     "text": "Supplier answered questions quickly through CARGO ONE support.",
+     "date": "2026-07-27T21:32:13.872Z"
+    }
+   ],
+   "tags": [
+    "business"
+   ],
+   "popularityAshgabat": 7,
+   "createdAt": "2026-07-03T21:32:13.872Z",
+   "keywords": [
+    "shelving",
+    "rack",
+    "стеллаж"
+   ]
+  },
+  {
+   "id": "p31",
+   "title": "Stainless Valve DN50 (lot of 10)",
+   "categoryId": "industrial",
+   "supplierId": "s4",
+   "icon": "Cog",
+   "priceCNY": 780,
+   "images": [
+    {
+     "id": "p31-img0",
+     "tone": 10,
+     "angle": "front",
+     "src": "img/products/p31-0.webp"
+    },
+    {
+     "id": "p31-img1",
+     "tone": 21,
+     "angle": "side",
+     "src": "img/products/p31-1.webp"
+    },
+    {
+     "id": "p31-img2",
+     "tone": 32,
+     "angle": "detail",
+     "src": "img/products/p31-2.webp"
+    },
+    {
+     "id": "p31-img3",
+     "tone": 43,
+     "angle": "pack",
+     "src": "img/products/p31-3.webp"
+    }
+   ],
+   "variants": [
+    {
+     "id": "p31-v0",
+     "name": "Standard",
+     "priceDeltaCNY": 0,
+     "stock": 277
+    }
+   ],
+   "specs": [
+    [
+     "Material",
+     "Steel Q235"
+    ],
+    [
+     "Load",
+     "200 kg/shelf"
+    ],
+    [
+     "Standard",
+     "ISO 9001"
+    ],
+    [
+     "Weight",
+     "12 kg"
+    ],
+    [
+     "Supplier SKU",
+     "DP-1210"
+    ]
+   ],
+   "stock": 2997,
+   "moq": 1,
+   "leadDays": 2,
+   "weightKg": 12,
+   "volumeM3": 0.03,
+   "score": 85,
+   "verified": true,
+   "published": true,
+   "featured": false,
+   "rating": 4,
+   "reviews": [
+    {
+     "id": "p31-rv0",
+     "author": "Jeren R.",
+     "city": "Dashoguz",
+     "rating": 5,
+     "text": "Supplier answered questions quickly through CARGO ONE support.",
+     "date": "2026-08-04T21:32:13.872Z"
+    },
+    {
+     "id": "p31-rv1",
+     "author": "Gulnara C.",
+     "city": "Dashoguz",
+     "rating": 3,
+     "text": "Good quality for the price. Final cost matched the estimate.",
+     "date": "2026-09-30T21:32:13.872Z"
+    }
+   ],
+   "tags": [
+    "business"
+   ],
+   "popularityAshgabat": 199,
+   "createdAt": "2026-06-30T21:32:13.872Z",
+   "keywords": [
+    "valve",
+    "клапан"
+   ]
+  },
+  {
+   "id": "p32",
+   "title": "LED High Bay Light 150W",
+   "categoryId": "industrial",
+   "supplierId": "s4",
+   "icon": "Lightbulb",
+   "priceCNY": 168,
+   "images": [
+    {
+     "id": "p32-img0",
+     "tone": 47,
+     "angle": "front",
+     "src": "img/products/p32-0.webp"
+    },
+    {
+     "id": "p32-img1",
+     "tone": 58,
+     "angle": "side",
+     "src": "img/products/p32-1.webp"
+    },
+    {
+     "id": "p32-img2",
+     "tone": 69,
+     "angle": "detail",
+     "src": "img/products/p32-2.webp"
+    },
+    {
+     "id": "p32-img3",
+     "tone": 80,
+     "angle": "pack",
+     "src": "img/products/p32-3.webp"
+    }
+   ],
+   "variants": [
+    {
+     "id": "p32-v0",
+     "name": "Standard",
+     "priceDeltaCNY": 0,
+     "stock": 105
+    }
+   ],
+   "specs": [
+    [
+     "Material",
+     "Steel Q235"
+    ],
+    [
+     "Load",
+     "200 kg/shelf"
+    ],
+    [
+     "Standard",
+     "ISO 9001"
+    ],
+    [
+     "Weight",
+     "2.2 kg"
+    ],
+    [
+     "Supplier SKU",
+     "DP-1217"
+    ]
+   ],
+   "stock": 2376,
+   "moq": 1,
+   "leadDays": 3,
+   "weightKg": 2.2,
+   "volumeM3": 0.01,
+   "score": 88,
+   "verified": true,
+   "published": true,
+   "featured": false,
+   "rating": 4.3,
+   "reviews": [
+    {
+     "id": "p32-rv0",
+     "author": "Selbi M.",
+     "city": "Dashoguz",
+     "rating": 5,
+     "text": "Colour slightly different from photos, otherwise great.",
+     "date": "2026-08-23T21:32:13.872Z"
+    },
+    {
+     "id": "p32-rv1",
+     "author": "Jeren H.",
+     "city": "Turkmenabat",
+     "rating": 4,
+     "text": "Packaging was a bit dented but the product works perfectly.",
+     "date": "2026-08-13T21:32:13.872Z"
+    },
+    {
+     "id": "p32-rv2",
+     "author": "Rustam D.",
+     "city": "Balkanabat",
+     "rating": 4,
+     "text": "Packaging was a bit dented but the product works perfectly.",
+     "date": "2026-07-06T21:32:13.872Z"
+    }
+   ],
+   "tags": [
+    "business"
+   ],
+   "popularityAshgabat": 348,
+   "createdAt": "2026-06-27T21:32:13.872Z",
+   "keywords": [
+    "led",
+    "light",
+    "светильник"
+   ]
+  },
+  {
+   "id": "p33",
+   "title": "Magnetic Rigid Gift Box, Black (100)",
+   "categoryId": "business",
+   "supplierId": "s9",
+   "icon": "Package",
+   "priceCNY": 980,
+   "images": [
+    {
+     "id": "p33-img0",
+     "tone": 84,
+     "angle": "front",
+     "src": "img/products/p33-0.webp"
+    },
+    {
+     "id": "p33-img1",
+     "tone": 95,
+     "angle": "side",
+     "src": "img/products/p33-1.webp"
+    },
+    {
+     "id": "p33-img2",
+     "tone": 6,
+     "angle": "detail",
+     "src": "img/products/p33-2.webp"
+    },
+    {
+     "id": "p33-img3",
+     "tone": 17,
+     "angle": "pack",
+     "src": "img/products/p33-3.webp"
+    }
+   ],
+   "variants": [
+    {
+     "id": "p33-v0",
+     "name": "Plain",
+     "priceDeltaCNY": 0,
+     "stock": 386
+    },
+    {
+     "id": "p33-v1",
+     "name": "With logo",
+     "priceDeltaCNY": 180,
+     "stock": 458
+    }
+   ],
+   "specs": [
+    [
+     "Material",
+     "1200 gsm greyboard"
+    ],
+    [
+     "Customization",
+     "Logo printing available"
+    ],
+    [
+     "Lead time",
+     "12–15 days"
+    ],
+    [
+     "Weight",
+     "25 kg"
+    ],
+    [
+     "Supplier SKU",
+     "XP-1224"
+    ]
+   ],
+   "stock": 1285,
+   "moq": 1,
+   "leadDays": 4,
+   "weightKg": 25,
+   "volumeM3": 0.4,
+   "score": 87,
+   "verified": true,
+   "published": true,
+   "featured": false,
+   "rating": 4,
+   "reviews": [
+    {
+     "id": "p33-rv0",
+     "author": "Dovlet A.",
+     "city": "Turkmenabat",
+     "rating": 5,
+     "text": "Packaging was a bit dented but the product works perfectly.",
+     "date": "2026-08-08T21:32:13.872Z"
+    },
+    {
+     "id": "p33-rv1",
+     "author": "Serdar B.",
+     "city": "Balkanabat",
+     "rating": 4,
+     "text": "Bought a second one for my brother. Recommend.",
+     "date": "2026-07-03T21:32:13.872Z"
+    },
+    {
+     "id": "p33-rv2",
+     "author": "Jeren S.",
+     "city": "Turkmenbashi",
+     "rating": 3,
+     "text": "Supplier answered questions quickly through CARGO ONE support.",
+     "date": "2026-08-20T21:32:13.872Z"
+    },
+    {
+     "id": "p33-rv3",
+     "author": "Maral B.",
+     "city": "Dashoguz",
+     "rating": 4,
+     "text": "Packaging was a bit dented but the product works perfectly.",
+     "date": "2026-10-03T21:32:13.872Z"
+    }
+   ],
+   "tags": [
+    "business",
+    "popular"
+   ],
+   "popularityAshgabat": 184,
+   "createdAt": "2026-06-24T21:32:13.872Z",
+   "keywords": [
+    "box",
+    "boxes",
+    "magnetic",
+    "gift box",
+    "packaging",
+    "black",
+    "коробки"
+   ]
+  },
+  {
+   "id": "p34",
+   "title": "Kraft Shipping Boxes (500)",
+   "categoryId": "business",
+   "supplierId": "s9",
+   "icon": "Boxes",
+   "priceCNY": 650,
+   "images": [
+    {
+     "id": "p34-img0",
+     "tone": 21,
+     "angle": "front",
+     "src": "img/products/p34-0.webp"
+    },
+    {
+     "id": "p34-img1",
+     "tone": 32,
+     "angle": "side",
+     "src": "img/products/p34-1.webp"
+    },
+    {
+     "id": "p34-img2",
+     "tone": 43,
+     "angle": "detail",
+     "src": "img/products/p34-2.webp"
+    },
+    {
+     "id": "p34-img3",
+     "tone": 54,
+     "angle": "pack",
+     "src": "img/products/p34-3.webp"
+    }
+   ],
+   "variants": [
+    {
+     "id": "p34-v0",
+     "name": "Plain",
+     "priceDeltaCNY": 0,
+     "stock": 391
+    },
+    {
+     "id": "p34-v1",
+     "name": "With logo",
+     "priceDeltaCNY": 180,
+     "stock": 96
+    }
+   ],
+   "specs": [
+    [
+     "Material",
+     "1200 gsm greyboard"
+    ],
+    [
+     "Customization",
+     "Logo printing available"
+    ],
+    [
+     "Lead time",
+     "12–15 days"
+    ],
+    [
+     "Weight",
+     "40 kg"
+    ],
+    [
+     "Supplier SKU",
+     "XP-1231"
+    ]
+   ],
+   "stock": 2141,
+   "moq": 1,
+   "leadDays": 5,
+   "weightKg": 40,
+   "volumeM3": 0.6,
+   "score": 87,
+   "verified": true,
+   "published": true,
+   "featured": false,
+   "rating": 4,
+   "reviews": [
+    {
+     "id": "p34-rv0",
+     "author": "Merdan P.",
+     "city": "Balkanabat",
+     "rating": 3,
+     "text": "Arrived in Ashgabat in 19 days, exactly as described.",
+     "date": "2026-08-09T21:32:13.872Z"
+    },
+    {
+     "id": "p34-rv1",
+     "author": "Dovlet A.",
+     "city": "Turkmenabat",
+     "rating": 5,
+     "text": "Arrived in Ashgabat in 19 days, exactly as described.",
+     "date": "2026-08-18T21:32:13.872Z"
+    }
+   ],
+   "tags": [
+    "business"
+   ],
+   "popularityAshgabat": 11,
+   "createdAt": "2026-06-21T21:32:13.872Z",
+   "keywords": [
+    "box",
+    "boxes",
+    "shipping",
+    "carton",
+    "коробки"
+   ]
+  },
+  {
+   "id": "p35",
+   "title": "Thermal Label Printer",
+   "categoryId": "business",
+   "supplierId": "s9",
+   "icon": "Printer",
+   "priceCNY": 289,
+   "images": [
+    {
+     "id": "p35-img0",
+     "tone": 58,
+     "angle": "front",
+     "src": "img/products/p35-0.webp"
+    },
+    {
+     "id": "p35-img1",
+     "tone": 69,
+     "angle": "side",
+     "src": "img/products/p35-1.webp"
+    },
+    {
+     "id": "p35-img2",
+     "tone": 80,
+     "angle": "detail",
+     "src": "img/products/p35-2.webp"
+    },
+    {
+     "id": "p35-img3",
+     "tone": 91,
+     "angle": "pack",
+     "src": "img/products/p35-3.webp"
+    }
+   ],
+   "variants": [
+    {
+     "id": "p35-v0",
+     "name": "Plain",
+     "priceDeltaCNY": 0,
+     "stock": 235
+    },
+    {
+     "id": "p35-v1",
+     "name": "With logo",
+     "priceDeltaCNY": 180,
+     "stock": 391
+    }
+   ],
+   "specs": [
+    [
+     "Material",
+     "1200 gsm greyboard"
+    ],
+    [
+     "Customization",
+     "Logo printing available"
+    ],
+    [
+     "Lead time",
+     "12–15 days"
+    ],
+    [
+     "Weight",
+     "1.5 kg"
+    ],
+    [
+     "Supplier SKU",
+     "XP-1238"
+    ]
+   ],
+   "stock": 728,
+   "moq": 1,
+   "leadDays": 6,
+   "weightKg": 1.5,
+   "volumeM3": 0.008,
+   "score": 87,
+   "verified": true,
+   "published": true,
+   "featured": false,
+   "rating": 4,
+   "reviews": [
+    {
+     "id": "p35-rv0",
+     "author": "Gulnara S.",
+     "city": "Turkmenabat",
+     "rating": 4,
+     "text": "Supplier answered questions quickly through CARGO ONE support.",
+     "date": "2026-07-05T21:32:13.872Z"
+    },
+    {
+     "id": "p35-rv1",
+     "author": "Kerim H.",
+     "city": "Dashoguz",
+     "rating": 4,
+     "text": "Supplier answered questions quickly through CARGO ONE support.",
+     "date": "2026-08-22T21:32:13.872Z"
+    },
+    {
+     "id": "p35-rv2",
+     "author": "Aylar B.",
+     "city": "Turkmenabat",
+     "rating": 4,
+     "text": "Arrived in Ashgabat in 19 days, exactly as described.",
+     "date": "2026-06-16T21:32:13.872Z"
+    }
+   ],
+   "tags": [
+    "business"
+   ],
+   "popularityAshgabat": 7,
+   "createdAt": "2026-06-18T21:32:13.872Z",
+   "keywords": [
+    "printer",
+    "label",
+    "принтер"
+   ]
+  },
+  {
+   "id": "p36",
+   "title": "Ergonomic Office Chair",
+   "categoryId": "business",
+   "supplierId": "s7",
+   "icon": "Armchair",
+   "priceCNY": 560,
+   "images": [
+    {
+     "id": "p36-img0",
+     "tone": 95,
+     "angle": "front",
+     "src": "img/products/p36-0.webp"
+    },
+    {
+     "id": "p36-img1",
+     "tone": 6,
+     "angle": "side",
+     "src": "img/products/p36-1.webp"
+    },
+    {
+     "id": "p36-img2",
+     "tone": 17,
+     "angle": "detail",
+     "src": "img/products/p36-2.webp"
+    },
+    {
+     "id": "p36-img3",
+     "tone": 28,
+     "angle": "pack",
+     "src": "img/products/p36-3.webp"
+    }
+   ],
+   "variants": [
+    {
+     "id": "p36-v0",
+     "name": "Plain",
+     "priceDeltaCNY": 0,
+     "stock": 132
+    },
+    {
+     "id": "p36-v1",
+     "name": "With logo",
+     "priceDeltaCNY": 180,
+     "stock": 147
+    }
+   ],
+   "specs": [
+    [
+     "Material",
+     "1200 gsm greyboard"
+    ],
+    [
+     "Customization",
+     "Logo printing available"
+    ],
+    [
+     "Lead time",
+     "12–15 days"
+    ],
+    [
+     "Weight",
+     "14 kg"
+    ],
+    [
+     "Supplier SKU",
+     "FC-1245"
+    ]
+   ],
+   "stock": 2980,
+   "moq": 1,
+   "leadDays": 7,
+   "weightKg": 14,
+   "volumeM3": 0.25,
+   "score": 86,
+   "verified": true,
+   "published": true,
+   "featured": true,
+   "rating": 4,
+   "reviews": [
+    {
+     "id": "p36-rv0",
+     "author": "Serdar B.",
+     "city": "Dashoguz",
+     "rating": 5,
+     "text": "Colour slightly different from photos, otherwise great.",
+     "date": "2026-06-28T21:32:13.872Z"
+    },
+    {
+     "id": "p36-rv1",
+     "author": "Batyr P.",
+     "city": "Turkmenbashi",
+     "rating": 3,
+     "text": "Colour slightly different from photos, otherwise great.",
+     "date": "2026-08-29T21:32:13.872Z"
+    },
+    {
+     "id": "p36-rv2",
+     "author": "Batyr O.",
+     "city": "Mary",
+     "rating": 3,
+     "text": "Supplier answered questions quickly through CARGO ONE support.",
+     "date": "2026-06-16T21:32:13.872Z"
+    },
+    {
+     "id": "p36-rv3",
+     "author": "Batyr P.",
+     "city": "Balkanabat",
+     "rating": 5,
+     "text": "Bought a second one for my brother. Recommend.",
+     "date": "2026-09-23T21:32:13.872Z"
+    }
+   ],
+   "tags": [
+    "business"
+   ],
+   "popularityAshgabat": 473,
+   "createdAt": "2026-06-15T21:32:13.872Z",
+   "keywords": [
+    "chair",
+    "office",
+    "кресло"
+   ]
+  },
+  {
+   "id": "p37",
+   "title": "Over-Ear Wireless Headphones ANC",
+   "categoryId": "electronics",
+   "supplierId": "s1",
+   "icon": "Headphones",
+   "priceCNY": 329,
+   "oldPriceCNY": 389,
+   "images": [
+    {
+     "id": "p37-img0",
+     "tone": 32,
+     "angle": "front",
+     "src": "img/products/p37-0.webp"
+    },
+    {
+     "id": "p37-img1",
+     "tone": 43,
+     "angle": "side",
+     "src": "img/products/p37-1.webp"
+    },
+    {
+     "id": "p37-img2",
+     "tone": 54,
+     "angle": "detail",
+     "src": "img/products/p37-2.webp"
+    },
+    {
+     "id": "p37-img3",
+     "tone": 65,
+     "angle": "pack",
+     "src": "img/products/p37-3.webp"
+    }
+   ],
+   "variants": [
+    {
+     "id": "p37-v0",
+     "name": "Black",
+     "priceDeltaCNY": 0,
+     "stock": 210
+    },
+    {
+     "id": "p37-v1",
+     "name": "White",
+     "priceDeltaCNY": 0,
+     "stock": 137
+    },
+    {
+     "id": "p37-v2",
+     "name": "Graphite",
+     "priceDeltaCNY": 10,
+     "stock": 127
+    }
+   ],
+   "specs": [
+    [
+     "Battery",
+     "Up to 40 h (ANC off)"
+    ],
+    [
+     "Connectivity",
+     "Bluetooth 5.3, USB-C"
+    ],
+    [
+     "Noise cancelling",
+     "Hybrid ANC"
+    ],
+    [
+     "Warranty",
+     "12 months (supplier)"
+    ],
+    [
+     "Weight",
+     "0.45 kg"
+    ],
+    [
+     "Supplier SKU",
+     "SL-1252"
+    ]
+   ],
+   "stock": 2633,
+   "moq": 1,
+   "leadDays": 2,
+   "weightKg": 0.45,
+   "volumeM3": 0.004,
+   "score": 92,
+   "verified": true,
+   "published": true,
+   "featured": false,
+   "rating": 4.5,
+   "reviews": [
+    {
+     "id": "p37-rv0",
+     "author": "Ogulgerek O.",
+     "city": "Turkmenbashi",
+     "rating": 5,
+     "text": "Good quality for the price. Final cost matched the estimate.",
+     "date": "2026-07-03T21:32:13.872Z"
+    },
+    {
+     "id": "p37-rv1",
+     "author": "Merdan S.",
+     "city": "Turkmenabat",
+     "rating": 4,
+     "text": "Supplier answered questions quickly through CARGO ONE support.",
+     "date": "2026-07-08T21:32:13.872Z"
+    }
+   ],
+   "tags": [
+    "popular",
+    "price_drop"
+   ],
+   "popularityAshgabat": 249,
+   "createdAt": "2026-06-12T21:32:13.872Z",
+   "keywords": [
+    "headphones",
+    "over-ear",
+    "наушники",
+    "полноразмерные наушники",
+    "gulakçyn"
+   ],
+   "tryOn": "headphones"
+  },
+  {
+   "id": "p38",
+   "title": "Silicone Phone Case with MagSafe",
+   "categoryId": "electronics",
+   "supplierId": "s1",
+   "icon": "Smartphone",
+   "priceCNY": 39,
+   "images": [
+    {
+     "id": "p38-img0",
+     "tone": 69,
+     "angle": "front",
+     "src": "img/products/p38-0.webp"
+    },
+    {
+     "id": "p38-img1",
+     "tone": 80,
+     "angle": "side",
+     "src": "img/products/p38-1.webp"
+    },
+    {
+     "id": "p38-img2",
+     "tone": 91,
+     "angle": "detail",
+     "src": "img/products/p38-2.webp"
+    },
+    {
+     "id": "p38-img3",
+     "tone": 2,
+     "angle": "pack",
+     "src": "img/products/p38-3.webp"
+    }
+   ],
+   "variants": [
+    {
+     "id": "p38-v0",
+     "name": "Black",
+     "priceDeltaCNY": 0,
+     "stock": 184
+    },
+    {
+     "id": "p38-v1",
+     "name": "White",
+     "priceDeltaCNY": 0,
+     "stock": 356
+    },
+    {
+     "id": "p38-v2",
+     "name": "Graphite",
+     "priceDeltaCNY": 10,
+     "stock": 43
+    }
+   ],
+   "specs": [
+    [
+     "Material",
+     "Liquid silicone, microfibre lining"
+    ],
+    [
+     "Fits",
+     "6.1-inch phones"
+    ],
+    [
+     "MagSafe",
+     "Yes"
+    ],
+    [
+     "Drop protection",
+     "1.5 m"
+    ],
+    [
+     "Weight",
+     "0.06 kg"
+    ],
+    [
+     "Supplier SKU",
+     "SL-1259"
+    ]
+   ],
+   "stock": 2808,
+   "moq": 1,
+   "leadDays": 3,
+   "weightKg": 0.06,
+   "volumeM3": 0.0004,
+   "score": 88,
+   "verified": true,
+   "published": true,
+   "featured": false,
+   "rating": 4,
+   "reviews": [
+    {
+     "id": "p38-rv0",
+     "author": "Merdan S.",
+     "city": "Dashoguz",
+     "rating": 5,
+     "text": "Bought a second one for my brother. Recommend.",
+     "date": "2026-09-14T21:32:13.872Z"
+    },
+    {
+     "id": "p38-rv1",
+     "author": "Ogulgerek O.",
+     "city": "Ashgabat",
+     "rating": 4,
+     "text": "Arrived in Ashgabat in 19 days, exactly as described.",
+     "date": "2026-06-13T21:32:13.872Z"
+    },
+    {
+     "id": "p38-rv2",
+     "author": "Jeren H.",
+     "city": "Mary",
+     "rating": 3,
+     "text": "Bought a second one for my brother. Recommend.",
+     "date": "2026-07-05T21:32:13.872Z"
+    }
+   ],
+   "tags": [],
+   "popularityAshgabat": 367,
+   "createdAt": "2026-06-09T21:32:13.872Z",
+   "keywords": [
+    "phone case",
+    "case",
+    "чехол",
+    "чехол для телефона",
+    "telefon gaby"
+   ],
+   "tryOn": "phonecase"
+  },
+  {
+   "id": "p39",
+   "title": "Oversized Fleece Hoodie",
+   "categoryId": "fashion",
+   "supplierId": "s3",
+   "icon": "Shirt",
+   "priceCNY": 159,
+   "oldPriceCNY": 189,
+   "images": [
+    {
+     "id": "p39-img0",
+     "tone": 6,
+     "angle": "front",
+     "src": "img/products/p39-0.webp"
+    },
+    {
+     "id": "p39-img1",
+     "tone": 17,
+     "angle": "side",
+     "src": "img/products/p39-1.webp"
+    },
+    {
+     "id": "p39-img2",
+     "tone": 28,
+     "angle": "detail",
+     "src": "img/products/p39-2.webp"
+    },
+    {
+     "id": "p39-img3",
+     "tone": 39,
+     "angle": "pack",
+     "src": "img/products/p39-3.webp"
+    }
+   ],
+   "variants": [
+    {
+     "id": "p39-v0",
+     "name": "Black",
+     "priceDeltaCNY": 0,
+     "stock": 147
+    },
+    {
+     "id": "p39-v1",
+     "name": "Taupe",
+     "priceDeltaCNY": 0,
+     "stock": 123
+    },
+    {
+     "id": "p39-v2",
+     "name": "Ivory",
+     "priceDeltaCNY": 12,
+     "stock": 181
+    }
+   ],
+   "specs": [
+    [
+     "Material",
+     "80% cotton, 20% polyester fleece"
+    ],
+    [
+     "Sizes",
+     "S–XXL"
+    ],
+    [
+     "Fit",
+     "Oversized"
+    ],
+    [
+     "Origin",
+     "Guangdong, CN"
+    ],
+    [
+     "Weight",
+     "0.7 kg"
+    ],
+    [
+     "Supplier SKU",
+     "GS-1266"
+    ]
+   ],
+   "stock": 2931,
+   "moq": 1,
+   "leadDays": 4,
+   "weightKg": 0.7,
+   "volumeM3": 0.006,
+   "score": 87,
+   "verified": true,
+   "published": true,
+   "featured": false,
+   "rating": 4,
+   "reviews": [
+    {
+     "id": "p39-rv0",
+     "author": "Dovlet M.",
+     "city": "Turkmenabat",
+     "rating": 4,
+     "text": "Arrived in Ashgabat in 19 days, exactly as described.",
+     "date": "2026-09-16T21:32:13.872Z"
+    },
+    {
+     "id": "p39-rv1",
+     "author": "Maral N.",
+     "city": "Turkmenabat",
+     "rating": 4,
+     "text": "Good quality for the price. Final cost matched the estimate.",
+     "date": "2026-08-10T21:32:13.872Z"
+    },
+    {
+     "id": "p39-rv2",
+     "author": "Selbi T.",
+     "city": "Dashoguz",
+     "rating": 4,
+     "text": "Colour slightly different from photos, otherwise great.",
+     "date": "2026-06-22T21:32:13.872Z"
+    },
+    {
+     "id": "p39-rv3",
+     "author": "Selbi J.",
+     "city": "Balkanabat",
+     "rating": 4,
+     "text": "Good quality for the price. Final cost matched the estimate.",
+     "date": "2026-07-14T21:32:13.872Z"
+    }
+   ],
+   "tags": [
+    "popular"
+   ],
+   "popularityAshgabat": 290,
+   "createdAt": "2026-06-06T21:32:13.872Z",
+   "keywords": [
+    "hoodie",
+    "sweatshirt",
+    "худи",
+    "толстовка",
+    "hudi"
+   ],
+   "tryOn": "hoodie"
+  },
+  {
+   "id": "p40",
+   "title": "Six-Panel Baseball Cap",
+   "categoryId": "fashion",
+   "supplierId": "s3",
+   "icon": "Shirt",
+   "priceCNY": 45,
+   "images": [
+    {
+     "id": "p40-img0",
+     "tone": 43,
+     "angle": "front",
+     "src": "img/products/p40-0.webp"
+    },
+    {
+     "id": "p40-img1",
+     "tone": 54,
+     "angle": "side",
+     "src": "img/products/p40-1.webp"
+    },
+    {
+     "id": "p40-img2",
+     "tone": 65,
+     "angle": "detail",
+     "src": "img/products/p40-2.webp"
+    },
+    {
+     "id": "p40-img3",
+     "tone": 76,
+     "angle": "pack",
+     "src": "img/products/p40-3.webp"
+    }
+   ],
+   "variants": [
+    {
+     "id": "p40-v0",
+     "name": "Black",
+     "priceDeltaCNY": 0,
+     "stock": 306
+    },
+    {
+     "id": "p40-v1",
+     "name": "Taupe",
+     "priceDeltaCNY": 0,
+     "stock": 451
+    },
+    {
+     "id": "p40-v2",
+     "name": "Ivory",
+     "priceDeltaCNY": 12,
+     "stock": 371
+    }
+   ],
+   "specs": [
+    [
+     "Material",
+     "Cotton twill"
+    ],
+    [
+     "Size",
+     "Adjustable, 56–60 cm"
+    ],
+    [
+     "Origin",
+     "Guangdong, CN"
+    ],
+    [
+     "Weight",
+     "0.15 kg"
+    ],
+    [
+     "Supplier SKU",
+     "GS-1273"
+    ]
+   ],
+   "stock": 931,
+   "moq": 1,
+   "leadDays": 5,
+   "weightKg": 0.15,
+   "volumeM3": 0.003,
+   "score": 87,
+   "verified": true,
+   "published": true,
+   "featured": false,
+   "rating": 4,
+   "reviews": [
+    {
+     "id": "p40-rv0",
+     "author": "Aylar R.",
+     "city": "Ashgabat",
+     "rating": 4,
+     "text": "Colour slightly different from photos, otherwise great.",
+     "date": "2026-06-14T21:32:13.872Z"
+    },
+    {
+     "id": "p40-rv1",
+     "author": "Serdar M.",
+     "city": "Ashgabat",
+     "rating": 4,
+     "text": "Bought a second one for my brother. Recommend.",
+     "date": "2026-08-15T21:32:13.872Z"
+    }
+   ],
+   "tags": [],
+   "popularityAshgabat": 498,
+   "createdAt": "2026-06-03T21:32:13.872Z",
+   "keywords": [
+    "cap",
+    "baseball cap",
+    "кепка",
+    "бейсболка",
+    "kepka"
+   ],
+   "tryOn": "cap"
+  }
+ ]
+}
