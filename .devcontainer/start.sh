@@ -24,7 +24,12 @@ nohup setsid node --disable-warning=ExperimentalWarning server/server.mjs > "${D
 # Safari on iPhone often cannot open PRIVATE forwarded ports (blocked GitHub cookies → blank page).
 # The port is made public instead; the site itself is protected by the SITE_PASSWORD_SHA256 password.
 if [ -n "$CODESPACE_NAME" ] && command -v gh >/dev/null; then
-  (sleep 8; gh codespace ports visibility 3000:public -c "$CODESPACE_NAME" >/dev/null 2>&1 || true) &
+  # The forwarded port appears only once the editor connects: retry for up to 10 minutes until it is public.
+  (for i in $(seq 1 60); do
+     sleep 10
+     if gh codespace ports -c "$CODESPACE_NAME" --json sourcePort,visibility 2>/dev/null | grep -q '"sourcePort":3000,"visibility":"public"'; then break; fi
+     gh codespace ports visibility 3000:public -c "$CODESPACE_NAME" >/dev/null 2>&1 || true
+   done) >/dev/null 2>&1 &
   echo "Open: https://${CODESPACE_NAME}-3000.${GITHUB_CODESPACES_PORT_FORWARDING_DOMAIN:-app.github.dev}"
 fi
 echo "CARGO ONE starting on port ${PORT:-3000} (open the Ports tab)."
