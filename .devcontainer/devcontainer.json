@@ -6,7 +6,7 @@
     "DATA_DIR": "/workspaces/.cargo-one-data",
     "TRUST_PROXY": "1",
     "COOKIE_SECURE": "1",
-    "IMAGE_HOSTS": "alicdn.com",
+    "IMAGE_HOSTS": "alicdn.com,aliexpress-media.com",
     "OTAPI_PROVIDER": "Aliexpress",
     "OTAPI_LANG": "ru",
     "OTAPI_DAILY_CALL_LIMIT": "60",

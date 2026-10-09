@@ -6,6 +6,7 @@ import { fileURLToPath } from 'node:url';
 import crypto from 'node:crypto';
 import { handleAuthApi, readSession, policyFor } from './auth.mjs';
 import { handleCatalogApi, catalogDb } from './catalog/api.mjs';
+import { handleImageProxy } from './image-proxy.mjs';
 
 const MIME = {
   '.html': 'text/html; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.css': 'text/css; charset=utf-8',
@@ -74,6 +75,11 @@ export function createAppServer({ distDir, dev = false, onDevClient } = {}) {
       res.write('retry: 1000\n\n');
       onDevClient?.(res);
       return;
+    }
+
+    // Cached proxy for imported product photos
+    if (pathname === '/img') {
+      try { if (await handleImageProxy(req, res, url)) return; } catch (e) { console.error(e); if (!res.headersSent) { res.writeHead(502); res.end(); } return; }
     }
 
     // API

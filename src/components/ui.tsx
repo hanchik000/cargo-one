@@ -631,10 +631,11 @@ export function Stepper({ steps, current }: { steps: string[]; current: number }
 }
 
 /** Fading image with a graceful placeholder. */
-export function Img({ src, alt, className, imgClassName, eager }: { src: string; alt: string; className?: string; imgClassName?: string; eager?: boolean }) {
+export function Img({ src, alt, className, imgClassName, eager, fallback }: { src: string; alt: string; className?: string; imgClassName?: string; eager?: boolean; fallback?: ReactNode }) {
   const [state, setState] = useState<'loading' | 'ok' | 'err'>('loading');
   const ref = useRef<HTMLImageElement | null>(null);
   useEffect(() => { setState('loading'); const el = ref.current; if (el?.complete && el.naturalWidth) setState('ok'); }, [src]);
+  if (state === 'err' && fallback) return <>{fallback}</>;
   return (
     <div className={cn('relative overflow-hidden bg-mist-2', className)}>
       {state === 'loading' ? <div className="skeleton absolute inset-0" aria-hidden /> : null}

@@ -10,6 +10,7 @@ export AUTH_SECRET="$(cat "$SECRET_FILE")"
 if [ -n "$CODESPACE_NAME" ]; then
   export ALLOWED_ORIGIN_HOSTS="${CODESPACE_NAME}-${PORT:-3000}.${GITHUB_CODESPACES_PORT_FORWARDING_DOMAIN:-app.github.dev}"
 fi
+case ",${IMAGE_HOSTS}," in *",aliexpress-media.com,"*) ;; *) export IMAGE_HOSTS="${IMAGE_HOSTS:+$IMAGE_HOSTS,}alicdn.com,aliexpress-media.com" ;; esac
 pkill -f "server/server.mjs" 2>/dev/null || true
 nohup setsid node --disable-warning=ExperimentalWarning server/server.mjs > "${DATA_DIR:-.data}/server.log" 2>&1 &
 # Safari on iPhone often cannot open PRIVATE forwarded ports (blocked GitHub cookies → blank page).
