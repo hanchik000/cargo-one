@@ -7,6 +7,9 @@ mkdir -p "${DATA_DIR:-.data}"
 SECRET_FILE="${DATA_DIR:-.data}/auth-secret"
 [ -f "$SECRET_FILE" ] || head -c 48 /dev/urandom | base64 > "$SECRET_FILE"
 export AUTH_SECRET="$(cat "$SECRET_FILE")"
+if [ -n "$CODESPACE_NAME" ]; then
+  export ALLOWED_ORIGIN_HOSTS="${CODESPACE_NAME}-${PORT:-3000}.${GITHUB_CODESPACES_PORT_FORWARDING_DOMAIN:-app.github.dev}"
+fi
 pkill -f "server/server.mjs" 2>/dev/null || true
 nohup setsid node --disable-warning=ExperimentalWarning server/server.mjs > "${DATA_DIR:-.data}/server.log" 2>&1 &
 # Safari on iPhone often cannot open PRIVATE forwarded ports (blocked GitHub cookies → blank page).
