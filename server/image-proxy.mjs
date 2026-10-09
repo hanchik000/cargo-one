@@ -6,6 +6,10 @@ import crypto from 'node:crypto';
 import fs from 'node:fs';
 import path from 'node:path';
 import { safeImageUrl } from './catalog/sanitize.mjs';
+import { isCommonsImage } from './car-photos.mjs';
+
+// Imported product photos (IMAGE_HOSTS) plus the freely licensed car-model photos from Wikimedia Commons.
+const proxyable = (u) => !!safeImageUrl(u) || isCommonsImage(u);
 
 const MAX_BYTES = 6 * 1024 * 1024;
 const TIMEOUT_MS = 12_000;
@@ -21,12 +25,12 @@ async function download(url) {
     res = await fetch(current, {
       redirect: 'manual',
       signal: AbortSignal.timeout(TIMEOUT_MS),
-      headers: { 'User-Agent': 'Mozilla/5.0 (CARGO ONE image cache)', Accept: 'image/avif,image/webp,image/*;q=0.8' },
+      headers: { 'User-Agent': isCommonsImage(current) ? 'CARGO-ONE-image-cache/1.0 (private preview)' : 'Mozilla/5.0 (CARGO ONE image cache)', Accept: 'image/avif,image/webp,image/*;q=0.8' },
     });
     if (res.status < 300 || res.status >= 400) break;
     const next = res.headers.get('location');
     const abs = next ? new URL(next, current).toString() : null;
-    if (!abs || !safeImageUrl(abs) || hop === 3) return null;
+    if (!abs || !proxyable(abs) || hop === 3) return null;
     current = abs;
   }
   if (!res || !res.ok) return null;
@@ -57,7 +61,7 @@ async function load(url) {
   const miss = path.join(dir, key + '.miss');
   if (fs.existsSync(miss) && Date.now() - fs.statSync(miss).mtimeMs < 6 * 3600_000) return null; // retry failures after 6 h
   for (const u of candidates(url)) {
-    if (!safeImageUrl(u)) continue;
+    if (!proxyable(u)) continue;
     let got = null;
     try { got = await download(u); } catch { got = null; }
     if (got) {
@@ -77,7 +81,7 @@ export async function handleImageProxy(req, res, url) {
   if (url.pathname !== '/img') return false;
   const target = url.searchParams.get('u') || '';
   // Only allow-listed https hosts (IMAGE_HOSTS); never local files or private addresses.
-  if (req.method !== 'GET' || !/^https:\/\//i.test(target) || !safeImageUrl(target)) { res.writeHead(400); res.end(); return true; }
+  if (req.method !== 'GET' || !/^https:\/\//i.test(target) || !proxyable(target)) { res.writeHead(400); res.end(); return true; }
   let p = inflight.get(target);
   if (!p) { p = load(target).finally(() => inflight.delete(target)); inflight.set(target, p); }
   const hit = await p;

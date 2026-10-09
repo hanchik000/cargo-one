@@ -4,6 +4,7 @@ import { getDb, tx } from '../db/index.mjs';
 import { readSession } from '../auth.mjs';
 import { ADAPTERS, getAdapter } from './sources/adapter.mjs';
 import { runImport } from './importer.mjs';
+import { publishImported, setDemoVisible } from './storefront.mjs';
 import { getPricingConfig, updatePricing } from './pricing-config.mjs';
 import { seedCatalog } from './seed.mjs';
 import * as R from './repository.mjs';
@@ -162,28 +163,13 @@ export async function handleCatalogApi(req, pathname, url, body, { send }) {
       if (r.error) return fail(409, r.error, { reason: r.reason });
       const { items, ...summary } = r;
       // Optional: publish this run's imported drafts right away (an explicit admin choice in the import form).
-      let published = 0;
-      if (body.publish === true) {
-        const ids = [...new Set((items || []).filter((i) => i.productId && i.outcome !== 'failed').map((i) => i.productId))];
-        const t = new Date().toISOString();
-        tx(db, () => {
-          const up = db.prepare("UPDATE products SET status = 'published', published_at = COALESCE(published_at, ?), updated_at = ? WHERE id = ? AND origin = 'imported' AND status = 'draft'");
-          for (const id of ids) published += up.run(t, t, id).changes;
-        });
-        if (published) R.audit(db, session.id, 'catalog.publish_import', r.id, { published });
-      }
+      const published = body.publish === true ? publishImported(db, items, session.id, r.id) : 0;
       return send(200, { ...summary, published });
     }
     if (pathname === '/api/admin/catalog/demo' && req.method === 'POST') {
       // Hide or show the bundled DEMO products on the storefront (reversible: they become drafts, not deleted).
       if (typeof body.visible !== 'boolean') return fail(400, 'validation', { fields: ['visible'] });
-      const t = new Date().toISOString();
-      const r = body.visible
-        ? db.prepare("UPDATE products SET status = 'published', updated_at = ? WHERE demo = 1 AND status = 'draft' AND json_extract(legacy, '$.hiddenDemo') = 1").run(t)
-        : db.prepare("UPDATE products SET status = 'draft', updated_at = ?, legacy = json_set(COALESCE(legacy, '{}'), '$.hiddenDemo', 1) WHERE demo = 1 AND status = 'published'").run(t);
-      if (body.visible) db.prepare("UPDATE products SET legacy = json_remove(legacy, '$.hiddenDemo') WHERE demo = 1 AND json_extract(legacy, '$.hiddenDemo') = 1 AND status = 'published'").run();
-      R.audit(db, session.id, body.visible ? 'catalog.demo_show' : 'catalog.demo_hide', null, { changed: r.changes });
-      return send(200, { changed: r.changes, demoPublished: db.prepare("SELECT COUNT(*) AS n FROM products WHERE demo = 1 AND status = 'published'").get().n });
+      return send(200, setDemoVisible(db, body.visible, session.id));
     }
     if (pathname === '/api/admin/catalog/pricing') {
       if (req.method === 'GET') return send(200, getPricingConfig(db));

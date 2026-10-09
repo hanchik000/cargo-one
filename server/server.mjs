@@ -7,6 +7,8 @@ import crypto from 'node:crypto';
 import { handleAuthApi, readSession, policyFor } from './auth.mjs';
 import { handleCatalogApi, catalogDb } from './catalog/api.mjs';
 import { handleImageProxy } from './image-proxy.mjs';
+import { autoSeed } from './catalog/autoseed.mjs';
+import { carPhotosPayload } from './car-photos.mjs';
 
 const MIME = {
   '.html': 'text/html; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.css': 'text/css; charset=utf-8',
@@ -52,6 +54,8 @@ export function createAppServer({ distDir, dev = false, onDevClient } = {}) {
   const root = path.resolve(distDir);
   const secure = process.env.COOKIE_SECURE === '1';
   catalogDb(); // open + migrate + seed the catalogue once at startup
+  // With an aggregator key, fill the storefront with real products on first start (background, once).
+  setTimeout(() => autoSeed(catalogDb()), 2000).unref();
 
   return http.createServer(async (req, res) => {
     const url = new URL(req.url, 'http://localhost');
@@ -83,6 +87,9 @@ export function createAppServer({ distDir, dev = false, onDevClient } = {}) {
     if (pathname === '/img') {
       try { if (await handleImageProxy(req, res, url)) return; } catch (e) { console.error(e); if (!res.headersSent) { res.writeHead(502); res.end(); } return; }
     }
+
+    // Real photos of the car models (Wikimedia Commons, public)
+    if (pathname === '/api/media/car-photos' && req.method === 'GET') return send(200, await carPhotosPayload());
 
     // API
     if (pathname.startsWith('/api/')) {
