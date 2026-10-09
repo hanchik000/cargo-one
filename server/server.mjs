@@ -57,6 +57,8 @@ export function createAppServer({ distDir, dev = false, onDevClient } = {}) {
     const url = new URL(req.url, 'http://localhost');
     const pathname = decodeURIComponent(url.pathname);
     for (const [k, v] of Object.entries(SECURITY_HEADERS)) res.setHeader(k, v);
+    // Health check for the hosting platform (no data, no auth).
+    if (pathname === '/healthz') { res.writeHead(200, { 'Content-Type': 'text/plain' }); return res.end('ok'); }
     if (!siteAuthorized(req)) {
       res.writeHead(401, { 'WWW-Authenticate': 'Basic realm="CARGO ONE preview", charset="UTF-8"', 'Content-Type': 'text/plain; charset=utf-8' });
       return res.end('Password required');

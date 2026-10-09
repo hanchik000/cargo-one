@@ -1,0 +1,40 @@
+# One-click hosting on Render (render.com): private site with a persistent disk for the catalogue and photos.
+# Deploy: https://render.com/deploy?repo=https://github.com/hanchik000/cargo-one
+services:
+  - type: web
+    name: cargo-one
+    runtime: node
+    plan: starter            # paid plan: always on + persistent disk (free plan sleeps and loses data)
+    region: frankfurt
+    buildCommand: npm install --no-audit --no-fund && npm run build
+    startCommand: node --disable-warning=ExperimentalWarning server/server.mjs
+    healthCheckPath: /healthz
+    disk:
+      name: cargo-one-data
+      mountPath: /var/data
+      sizeGB: 1
+    envVars:
+      - key: NODE_VERSION
+        value: 22.20.0
+      - key: PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD
+        value: "1"
+      - key: DATA_DIR
+        value: /var/data
+      - key: AUTH_SECRET
+        generateValue: true
+      - key: COOKIE_SECURE
+        value: "1"
+      - key: OTAPI_KEY          # asked for during deploy; never stored in the repository
+        sync: false
+      - key: OTAPI_PROVIDER
+        value: Aliexpress
+      - key: OTAPI_LANG
+        value: ru
+      - key: OTAPI_DAILY_CALL_LIMIT
+        value: "60"
+      - key: IMAGE_HOSTS
+        value: alicdn.com,aliexpress-media.com
+      - key: SITE_USER
+        value: cargo
+      - key: SITE_PASSWORD_SHA256   # sha256 of the preview password (the password itself is not in the repo)
+        value: 3608dacb9884097c576af4037394c8e3ff7157ab0a6c7c15eb293ba7fa5f4eb9
