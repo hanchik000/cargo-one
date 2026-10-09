@@ -222,3 +222,12 @@ test('recorded response: import gives honest states (stale, incomplete, out of s
   assert.equal(lenovo.supplier.trust.level, 0);
   assert.equal(lenovo.supplier.score, null);
 });
+
+test('paging: up to 200 per query in pages of 40, stops when the source runs out, no duplicates', async () => {
+  const log = [];
+  const mk = (from, n) => ({ ErrorCode: 'Ok', Result: { Items: { Items: { TotalCount: 90, Content: Array.from({ length: n }, (_, i) => ({ ...FX.search.Result.Items.Items.Content[0], Id: `pg-${from + i}` })) } } } });
+  const a = createOtapiAdapter({ key: KEY, dailyLimit: 100, id: 'ot-paging', fetchImpl: fakeFetch({ BatchSearchItemsFrame: (u) => { const pos = Number(u.searchParams.get('framePosition')); return pos === 0 ? mk(0, 40) : pos === 40 ? mk(39, 40) : mk(79, 11); } }, log) });
+  const items = await a.listProducts({ db, q: 'x', limit: 200 });
+  assert.deepEqual(log.map((u) => [u.searchParams.get('framePosition'), u.searchParams.get('frameSize')]), [['0', '40'], ['40', '40'], ['80', '40']]);
+  assert.equal(items.length, 90, '120 returned with overlaps → 90 unique');
+});

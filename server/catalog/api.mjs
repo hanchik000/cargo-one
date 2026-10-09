@@ -143,7 +143,7 @@ export async function handleCatalogApi(req, pathname, url, body, { send }) {
       });
     }
     if (pathname === '/api/admin/catalog/import' && req.method === 'POST') {
-      if (limited(`imp:${session.id}`, 10, 60_000)) return fail(429, 'rate_limited');
+      if (limited(`imp:${session.id}`, 40, 60_000)) return fail(429, 'rate_limited');
       const adapter = getAdapter(body.source);
       if (!adapter) return fail(400, 'unknown_source');
       const opts = {};
@@ -152,14 +152,25 @@ export async function handleCatalogApi(req, pathname, url, body, { send }) {
         const q = typeof body.query === 'string' ? body.query.trim() : '';
         if (q.length < 2 || q.length > 100) return fail(400, 'validation', { fields: ['query'] });
         const limit = Number(body.limit ?? 20);
-        if (!Number.isInteger(limit) || limit < 1 || limit > 40) return fail(400, 'validation', { fields: ['limit'] });
+        if (!Number.isInteger(limit) || limit < 1 || limit > 200) return fail(400, 'validation', { fields: ['limit'] });
         if (body.categoryId != null && body.categoryId !== '' && !(isId(body.categoryId) && db.prepare('SELECT 1 FROM categories WHERE id = ?').get(body.categoryId))) return fail(400, 'validation', { fields: ['categoryId'] });
         Object.assign(opts, { q, limit, categoryId: body.categoryId || null, details: body.details === true });
       }
       const r = await runImport(db, adapter, { actor: session.id, ...opts });
       if (r.error) return fail(409, r.error, { reason: r.reason });
       const { items, ...summary } = r;
-      return send(200, summary);
+      // Optional: publish this run's imported drafts right away (an explicit admin choice in the import form).
+      let published = 0;
+      if (body.publish === true) {
+        const ids = [...new Set((items || []).filter((i) => i.productId && i.outcome !== 'failed').map((i) => i.productId))];
+        const t = new Date().toISOString();
+        tx(db, () => {
+          const up = db.prepare("UPDATE products SET status = 'published', published_at = COALESCE(published_at, ?), updated_at = ? WHERE id = ? AND origin = 'imported' AND status = 'draft'");
+          for (const id of ids) published += up.run(t, t, id).changes;
+        });
+        if (published) R.audit(db, session.id, 'catalog.publish_import', r.id, { published });
+      }
+      return send(200, { ...summary, published });
     }
     if (pathname === '/api/admin/catalog/pricing') {
       if (req.method === 'GET') return send(200, getPricingConfig(db));

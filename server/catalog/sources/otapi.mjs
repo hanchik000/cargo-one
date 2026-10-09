@@ -232,10 +232,25 @@ export function createOtapiAdapter(cfg = {}) {
       if (!available) throw new OtapiError('not_configured');
       const q = String(opts.q || '').trim();
       if (!q) throw new OtapiError('query_required');
-      const limit = Math.min(40, Math.max(1, Number(opts.limit) || 20));
+      // Up to 200 items per query: pages of 40 (one paid call each), stopping early when the source runs out.
+      const limit = Math.min(200, Math.max(1, Number(opts.limit) || 20));
+      const PAGE = 40;
       const fetchedAt = new Date().toISOString();
-      const json = await call(opts.db, 'BatchSearchItemsFrame', { framePosition: 0, frameSize: limit, blockList: '', xmlParameters: searchXml({ q, provider }) });
-      const items = searchItemsOf(json).slice(0, limit);
+      let json = null;
+      const items = [];
+      let pagesStopped = null;
+      for (let pos = 0; pos < limit; pos += PAGE) {
+        const size = Math.min(PAGE, limit - pos);
+        let page;
+        try { page = await call(opts.db, 'BatchSearchItemsFrame', { framePosition: pos, frameSize: size, blockList: '', xmlParameters: searchXml({ q, provider }) }); }
+        catch (e) { if (pos > 0 && e.code === 'budget_exhausted') { pagesStopped = e.code; break; } throw e; }
+        json = json || page;
+        const got = searchItemsOf(page);
+        items.push(...got.slice(0, size));
+        if (got.length < size) break;
+      }
+      const seen = new Set();
+      for (let i = items.length - 1; i >= 0; i--) { const k = String(items[i]?.Id); if (seen.has(k)) items.splice(i, 1); else seen.add(k); }
       const out = [];
       let detailsStopped = null;
       for (const it of items) {
@@ -246,7 +261,7 @@ export function createOtapiAdapter(cfg = {}) {
         }
         out.push(mapOtItem(full, { source: id, lang, categoryId: opts.categoryId || null, fetchedAt }));
       }
-      out.meta = { query: q, returned: items.length, total: num(json?.Result?.Items?.Items?.TotalCount ?? json?.Result?.Items?.TotalCount ?? json?.Result?.TotalCount), detailsStopped };
+      out.meta = { query: q, returned: items.length, pagesStopped, total: num(json?.Result?.Items?.Items?.TotalCount ?? json?.Result?.Items?.TotalCount ?? json?.Result?.TotalCount), detailsStopped };
       return out;
     },
   };

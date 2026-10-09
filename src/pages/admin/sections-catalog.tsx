@@ -14,33 +14,59 @@ interface AdapterInfo {
   provider: string | null; lang: string | null;
 }
 interface ImportRun { id: string; source: string; actor: string | null; started_at: string; finished_at: string | null; status: string; created: number; updated: number; unchanged: number; failed: number; errors: { sourceProductId?: string; code: string; detail?: string | null }[] }
-interface ImportResult { id: string; status: string; created: number; updated: number; unchanged: number; failed: number; errors: { code: string; detail?: string | null }[]; meta: { returned: number; total: number | null; detailsStopped: string | null } | null }
+interface ImportResult { id: string; status: string; published?: number; created: number; updated: number; unchanged: number; failed: number; errors: { code: string; detail?: string | null }[]; meta: { returned: number; total: number | null; detailsStopped: string | null } | null }
 interface PricingInfo { fx: Record<string, { rate: string; source: string; asOf: string }>; serviceFeeBps: number; vipFeeBps: number; marginBps: number; dutyEstimateBps: number; cargoRatePerKg: string; expressRatePerKg: string; minCargo: string; tariffIsDemo: boolean }
 
-/** Search import for a paid aggregator: every search is 1 call, "with details" adds 1 call per item. */
-function SearchImport({ adapter, pending, onRun }: { adapter: AdapterInfo; pending: boolean; onRun: (body: Record<string, unknown>) => void }) {
+/** Ready-made starter set: popular English queries per CARGO ONE category (AliExpress search works best in English). */
+const STARTER: [string, string][] = [
+  ['wireless earbuds', 'electronics'], ['smart watch', 'electronics'], ['power bank', 'electronics'], ['phone case', 'electronics'],
+  ['women handbag', 'fashion'], ['men sneakers', 'fashion'], ['hoodie', 'fashion'],
+  ['kitchen gadgets', 'home'], ['led lamp', 'home'], ['storage organizer', 'home'],
+  ['makeup brush set', 'beauty'], ['skin care', 'beauty'],
+  ['educational toys', 'kids'],
+  ['cordless drill', 'tools'], ['tool set', 'tools'],
+  ['car phone holder', 'auto'], ['car accessories', 'auto'],
+];
+const PAGE = 40;
+const callsFor = (n: number, details: boolean) => Math.ceil(n / PAGE) + (details ? n : 0);
+
+/** Search import for a paid aggregator: every page of 40 results is 1 call; "full details" adds 1 call per item. */
+function SearchImport({ adapter, pending, onRun, onBatch }: { adapter: AdapterInfo; pending: boolean; onRun: (body: Record<string, unknown>) => void; onBatch: (bodies: Record<string, unknown>[]) => void }) {
   const { t, tk } = useI18n();
   const [q, setQ] = useState('');
-  const [limit, setLimit] = useState('10');
+  const [limit, setLimit] = useState('40');
   const [cat, setCat] = useState('electronics');
   const [details, setDetails] = useState(false);
+  const [publish, setPublish] = useState(true);
   const n = Number(limit);
-  const valid = q.trim().length >= 2 && Number.isInteger(n) && n >= 1 && n <= 40;
-  const cost = 1 + (details ? n : 0);
+  const valid = q.trim().length >= 2 && Number.isInteger(n) && n >= 1 && n <= 200;
+  const cost = callsFor(n || 0, details);
   const left = adapter.usage ? adapter.usage.dailyLimit - adapter.usage.callsToday : Infinity;
+  const starterCost = STARTER.length;
   return (
-    <form className="mt-4 space-y-3" onSubmit={(e: { preventDefault(): void }) => { e.preventDefault(); if (valid) onRun({ source: adapter.id, query: q.trim(), limit: n, categoryId: cat, details }); }}>
-      <Input label={t('admin.cat.query')} value={q} onChange={setQ} hint={t('admin.cat.query_hint')} />
-      <div className="grid grid-cols-2 gap-2">
-        <Input label={t('admin.cat.limit')} value={limit} onChange={(v) => setLimit(v.replace(/\D/g, '').slice(0, 2))} inputMode="numeric" />
-        <Select label={t('shop.category')} value={cat} onChange={setCat} options={db().categories.map((c) => ({ value: c.id, label: tk(`cat.${c.id}`) }))} />
+    <div className="mt-4 space-y-4">
+      <div className="rounded-[16px] bg-mist p-4">
+        <div className="text-[14px] font-semibold">{t('admin.cat.starter')}</div>
+        <p className="mt-1 text-[12.5px] text-muted">{t('admin.cat.starter_desc', { n: STARTER.length, items: STARTER.length * PAGE })}</p>
+        <Button className="mt-3" size="sm" icon={IconRetry} loading={pending} disabled={starterCost > left}
+          onClick={() => onBatch(STARTER.map(([query, categoryId]) => ({ source: adapter.id, query, limit: PAGE, categoryId, details: false, publish })))}>
+          {t('admin.cat.starter_run', { n: starterCost })}
+        </Button>
       </div>
-      <Checkbox label={t('admin.cat.details')} description={t('admin.cat.details_desc')} checked={details} onChange={setDetails} />
-      <div className="flex flex-wrap items-center gap-3">
-        <Button type="submit" size="sm" icon={IconRetry} loading={pending} disabled={!valid || cost > left}>{t('admin.cat.search_import')}</Button>
-        <span className="text-[12px] text-muted">{t('admin.cat.cost', { n: cost })}</span>
-      </div>
-    </form>
+      <form className="space-y-3" onSubmit={(e: { preventDefault(): void }) => { e.preventDefault(); if (valid) onRun({ source: adapter.id, query: q.trim(), limit: n, categoryId: cat, details, publish }); }}>
+        <Input label={t('admin.cat.query')} value={q} onChange={setQ} hint={t('admin.cat.query_hint')} />
+        <div className="grid grid-cols-2 gap-2">
+          <Input label={t('admin.cat.limit')} value={limit} onChange={(v) => setLimit(v.replace(/\D/g, '').slice(0, 3))} inputMode="numeric" />
+          <Select label={t('shop.category')} value={cat} onChange={setCat} options={db().categories.map((c) => ({ value: c.id, label: tk(`cat.${c.id}`) }))} />
+        </div>
+        <Checkbox label={t('admin.cat.details')} description={t('admin.cat.details_desc')} checked={details} onChange={setDetails} />
+        <Checkbox label={t('admin.cat.publish')} description={t('admin.cat.publish_desc')} checked={publish} onChange={setPublish} />
+        <div className="flex flex-wrap items-center gap-3">
+          <Button type="submit" size="sm" icon={IconRetry} loading={pending} disabled={!valid || cost > left}>{t('admin.cat.search_import')}</Button>
+          <span className="text-[12px] text-muted">{t('admin.cat.cost', { n: cost })}</span>
+        </div>
+      </form>
+    </div>
   );
 }
 
@@ -58,6 +84,20 @@ export function CatalogSection() {
   if (data.error || !data.data) return <ErrorState error={data.error} onRetry={data.reload} />;
   const { adapters, runs, staleHours } = data.data;
 
+  const [progress, setProgress] = useState<string | null>(null);
+  const batch = async (bodies: Record<string, unknown>[]) => {
+    let created = 0, published = 0, failed = 0;
+    for (let i = 0; i < bodies.length; i++) {
+      setProgress(t('admin.cat.progress', { i: i + 1, n: bodies.length, q: String(bodies[i].query) }));
+      const r = await run.run(bodies[i]);
+      if (!r || r.status === 'failed') { failed++; if (r?.errors[0]?.detail === 'budget_exhausted') break; continue; }
+      created += r.created; published += r.published ?? 0;
+    }
+    setProgress(null);
+    toast(t('admin.cat.batch_done', { created, published, failed }), failed ? 'info' : 'ok');
+    data.reload();
+    void hydrateCatalog(getCurrentUser());
+  };
   const start = async (body: Record<string, unknown>) => {
     const r = await run.run(body);
     if (!r) return;
@@ -73,6 +113,7 @@ export function CatalogSection() {
         <h2 className="text-[18px] font-semibold">{t('admin.cat.title')}</h2>
         <p className="mt-1 text-[13px] text-muted">{t('admin.cat.sub')}</p>
       </div>
+      {progress ? <Notice tone="info">{progress}</Notice> : null}
       {run.error ? <Notice tone="bad">{run.error.message}</Notice> : null}
       <ul className="grid gap-3 md:grid-cols-2">
         {adapters.map((a) => (
@@ -95,7 +136,7 @@ export function CatalogSection() {
             </div>
             {a.usage ? <KV k={t('admin.cat.calls_today')} v={`${a.usage.callsToday} / ${a.usage.dailyLimit}${a.usage.lastError ? ` · ${a.usage.lastError}` : ''}`} /> : null}
             {a.kind === 'aggregator_api'
-              ? (a.available ? <SearchImport adapter={a} pending={run.pending} onRun={start} /> : <p className="mt-3 text-[12.5px] text-muted">{t('admin.cat.not_configured')}</p>)
+              ? (a.available ? <SearchImport adapter={a} pending={run.pending || !!progress} onRun={start} onBatch={batch} /> : <p className="mt-3 text-[12.5px] text-muted">{t('admin.cat.not_configured')}</p>)
               : a.available ? <Button className="mt-4" size="sm" icon={IconRetry} loading={run.pending} onClick={() => start({ source: a.id })}>{t('admin.cat.run')}</Button> : null}
           </li>
         ))}
