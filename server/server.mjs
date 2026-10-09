@@ -56,6 +56,7 @@ export function createAppServer({ distDir, dev = false, onDevClient } = {}) {
   catalogDb(); // open + migrate + seed the catalogue once at startup
   // With an aggregator key, fill the storefront with real products on first start (background, once).
   setTimeout(() => autoSeed(catalogDb()), 2000).unref();
+  setInterval(() => autoSeed(catalogDb(), { log: () => {} }), 10 * 60_000).unref(); // resume after a network hiccup (no-op once done)
 
   return http.createServer(async (req, res) => {
     const url = new URL(req.url, 'http://localhost');
