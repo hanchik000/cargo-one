@@ -51,6 +51,8 @@ export const AUTO = {
   'auto.pay_deposit': ["Pay {amount} deposit", "Оплатить депозит {amount}", "{amount} girew töle"],
   'auto.reserved_toast': ["Car reserved", "Автомобиль забронирован", "Awtoulag bronlandy"],
   'auto.media_note': ["Illustrative renders. The inspection includes {photos} real photos available to the buyer.", "Иллюстрации. Осмотр включает {photos} реальных фото для покупателя.", "Suratlandyrmalar. Barlag alyjy üçin {photos} hakyky surat öz içine alýar."],
+  'auto.model_photo': ["Photo of the model, not this vehicle", "Фото модели, не этого автомобиля", "Modeliň suraty, bu awtoulag däl"],
+  'auto.model_photo_short': ["Model photo", "Фото модели", "Modeliň suraty"],
   'auto.view.front': ["Front", "Спереди", "Öňden"],
   'auto.view.side': ["Side", "Сбоку", "Gapdaldan"],
   'auto.view.rear': ["Rear", "Сзади", "Yzdan"],

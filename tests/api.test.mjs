@@ -15,7 +15,7 @@ let server;
 
 before(async () => {
   server = spawn(process.execPath, ['--disable-warning=ExperimentalWarning', 'server/server.mjs'], {
-    cwd: ROOT, env: { ...process.env, OTAPI_KEY: '', PORT: String(PORT), DATA_DIR: DATA, DB_FILE: '', AUTH_SECRET: 'test-secret-' + PORT }, stdio: ['ignore', 'pipe', 'pipe'],
+    cwd: ROOT, env: { ...process.env, OTAPI_KEY: '', CAR_PHOTOS: '0', CATALOG_AUTOSEED: '0', PORT: String(PORT), DATA_DIR: DATA, DB_FILE: '', AUTH_SECRET: 'test-secret-' + PORT }, stdio: ['ignore', 'pipe', 'pipe'],
   });
   let log = '';
   server.stdout.on('data', (d) => { log += d; });

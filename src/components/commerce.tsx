@@ -211,7 +211,7 @@ export function CarCard({ car, inspection, onCompare, comparing, dark }: { car: 
   return (
     <article className={cn('group relative flex flex-col overflow-hidden rounded-[24px]', dark ? 'bg-[#1a1a1b] text-white ring-1 ring-white/[0.06]' : 'bg-paper shadow-[var(--shadow-soft)]', 'lift')}>
       <Link to={`/auto/${car.id}`} className="block" aria-label={`${car.brand} ${car.model}`}>
-        <CarVisual car={car} image={car.images[0]} rounded={false} className="aspect-[16/10] w-full" />
+        <CarVisual car={car} image={car.images[0]} rounded={false} className="aspect-[16/10] w-full" modelNote={t('auto.model_photo_short')} />
       </Link>
       <div className="absolute left-3 top-3 flex gap-1">
         {verified ? <VerifiedBadge size="sm" onDark label={t('badge.cargo_verified')} /> : car.condition === 'new' ? <Badge tone="glass">{t('auto.new_factory')}</Badge> : <Badge tone={car.verification === 'rejected' ? 'bad' : 'warn'} className="bg-white/90">{tk(`verif.${car.verification}`)}</Badge>}

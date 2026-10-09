@@ -3,6 +3,7 @@ import type { Car, ProductImage, CarImage } from '@/lib/types';
 import { namedIcon } from './icons';
 import { cn, Img } from './ui';
 import { asset } from '@/lib/assets';
+import { slotOf, useCarPhotos } from '@/services/carPhotos';
 
 const TONES = ['#ecebe7', '#e6e4de', '#e9e7e2', '#dedcd6', '#efeeea', '#e3e1db'];
 const toneBg = (tone: number) => TONES[tone % TONES.length];
@@ -42,7 +43,14 @@ const WINDOW_PATHS: Record<Car['body'], string> = {
   pickup: 'M82 88 L110 58 C120 52 174 52 188 58 L196 88 Z',
 };
 
-export function CarVisual({ car, image, className, rounded = true }: { car: Pick<Car, 'body' | 'color' | 'brand' | 'model'>; image?: CarImage; className?: string; rounded?: boolean }) {
+export function CarVisual({ car, image, className, rounded = true, renderOnly, modelNote }: { car: Pick<Car, 'id' | 'body' | 'color' | 'brand' | 'model'>; image?: CarImage; className?: string; rounded?: boolean; renderOnly?: boolean; /** Small "photo of the model" chip over a real photo. */ modelNote?: string }) {
+  // Real photo of the model (Wikimedia Commons) when the server found one for this gallery slot; studio render otherwise.
+  const real = useCarPhotos(car.id)[slotOf(image?.id)];
+  if (real && !renderOnly) {
+    const img = <Img src={asset(real.src)} alt={`${car.brand} ${car.model}`} className={cn('zoom-img bg-[#151516]', rounded && 'rounded-[20px]', className)} fallback={<CarVisual car={car} image={image} className={className} rounded={rounded} renderOnly />} />;
+    if (!modelNote) return img;
+    return <div className="relative">{img}<span className="pointer-events-none absolute bottom-2 left-2 rounded-full bg-black/55 px-2 py-0.5 text-[10.5px] font-medium text-white backdrop-blur">{modelNote}</span></div>;
+  }
   if (image?.src) return <Img src={asset(image.src)} alt={`${car.brand} ${car.model}`} className={cn('zoom-img bg-[#151516]', rounded && 'rounded-[20px]', className)} />;
   const fill = CAR_COLORS[car.color.toLowerCase()] || '#8a8a8a';
   const view = image?.view ?? 'side';
@@ -82,5 +90,17 @@ export function SupplierLogo({ monogram, size = 44, className, dark }: { monogra
       {monogram}
       <span className="absolute rounded-full bg-accent" style={{ width: size * 0.13, height: size * 0.13, right: size * 0.14, top: size * 0.14 }} />
     </div>
+  );
+}
+
+/** Credit line for a real model photo: what it shows (the model, not this vehicle), author, licence, source page. */
+export function CarPhotoCredit({ car, image, label }: { car: Pick<Car, 'id'>; image?: CarImage; label: string }) {
+  const real = useCarPhotos(car.id)[slotOf(image?.id)];
+  if (!real) return null;
+  return (
+    <p className="mt-1 text-[11.5px] leading-snug text-faint">
+      {label} · {real.author} · {real.license} ·{' '}
+      <a href={real.page} target="_blank" rel="noopener noreferrer nofollow" className="underline hover:text-ink">Wikimedia Commons</a>
+    </p>
   );
 }

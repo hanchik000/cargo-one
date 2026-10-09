@@ -14,7 +14,7 @@ import { Badge, Button, Checkbox, Chip, cn, EmptyState, ErrorState, Input, KV, M
 import { CarCard, CarCompare, CarCostBlock, CargoLine, FavoriteButton, InspectionReport, ShipmentProgress } from '@/components/commerce';
 import { asset } from '@/lib/assets';
 import { Img, ScoreRing, VerifiedSeal } from '@/components/ui';
-import { CarVisual } from '@/components/visuals';
+import { CarPhotoCredit, CarVisual } from '@/components/visuals';
 import { PaymentMethodPicker } from '@/components/forms';
 import { usePageTitle } from '@/components/shell';
 import { IconAI, IconArrow, IconBattery, IconCheck, IconCompare, IconFilter, IconGauge, IconInspect, IconLock, IconSearch, IconWarn, IconZap, IconCalendar, IconFuel, IconInfo, IconShield, IconBack, IconChevron } from '@/components/icons';
@@ -189,7 +189,7 @@ export function CarPage() {
       <section className="grid items-start gap-6 lg:grid-cols-[1.45fr_1fr]">
         <div>
           <div className="relative overflow-hidden rounded-[28px] bg-[#0e0e0f]">
-            <CarVisual key={car.images[view]?.id} car={car} image={car.images[view]} rounded={false} className="aspect-[16/10] w-full" />
+            <CarVisual key={car.images[view]?.id} car={car} image={car.images[view]} rounded={false} className="aspect-[16/10] w-full" modelNote={t('auto.model_photo_short')} />
             <div className="absolute left-4 top-4 flex flex-wrap gap-2">
               {verified ? <VerifiedBadge size="lg" onDark label={t('badge.cargo_verified')} /> : car.condition === 'new' ? <Badge tone="glass">{t('auto.new_factory')}</Badge> : <Badge tone={car.verification === 'rejected' ? 'bad' : 'warn'} icon={IconWarn} className="bg-white/90">{tk(`verif.${car.verification}`)}</Badge>}
             </div>
@@ -198,6 +198,7 @@ export function CarPage() {
           <div className="mt-3 grid grid-cols-4 gap-2" role="tablist" aria-label={t('product.gallery')}>
             {car.images.map((im, i) => <button key={im.id} type="button" role="tab" aria-selected={view === i} aria-label={tk(`auto.view.${im.view}`)} onClick={() => setView(i)} className={cn('press overflow-hidden rounded-[16px] transition', view === i ? 'ring-2 ring-ink ring-offset-2 ring-offset-mist' : 'opacity-55 hover:opacity-100')}><CarVisual car={car} image={im} className="aspect-[16/10] w-full" rounded={false} /></button>)}
           </div>
+          <CarPhotoCredit car={car} image={car.images[view]} label={t('auto.model_photo')} />
           <p className="mt-2 text-[11.5px] text-faint">{t('auto.media_note', { photos: inspection?.photos ?? 0 })}</p>
         </div>
         <div className="lg:sticky lg:top-24">

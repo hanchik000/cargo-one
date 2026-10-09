@@ -1,4 +1,5 @@
 // Admin → Catalogue sources: adapter status, sync health and import runs (server build).
+import { STARTER_PAGE, STARTER_QUERIES } from '@/shared/starter.mjs';
 import { useState } from 'react';
 import { useI18n } from '@/i18n';
 import { useAction, useQuery } from '@/lib/hooks';
@@ -18,16 +19,8 @@ interface ImportResult { id: string; status: string; published?: number; created
 interface PricingInfo { fx: Record<string, { rate: string; source: string; asOf: string }>; serviceFeeBps: number; vipFeeBps: number; marginBps: number; dutyEstimateBps: number; cargoRatePerKg: string; expressRatePerKg: string; minCargo: string; tariffIsDemo: boolean }
 
 /** Ready-made starter set: popular English queries per CARGO ONE category (AliExpress search works best in English). */
-const STARTER: [string, string][] = [
-  ['wireless earbuds', 'electronics'], ['smart watch', 'electronics'], ['power bank', 'electronics'], ['phone case', 'electronics'],
-  ['women handbag', 'fashion'], ['men sneakers', 'fashion'], ['hoodie', 'fashion'],
-  ['kitchen gadgets', 'home'], ['led lamp', 'home'], ['storage organizer', 'home'],
-  ['makeup brush set', 'beauty'], ['skin care', 'beauty'],
-  ['educational toys', 'kids'],
-  ['cordless drill', 'tools'], ['tool set', 'tools'],
-  ['car phone holder', 'auto'], ['car accessories', 'auto'],
-];
-const PAGE = 40;
+const STARTER = STARTER_QUERIES;
+const PAGE = STARTER_PAGE;
 const callsFor = (n: number, details: boolean) => Math.ceil(n / PAGE) + (details ? n : 0);
 
 /** Search import for a paid aggregator: every page of 40 results is 1 call; "full details" adds 1 call per item. */
