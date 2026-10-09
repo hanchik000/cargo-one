@@ -3,6 +3,7 @@ import http from 'node:http';
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import crypto from 'node:crypto';
 import { handleAuthApi, readSession, policyFor } from './auth.mjs';
 import { handleCatalogApi, catalogDb } from './catalog/api.mjs';
 
@@ -32,6 +33,20 @@ function readBody(req, limit = 1_000_000) {
   });
 }
 
+// Optional site-wide password (HTTP Basic auth) for private previews on a public URL.
+// Enabled when SITE_PASSWORD_SHA256 (hex sha256 of the password) is set; user name from SITE_USER (default "cargo").
+const SITE_HASH = (process.env.SITE_PASSWORD_SHA256 || '').trim().toLowerCase();
+const SITE_USER = process.env.SITE_USER || 'cargo';
+function siteAuthorized(req) {
+  if (!SITE_HASH) return true;
+  const m = /^Basic\s+(.+)$/i.exec(req.headers.authorization || '');
+  if (!m) return false;
+  const [user, ...rest] = Buffer.from(m[1], 'base64').toString().split(':');
+  const got = crypto.createHash('sha256').update(rest.join(':')).digest();
+  const want = Buffer.from(SITE_HASH, 'hex');
+  return user === SITE_USER && want.length === got.length && crypto.timingSafeEqual(got, want);
+}
+
 export function createAppServer({ distDir, dev = false, onDevClient } = {}) {
   const root = path.resolve(distDir);
   const secure = process.env.COOKIE_SECURE === '1';
@@ -41,6 +56,10 @@ export function createAppServer({ distDir, dev = false, onDevClient } = {}) {
     const url = new URL(req.url, 'http://localhost');
     const pathname = decodeURIComponent(url.pathname);
     for (const [k, v] of Object.entries(SECURITY_HEADERS)) res.setHeader(k, v);
+    if (!siteAuthorized(req)) {
+      res.writeHead(401, { 'WWW-Authenticate': 'Basic realm="CARGO ONE preview", charset="UTF-8"', 'Content-Type': 'text/plain; charset=utf-8' });
+      return res.end('Password required');
+    }
 
     const send = (status, data, cookie) => {
       const headers = { 'Content-Type': 'application/json', 'Cache-Control': 'no-store' };

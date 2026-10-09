@@ -10,13 +10,24 @@
     "OTAPI_PROVIDER": "Aliexpress",
     "OTAPI_LANG": "ru",
     "OTAPI_DAILY_CALL_LIMIT": "60",
-    "PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD": "1"
+    "PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD": "1",
+    "SITE_USER": "cargo",
+    "SITE_PASSWORD_SHA256": "3608dacb9884097c576af4037394c8e3ff7157ab0a6c7c15eb293ba7fa5f4eb9"
   },
   "secrets": {
-    "OTAPI_KEY": { "description": "OT Commerce key (Settings → Codespaces → Secrets). Never commit it." }
+    "OTAPI_KEY": {
+      "description": "OT Commerce key (Settings \u2192 Codespaces \u2192 Secrets). Never commit it."
+    }
   },
   "postCreateCommand": "npm install --no-audit --no-fund && npm run build",
   "postStartCommand": "bash .devcontainer/start.sh",
-  "forwardPorts": [3000],
-  "portsAttributes": { "3000": { "label": "CARGO ONE", "onAutoForward": "notify" } }
+  "forwardPorts": [
+    3000
+  ],
+  "portsAttributes": {
+    "3000": {
+      "label": "CARGO ONE",
+      "onAutoForward": "notify"
+    }
+  }
 }
