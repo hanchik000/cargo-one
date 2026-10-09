@@ -134,6 +134,8 @@ export async function handleCatalogApi(req, pathname, url, body, { send }) {
       const runs = db.prepare('SELECT * FROM import_runs ORDER BY started_at DESC LIMIT 20').all().map((r) => ({ ...r, errors: JSON.parse(r.errors) }));
       return send(200, {
         staleHours: stale,
+        demoPublished: db.prepare("SELECT COUNT(*) AS n FROM products WHERE demo = 1 AND status = 'published'").get().n,
+        importedPublished: db.prepare("SELECT COUNT(*) AS n FROM products WHERE origin = 'imported' AND sample = 0 AND status = 'published'").get().n,
         adapters: ADAPTERS.map((a) => ({
           id: a.id, label: a.label, kind: a.kind, live: a.live, available: a.available, reason: a.reason || null,
           stats: stats[a.id] || { products: 0, errors: 0, stale: 0, lastSync: null },
@@ -171,6 +173,17 @@ export async function handleCatalogApi(req, pathname, url, body, { send }) {
         if (published) R.audit(db, session.id, 'catalog.publish_import', r.id, { published });
       }
       return send(200, { ...summary, published });
+    }
+    if (pathname === '/api/admin/catalog/demo' && req.method === 'POST') {
+      // Hide or show the bundled DEMO products on the storefront (reversible: they become drafts, not deleted).
+      if (typeof body.visible !== 'boolean') return fail(400, 'validation', { fields: ['visible'] });
+      const t = new Date().toISOString();
+      const r = body.visible
+        ? db.prepare("UPDATE products SET status = 'published', updated_at = ? WHERE demo = 1 AND status = 'draft' AND json_extract(legacy, '$.hiddenDemo') = 1").run(t)
+        : db.prepare("UPDATE products SET status = 'draft', updated_at = ?, legacy = json_set(COALESCE(legacy, '{}'), '$.hiddenDemo', 1) WHERE demo = 1 AND status = 'published'").run(t);
+      if (body.visible) db.prepare("UPDATE products SET legacy = json_remove(legacy, '$.hiddenDemo') WHERE demo = 1 AND json_extract(legacy, '$.hiddenDemo') = 1 AND status = 'published'").run();
+      R.audit(db, session.id, body.visible ? 'catalog.demo_show' : 'catalog.demo_hide', null, { changed: r.changes });
+      return send(200, { changed: r.changes, demoPublished: db.prepare("SELECT COUNT(*) AS n FROM products WHERE demo = 1 AND status = 'published'").get().n });
     }
     if (pathname === '/api/admin/catalog/pricing') {
       if (req.method === 'GET') return send(200, getPricingConfig(db));

@@ -31,13 +31,14 @@ const PAGE = 40;
 const callsFor = (n: number, details: boolean) => Math.ceil(n / PAGE) + (details ? n : 0);
 
 /** Search import for a paid aggregator: every page of 40 results is 1 call; "full details" adds 1 call per item. */
-function SearchImport({ adapter, pending, onRun, onBatch }: { adapter: AdapterInfo; pending: boolean; onRun: (body: Record<string, unknown>) => void; onBatch: (bodies: Record<string, unknown>[]) => void }) {
+function SearchImport({ adapter, pending, onRun, onBatch }: { adapter: AdapterInfo; pending: boolean; onRun: (body: Record<string, unknown>) => void; onBatch: (bodies: Record<string, unknown>[], hideDemo: boolean) => void }) {
   const { t, tk } = useI18n();
   const [q, setQ] = useState('');
   const [limit, setLimit] = useState('40');
   const [cat, setCat] = useState('electronics');
   const [details, setDetails] = useState(false);
   const [publish, setPublish] = useState(true);
+  const [hideDemo, setHideDemo] = useState(true);
   const n = Number(limit);
   const valid = q.trim().length >= 2 && Number.isInteger(n) && n >= 1 && n <= 200;
   const cost = callsFor(n || 0, details);
@@ -48,8 +49,9 @@ function SearchImport({ adapter, pending, onRun, onBatch }: { adapter: AdapterIn
       <div className="rounded-[16px] bg-mist p-4">
         <div className="text-[14px] font-semibold">{t('admin.cat.starter')}</div>
         <p className="mt-1 text-[12.5px] text-muted">{t('admin.cat.starter_desc', { n: STARTER.length, items: STARTER.length * PAGE })}</p>
+        <div className="mt-3"><Checkbox label={t('admin.cat.hide_demo')} description={t('admin.cat.hide_demo_desc')} checked={hideDemo} onChange={setHideDemo} /></div>
         <Button className="mt-3" size="sm" icon={IconRetry} loading={pending} disabled={starterCost > left}
-          onClick={() => onBatch(STARTER.map(([query, categoryId]) => ({ source: adapter.id, query, limit: PAGE, categoryId, details: false, publish })))}>
+          onClick={() => onBatch(STARTER.map(([query, categoryId]) => ({ source: adapter.id, query, limit: PAGE, categoryId, details: false, publish: true })), hideDemo)}>
           {t('admin.cat.starter_run', { n: starterCost })}
         </Button>
       </div>
@@ -75,17 +77,22 @@ const RUN_TONE: Record<string, 'ok' | 'warn' | 'bad' | 'info'> = { succeeded: 'o
 export function CatalogSection() {
   const { t, date } = useI18n();
   const toast = useToast();
-  const data = useQuery(() => apiGet<{ staleHours: number; adapters: AdapterInfo[]; runs: ImportRun[] }>('/api/admin/catalog/sources'), [], { live: false, enabled: SERVER_CATALOG });
+  const data = useQuery(() => apiGet<{ staleHours: number; demoPublished: number; importedPublished: number; adapters: AdapterInfo[]; runs: ImportRun[] }>('/api/admin/catalog/sources'), [], { live: false, enabled: SERVER_CATALOG });
   const pricing = useQuery(() => apiGet<PricingInfo>('/api/admin/catalog/pricing'), [], { live: false, enabled: SERVER_CATALOG });
   const run = useAction((body: Record<string, unknown>) => apiPost<ImportResult>('/api/admin/catalog/import', body));
+  const [progress, setProgress] = useState<string | null>(null);
+  const demo = useAction((visible: boolean) => apiPost<{ changed: number; demoPublished: number }>('/api/admin/catalog/demo', { visible }));
 
   if (!SERVER_CATALOG) return <Notice tone="neutral">{t('admin.cat.server_only')}</Notice>;
   if (data.loading) return <SkeletonRows />;
   if (data.error || !data.data) return <ErrorState error={data.error} onRetry={data.reload} />;
-  const { adapters, runs, staleHours } = data.data;
+  const { adapters, runs, staleHours, demoPublished, importedPublished } = data.data;
+  const setDemo = async (visible: boolean) => {
+    const r = await demo.run(visible);
+    if (r) { toast(visible ? t('admin.cat.demo_shown') : t('admin.cat.demo_hidden', { n: r.changed })); data.reload(); void hydrateCatalog(getCurrentUser()); }
+  };
 
-  const [progress, setProgress] = useState<string | null>(null);
-  const batch = async (bodies: Record<string, unknown>[]) => {
+  const batch = async (bodies: Record<string, unknown>[], hideDemo = false) => {
     let created = 0, published = 0, failed = 0;
     for (let i = 0; i < bodies.length; i++) {
       setProgress(t('admin.cat.progress', { i: i + 1, n: bodies.length, q: String(bodies[i].query) }));
@@ -94,6 +101,8 @@ export function CatalogSection() {
       created += r.created; published += r.published ?? 0;
     }
     setProgress(null);
+    // Replace the invented demo products only when real products actually reached the shop.
+    if (hideDemo && published > 0) await demo.run(false);
     toast(t('admin.cat.batch_done', { created, published, failed }), failed ? 'info' : 'ok');
     data.reload();
     void hydrateCatalog(getCurrentUser());
@@ -141,6 +150,15 @@ export function CatalogSection() {
           </li>
         ))}
       </ul>
+      <section className="card flex flex-wrap items-center justify-between gap-3 p-5">
+        <div className="min-w-0">
+          <div className="font-semibold">{t('admin.cat.storefront')}</div>
+          <div className="text-[13px] text-muted">{t('admin.cat.storefront_counts', { real: importedPublished, demo: demoPublished })}</div>
+        </div>
+        {demoPublished > 0
+          ? <Button size="sm" variant="secondary" loading={demo.pending} onClick={() => setDemo(false)}>{t('admin.cat.hide_demo_btn')}</Button>
+          : <Button size="sm" variant="ghost" loading={demo.pending} onClick={() => setDemo(true)}>{t('admin.cat.show_demo_btn')}</Button>}
+      </section>
       <Notice tone="info">{t('admin.cat.fixture_note')}</Notice>
       {adapters.some((a) => a.kind === 'aggregator_api' && a.available) ? <Notice tone="warn" title={t('admin.cat.aggregator_title')}>{t('admin.cat.aggregator_note')}</Notice> : null}
 

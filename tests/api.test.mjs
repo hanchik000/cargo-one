@@ -176,3 +176,17 @@ test('existing auth protection still holds for pages', async () => {
   assert.equal(r.status, 302);
   assert.match(r.headers.get('location'), /^\/login\?next=/);
 });
+
+test('admin can hide the demo products from the storefront and bring them back', async () => {
+  const c = await login('admin@cargo.one');
+  assert.equal((await post('/api/admin/catalog/demo', { visible: 'no' }, c)).status, 400);
+  const hide = await post('/api/admin/catalog/demo', { visible: false }, c);
+  assert.equal(hide.status, 200);
+  assert.equal(hide.body.demoPublished, 0);
+  const pub = await get('/api/catalog/products?pageSize=100');
+  assert.ok(pub.body.items.every((p) => !p.demo), 'no demo products in the shop');
+  const show = await post('/api/admin/catalog/demo', { visible: true }, c);
+  assert.equal(show.body.demoPublished, 40);
+  const supplier = await login('supplier@cargo.one');
+  assert.equal((await post('/api/admin/catalog/demo', { visible: false }, supplier)).status, 403);
+});
