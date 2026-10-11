@@ -5,10 +5,12 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { ROOT, esbuildOptions, buildCss } from './build-lib.mjs';
 
-const OUT = path.join(ROOT, 'artifact');
+// --pages: the same static build for GitHub Pages (pages/ folder, full HTML document, browser-side Commons photos).
+const PAGES = process.argv.includes('--pages');
+const OUT = path.join(ROOT, PAGES ? 'pages' : 'artifact');
 fs.rmSync(OUT, { recursive: true, force: true });
 fs.mkdirSync(OUT, { recursive: true });
-const opts = esbuildOptions({ dev: false, target: 'artifact', assetBase: './', splitting: false });
+const opts = esbuildOptions({ dev: false, target: 'artifact', assetBase: './', splitting: false, pages: PAGES });
 const res = await esbuild.build({ ...opts, format: 'iife', write: false, outdir: undefined, outfile: path.join(OUT, 'app.js'), entryNames: undefined, chunkNames: undefined });
 const js = res.outputFiles.find((f) => f.path.endsWith('.js')).text.replace(/<\/script/gi, '<\\/script');
 // The viewer only runs inline scripts or scripts from approved CDNs, so the on-device tracking library is inlined (defines window.Human).
@@ -26,7 +28,8 @@ const html = `<title>CARGO ONE</title>
 <script>${js}</script>
 <script>${human}</script>
 `;
-fs.writeFileSync(path.join(OUT, 'index.html'), html);
+fs.writeFileSync(path.join(OUT, 'index.html'), PAGES ? `<!doctype html>\n<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">\n${html.replace('<noscript>', '</head><body><noscript>')}</body></html>\n` : html);
+if (PAGES) fs.writeFileSync(path.join(OUT, '.nojekyll'), '');
 fs.cpSync(path.join(ROOT, 'public', 'img'), path.join(OUT, 'img'), { recursive: true });
 // Artifacts don't serve .bin, so weight shards are stored as .wasm (a served binary type) and the manifests are patched.
 // TensorFlow.js reads them as raw ArrayBuffers; the extension only affects the Content-Type header.

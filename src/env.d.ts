@@ -2,3 +2,5 @@
 declare const __ASSET_BASE__: string;
 /** 'server' = full app behind server/server.mjs; 'artifact' = static, client-only demo build. */
 declare const __TARGET__: 'server' | 'artifact';
+/** Static build published on GitHub Pages (no server; the browser may call public APIs such as Wikimedia Commons). */
+declare const __PAGES__: boolean;

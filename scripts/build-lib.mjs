@@ -56,7 +56,7 @@ export async function buildCss({ minify }) {
   return css;
 }
 
-export function esbuildOptions({ dev, target = 'server', assetBase = '/', outdir, splitting = true }) {
+export function esbuildOptions({ dev, target = 'server', assetBase = '/', outdir, splitting = true, pages = false }) {
   return {
     entryPoints: [path.join(SRC, 'main.tsx')],
     bundle: true,
@@ -71,7 +71,7 @@ export function esbuildOptions({ dev, target = 'server', assetBase = '/', outdir
     jsx: 'automatic',
     metafile: true,
     tsconfig: path.join(ROOT, 'tsconfig.json'),
-    define: { 'process.env.NODE_ENV': JSON.stringify(dev ? 'development' : 'production'), __DEV__: String(dev), __ASSET_BASE__: JSON.stringify(assetBase), __TARGET__: JSON.stringify(target) },
+    define: { 'process.env.NODE_ENV': JSON.stringify(dev ? 'development' : 'production'), __DEV__: String(dev), __ASSET_BASE__: JSON.stringify(assetBase), __TARGET__: JSON.stringify(target), __PAGES__: String(!!pages) },
     logLevel: 'warning',
   };
 }
