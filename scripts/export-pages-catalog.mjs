@@ -13,7 +13,10 @@ const DATA = path.resolve(process.env.DATA_DIR || '.data-pages');
 const PORT = 4700 + Math.floor(Math.random() * 200);
 const BASE = `http://127.0.0.1:${PORT}`;
 
-if (!process.env.OTAPI_KEY) { console.log('OTAPI_KEY is not set: no real products, the site keeps its demo catalogue.'); process.exit(0); }
+// status.json next to the output: what happened, for diagnosis without CI log access (no key, no session inside).
+const statusFile = path.join(path.dirname(path.resolve(out)), 'status.json');
+const writeStatus = (s) => { try { fs.mkdirSync(path.dirname(statusFile), { recursive: true }); fs.writeFileSync(statusFile, JSON.stringify({ at: new Date().toISOString(), ...s }, null, 1)); } catch { /* best effort */ } };
+if (!process.env.OTAPI_KEY) { writeStatus({ result: 'no_key' }); console.log('OTAPI_KEY is not set: no real products, the site keeps its demo catalogue.'); process.exit(0); }
 fs.mkdirSync(DATA, { recursive: true });
 if (process.env.CATALOG_REFRESH === '1') fs.rmSync(path.join(DATA, 'autoseed.json'), { force: true });
 
@@ -52,7 +55,12 @@ try {
   // ("…jpg_600x600.jpg"), which often no longer exists.
   for (const p of products) for (const im of p.images || []) if (typeof im.src === 'string' && /^https:\/\//.test(im.src)) im.src = candidates(im.src).at(-1);
   const real = products.filter((p) => p.origin === 'imported' && p.status === 'published' && !p.sample).length;
-  if (!real) { console.log('no real products imported — catalog.json not written (demo stays)'); stop(0); }
+  const sources = await get('/api/admin/catalog/sources').catch(() => null);
+  const ot = sources?.adapters?.find((a) => a.id === 'ot-aliexpress') || null;
+  const runs = (sources?.runs || []).slice(0, 5).map((r) => ({ status: r.status, created: r.created, updated: r.updated, unchanged: r.unchanged, failed: r.failed, errors: (r.errors || []).slice(0, 3) }));
+  const diag = { autoseed: state(), adapter: ot && { available: ot.available, reason: ot.reason, usage: ot.usage, stats: ot.stats }, runs, real, total: products.length };
+  if (!real) { writeStatus({ result: 'no_real_products', ...diag }); console.log('no real products imported — catalog.json not written (demo stays)'); stop(0); }
+  writeStatus({ result: 'ok', ...diag });
   const { suppliers } = await get('/api/catalog/suppliers?lang=ru');
   const pricing = await get('/api/catalog/pricing?lang=ru');
   fs.mkdirSync(path.dirname(path.resolve(out)), { recursive: true });
@@ -60,6 +68,7 @@ try {
   console.log(`✓ ${out}: ${real} real products (${products.length} incl. hidden demo), ${suppliers.length} suppliers`);
   stop(0);
 } catch (e) {
+  writeStatus({ result: 'error', error: String(e.message).slice(0, 300) });
   console.error('export failed:', e.message);
   stop(1);
 }
