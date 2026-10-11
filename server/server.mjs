@@ -57,6 +57,12 @@ export function createAppServer({ distDir, dev = false, onDevClient } = {}) {
   // With an aggregator key, fill the storefront with real products on first start (background, once).
   setTimeout(() => autoSeed(catalogDb()), 2000).unref();
   setInterval(() => autoSeed(catalogDb(), { log: () => {} }), 10 * 60_000).unref(); // resume after a network hiccup (no-op once done)
+  // Free hosting (Render) puts an instance to sleep after ~15 min without inbound traffic and wipes its data on wake.
+  // A request to our own public URL goes through the platform's proxy and counts as traffic. KEEP_AWAKE=0 disables.
+  const publicUrl = process.env.RENDER_EXTERNAL_URL;
+  if (publicUrl && /^https:\/\//.test(publicUrl) && process.env.KEEP_AWAKE !== '0') {
+    setInterval(() => { fetch(new URL('/healthz', publicUrl), { signal: AbortSignal.timeout(20_000) }).catch(() => {}); }, 10 * 60_000).unref();
+  }
 
   return http.createServer(async (req, res) => {
     const url = new URL(req.url, 'http://localhost');

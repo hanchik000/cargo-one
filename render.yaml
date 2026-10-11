@@ -1,25 +1,24 @@
-# One-click hosting on Render (render.com): private site with a persistent disk for the catalogue and photos.
+# One-click hosting on Render (render.com), FREE plan: password-protected preview site.
+# Free instances have no persistent disk: data lives until the instance restarts (deploys, rare maintenance);
+# on restart the server re-imports the real products by itself (server/catalog/autoseed.mjs).
+# The server pings its own public URL every 10 min (RENDER_EXTERNAL_URL) so the free instance does not fall asleep.
 # Deploy: https://render.com/deploy?repo=https://github.com/hanchik000/cargo-one
 services:
   - type: web
     name: cargo-one
     runtime: node
-    plan: starter            # paid plan: always on + persistent disk (free plan sleeps and loses data)
+    plan: free
     region: frankfurt
-    buildCommand: npm install --no-audit --no-fund && npm run build
+    buildCommand: npm install --include=dev --no-audit --no-fund && npm run build
     startCommand: node --disable-warning=ExperimentalWarning server/server.mjs
     healthCheckPath: /healthz
-    disk:
-      name: cargo-one-data
-      mountPath: /var/data
-      sizeGB: 1
     envVars:
       - key: NODE_VERSION
         value: 22.20.0
       - key: PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD
         value: "1"
       - key: DATA_DIR
-        value: /var/data
+        value: data
       - key: AUTH_SECRET
         generateValue: true
       - key: COOKIE_SECURE
