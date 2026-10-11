@@ -9,3 +9,13 @@ export const asset = (path: string) => {
   if (/^https:\/\//i.test(path)) return IS_STATIC_DEMO ? path : `/img?u=${encodeURIComponent(path)}`;
   return ASSET_BASE + path.replace(/^\//, '');
 };
+
+/**
+ * Marketplace photos linked directly (static site): ask the CDN for a resized copy first (full-size originals are
+ * several MB each and crash mobile Safari when a grid shows dozens), then fall back to the original.
+ */
+const RESIZABLE = /^https:\/\/[a-z0-9.-]*(alicdn\.com|aliexpress-media\.com)\/.+\.(jpe?g|png|webp)$/i;
+export function photoSources(path: string, px: 350 | 640 = 350): string[] {
+  if (!IS_STATIC_DEMO || !RESIZABLE.test(path)) return [asset(path)];
+  return [`${path}_${px}x${px}.jpg`, path];
+}

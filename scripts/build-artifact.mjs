@@ -26,7 +26,7 @@ const html = `<title>CARGO ONE</title>
 <noscript>CARGO ONE requires JavaScript.</noscript>
 <div id="root"></div>
 <script>${js}</script>
-<script>${human}</script>
+${PAGES ? '' : `<script>${human}</script>`}
 `;
 fs.writeFileSync(path.join(OUT, 'index.html'), PAGES ? `<!doctype html>\n<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">\n${html.replace('<noscript>', '</head><body><noscript>')}</body></html>\n` : html);
 if (PAGES) fs.writeFileSync(path.join(OUT, '.nojekyll'), '');
@@ -44,6 +44,8 @@ for (const f of fs.readdirSync(path.join(ROOT, 'public', 'ar', 'models'))) {
   }
 }
 fs.copyFileSync(path.join(ROOT, 'public', 'ar', 'LICENSES.txt'), path.join(OUT, 'ar', 'LICENSES.txt'));
+// GitHub Pages serves files normally: the try-on library (1.6 MB) loads only when the try-on page opens.
+if (PAGES) fs.copyFileSync(path.join(ROOT, 'public', 'ar', 'human.js'), path.join(OUT, 'ar', 'human.js'));
 const imgs = [];
 (function walk(d) { for (const e of fs.readdirSync(d, { withFileTypes: true })) { const p = path.join(d, e.name); if (e.isDirectory()) walk(p); else imgs.push(path.relative(OUT, p)); } })(path.join(OUT, 'img'));
 (function walk(d) { for (const e of fs.readdirSync(d, { withFileTypes: true })) { const p = path.join(d, e.name); if (e.isDirectory()) walk(p); else imgs.push(path.relative(OUT, p)); } })(path.join(OUT, 'ar'));

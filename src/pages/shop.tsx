@@ -219,7 +219,7 @@ function Gallery({ product }: { product: Product }) {
           {product.images.map((img, n) => <div key={img.id} className="w-screen"><ProductVisual icon={product.icon} image={img} title={product.title} eager={n === 0} className="aspect-[4/5] w-full" rounded={false} /></div>)}
         </div>
         <div className="hidden md:block">
-          <ProductVisual key={product.images[i]?.id} icon={product.icon} image={product.images[i]} title={product.title} eager className="aspect-[4/5] w-full rounded-[28px] lg:aspect-square" />
+          <ProductVisual key={product.images[i]?.id} icon={product.icon} image={product.images[i]} title={product.title} eager large className="aspect-[4/5] w-full rounded-[28px] lg:aspect-square" />
         </div>
         <div className="absolute inset-x-0 bottom-4 flex justify-center gap-1.5 md:hidden" aria-hidden>{product.images.map((img, n) => <span key={img.id} className={cn('h-1.5 rounded-full transition-all duration-300', n === i ? 'w-6 bg-ink' : 'w-1.5 bg-ink/25')} />)}</div>
       </div>

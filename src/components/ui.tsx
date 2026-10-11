@@ -631,7 +631,14 @@ export function Stepper({ steps, current }: { steps: string[]; current: number }
 }
 
 /** Fading image with a graceful placeholder. */
-export function Img({ src, alt, className, imgClassName, eager, fallback }: { src: string; alt: string; className?: string; imgClassName?: string; eager?: boolean; fallback?: ReactNode }) {
+type ImgProps = { src: string; alt: string; className?: string; imgClassName?: string; eager?: boolean; fallback?: ReactNode };
+/** Image with a skeleton while loading; on error tries `alternates` in order, then shows `fallback`. */
+export function Img({ alternates, ...p }: ImgProps & { alternates?: string[] }) {
+  if (!alternates?.length) return <ImgOne {...p} />;
+  const [next, ...rest] = alternates;
+  return <ImgOne {...p} fallback={<Img {...p} src={next} alternates={rest} />} />;
+}
+function ImgOne({ src, alt, className, imgClassName, eager, fallback }: ImgProps) {
   const [state, setState] = useState<'loading' | 'ok' | 'err'>('loading');
   const ref = useRef<HTMLImageElement | null>(null);
   useEffect(() => { setState('loading'); const el = ref.current; if (el?.complete && el.naturalWidth) setState('ok'); }, [src]);

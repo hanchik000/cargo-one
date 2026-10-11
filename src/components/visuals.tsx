@@ -2,15 +2,18 @@
 import type { Car, ProductImage, CarImage } from '@/lib/types';
 import { namedIcon } from './icons';
 import { cn, Img } from './ui';
-import { asset } from '@/lib/assets';
+import { asset, photoSources } from '@/lib/assets';
 import { slotOf, useCarPhotos } from '@/services/carPhotos';
 
 const TONES = ['#ecebe7', '#e6e4de', '#e9e7e2', '#dedcd6', '#efeeea', '#e3e1db'];
 const toneBg = (tone: number) => TONES[tone % TONES.length];
 
-export function ProductVisual({ icon, image, className, title, rounded = true, eager }: { icon: string; image?: ProductImage; className?: string; title?: string; rounded?: boolean; eager?: boolean }) {
+export function ProductVisual({ icon, image, className, title, rounded = true, eager, large }: { icon: string; image?: ProductImage; className?: string; title?: string; rounded?: boolean; eager?: boolean; /** Product page gallery: a bigger resized copy. */ large?: boolean }) {
   // A broken remote photo falls back to the drawn product visual instead of an empty grey box.
-  if (image?.src) return <Img src={asset(image.src)} alt={title || ''} eager={eager} className={cn('zoom-img bg-[#ebeae6]', rounded && 'rounded-[20px]', className)} fallback={<ProductVisual icon={icon} image={{ ...image, src: undefined }} className={className} title={title} rounded={rounded} />} />;
+  if (image?.src) {
+    const [first, ...rest] = photoSources(image.src, large ? 640 : 350);
+    return <Img src={first} alternates={rest} alt={title || ''} eager={eager} className={cn('zoom-img bg-[#ebeae6]', rounded && 'rounded-[20px]', className)} fallback={<ProductVisual icon={icon} image={{ ...image, src: undefined }} className={className} title={title} rounded={rounded} />} />;
+  }
   const Icon = namedIcon(icon);
   const tone = image?.tone ?? 0;
   const angle = image?.angle ?? 'front';
