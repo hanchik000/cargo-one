@@ -36,6 +36,8 @@ export const CORE = {
   'common.search': ["Search", "Найти", "Gözle"],
   'common.see_all': ["See all", "Смотреть все", "Ählisini gör"],
   'common.send': ["Send", "Отправить", "Iber"],
+  'footer.rights': ["All rights reserved.", "Все права защищены.", "Ähli hukuklar goralan."],
+  'footer.developer': ["Developer", "Разработчик", "Işläp düzüji"],
   'common.skip_to_content': ["Skip to content", "Перейти к содержимому", "Mazmuna geç"],
   'common.status': ["Status", "Статус", "Ýagdaý"],
   'common.yes': ["Yes", "Да", "Hawa"],

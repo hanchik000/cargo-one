@@ -286,6 +286,20 @@ function Banner() {
   );
 }
 
+/** Copyright and developer details, at the bottom of every page (above the mobile bottom navigation). */
+function SiteFooter() {
+  const { t } = useI18n();
+  return (
+    <footer className="mx-auto max-w-[1320px] px-4 pb-32 md:px-8 lg:pb-10">
+      <div className="border-t border-line pt-5 text-[11.5px] leading-relaxed text-muted">
+        <p className="font-medium text-ink">© {new Date().getFullYear()} CARGO ONE. {t('footer.rights')}</p>
+        <p className="mt-1">{t('footer.developer')}: Ovezov Emirhan · LTD EMIR LOGISTICS CO</p>
+        <p>China, Guangzhou, 1899 street</p>
+      </div>
+    </footer>
+  );
+}
+
 export function AppShell({ children, bare }: { children: ReactNode; bare?: boolean }) {
   const { pathname } = useLocation();
   const [palette, setPalette] = useState(false);
@@ -306,7 +320,8 @@ export function AppShell({ children, bare }: { children: ReactNode; bare?: boole
       <div className={cn('min-h-dvh lg:pl-[264px]', showroom && 'theme-dark')}>
         <Banner />
         <TopBar onSearch={() => setPalette(true)} />
-        <main id="main" ref={main} key={pathname} className="animate-rise mx-auto max-w-[1320px] px-4 pb-32 pt-4 md:px-8 md:pt-6 lg:pb-20">{children}</main>
+        <main id="main" ref={main} key={pathname} className="animate-rise mx-auto max-w-[1320px] px-4 pb-10 pt-4 md:px-8 md:pt-6 lg:pb-12">{children}</main>
+        <SiteFooter />
       </div>
       <BottomNav pathname={pathname} />
       <CommandPalette open={palette} onClose={() => setPalette(false)} />
