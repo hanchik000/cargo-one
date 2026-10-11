@@ -15,7 +15,9 @@
     "test:e2e": "node scripts/e2e.mjs",
     "test": "node --disable-warning=ExperimentalWarning --test tests/*.test.mjs",
     "catalog:seed-export": "node scripts/export-catalog-seed.mjs",
-    "otapi:probe": "node --env-file-if-exists=.env --disable-warning=ExperimentalWarning scripts/otapi-probe.mjs"
+    "otapi:probe": "node --env-file-if-exists=.env --disable-warning=ExperimentalWarning scripts/otapi-probe.mjs",
+    "start:render": "node --env-file=deploy/render.env --disable-warning=ExperimentalWarning server/server.mjs",
+    "build:render": "npm install --include=dev --no-audit --no-fund && npm run build"
   },
   "dependencies": {
     "clsx": "2.1.1",

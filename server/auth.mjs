@@ -5,10 +5,23 @@ import crypto from 'node:crypto';
 import fs from 'node:fs';
 import path from 'node:path';
 
-const SECRET = process.env.AUTH_SECRET || 'dev-only-insecure-secret-change-me';
-if (!process.env.AUTH_SECRET && process.env.NODE_ENV === 'production') {
-  console.warn('[auth] AUTH_SECRET is not set — using an insecure development secret.');
+// AUTH_SECRET from the environment; otherwise AUTH_SECRET=auto generates a random secret once and keeps it in DATA_DIR
+// (hosted previews where nobody should have to invent one). Without either, an insecure development secret is used.
+function resolveSecret() {
+  const v = process.env.AUTH_SECRET;
+  if (v && v !== 'auto') return v;
+  if (v === 'auto') {
+    const f = path.join(path.resolve(process.env.DATA_DIR || '.data'), 'auth-secret');
+    try { const s = fs.readFileSync(f, 'utf8').trim(); if (s.length >= 32) return s; } catch { /* first start */ }
+    const s = crypto.randomBytes(32).toString('hex');
+    fs.mkdirSync(path.dirname(f), { recursive: true });
+    fs.writeFileSync(f, s, { mode: 0o600 });
+    return s;
+  }
+  if (process.env.NODE_ENV === 'production') console.warn('[auth] AUTH_SECRET is not set — using an insecure development secret.');
+  return 'dev-only-insecure-secret-change-me';
 }
+const SECRET = resolveSecret();
 const SESSION_TTL_MS = 1000 * 60 * 60 * 24 * 14;
 const DEMO_MODE = process.env.DEMO_MODE !== 'off';
 const DATA_DIR = path.resolve(process.env.DATA_DIR || '.data');
