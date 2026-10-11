@@ -1,0 +1,62 @@
+# Publishes the static CARGO ONE site to GitHub Pages (branch gh-pages) with REAL AliExpress products:
+# the real server imports them through OT Commerce (secret OTAPI_KEY) and exports catalog.json (no keys inside).
+# The import result is cached between runs, so a rebuild does not spend paid calls again.
+# Runs on every push to main and by hand (Actions → "Publish site" → Run workflow; tick "refresh" to re-import).
+name: Publish site
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      refresh:
+        description: Import the products again (17 OT Commerce calls)
+        type: boolean
+        default: false
+permissions:
+  contents: write
+concurrency:
+  group: pages
+  cancel-in-progress: false
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm install --include=dev --no-audit --no-fund
+        env:
+          PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: "1"
+      - name: Restore imported catalogue
+        uses: actions/cache/restore@v4
+        with:
+          path: .data-pages
+          key: catalog-${{ github.run_id }}
+          restore-keys: catalog-
+      - name: Build static site
+        run: node scripts/build-artifact.mjs --pages
+      - name: Import real products and export catalog.json
+        run: node scripts/export-pages-catalog.mjs pages/catalog.json
+        env:
+          OTAPI_KEY: ${{ secrets.OTAPI_KEY }}
+          DATA_DIR: .data-pages
+          CATALOG_REFRESH: ${{ inputs.refresh && '1' || '0' }}
+      - name: Save imported catalogue
+        if: always()
+        uses: actions/cache/save@v4
+        with:
+          path: .data-pages
+          key: catalog-${{ github.run_id }}
+      - name: Publish to gh-pages
+        run: |
+          cd pages
+          rm -f files.json
+          touch .nojekyll
+          git init -q -b gh-pages
+          git config user.name "github-actions"
+          git config user.email "github-actions@users.noreply.github.com"
+          git add -A
+          git commit -qm "Publish ${GITHUB_SHA::7}"
+          git push -q -f "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}" gh-pages

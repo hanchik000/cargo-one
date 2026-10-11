@@ -46,7 +46,7 @@ export interface PublicPricing extends Omit<PricingConfig, 'fx'> { fx: Partial<R
  */
 let hydrating: Promise<void> | null = null;
 export function hydrateCatalog(user: SessionUser | null): Promise<void> {
-  if (!SERVER_CATALOG) return Promise.resolve();
+  if (!SERVER_CATALOG) return PAGES_BUILD ? hydrateFromSnapshot() : Promise.resolve();
   hydrating = (async () => {
     const [pricing, sup] = await Promise.all([
       apiGet<PublicPricing>('/api/catalog/pricing'),
@@ -64,26 +64,46 @@ export function hydrateCatalog(user: SessionUser | null): Promise<void> {
       const own = await apiGet<{ items: Product[] }>('/api/catalog/products', { supplierId: user.supplierId, includeUnpublished: true, pageSize: 500 });
       for (const p of own.items) if (!products.some((x) => x.id === p.id)) products.push(p);
     }
-    commit((d) => {
-      const pct = (bps: number) => bps / 100;
-      const num = (v: string | undefined, fallback: number) => (v != null && Number.isFinite(Number(v)) ? Number(v) : fallback);
-      const s = d.content.settings;
-      d.content.settings = {
-        ...s,
-        serviceFeePct: pct(pricing.serviceFeeBps), vipFeePct: pct(pricing.vipFeeBps), dutyEstimatePct: pct(pricing.dutyEstimateBps),
-        cargoRateTMTPerKg: num(pricing.cargoRatePerKg, s.cargoRateTMTPerKg), expressRateTMTPerKg: num(pricing.expressRatePerKg, s.expressRateTMTPerKg),
-        cnyToTmt: num(pricing.fx.CNY?.rate, s.cnyToTmt), usdToTmt: num(pricing.fx.USD?.rate, s.usdToTmt),
-      };
-      const byId = new Map(d.suppliers.map((x) => [x.id, x]));
-      // Local suppliers keep their local workflow data (documents, payouts); the server adds the recorded trust level.
-      // Sellers created by imports exist only on the server and are taken as served (nulls, not invented metrics).
-      for (const x of sup.suppliers) { const cur = byId.get(x.id); byId.set(x.id, cur ? { ...cur, trust: x.trust } : x); }
-      d.suppliers = [...byId.values()];
-      d.products = products;
-    });
+    applyCatalog(pricing, sup.suppliers, products);
   })().catch((e) => { console.warn('[catalog] hydration failed', e); });
   return hydrating;
 }
+function applyCatalog(pricing: PublicPricing, suppliers: Supplier[], products: Product[]) {
+  commit((d) => {
+    const pct = (bps: number) => bps / 100;
+    const num = (v: string | undefined, fallback: number) => (v != null && Number.isFinite(Number(v)) ? Number(v) : fallback);
+    const s = d.content.settings;
+    d.content.settings = {
+      ...s,
+      serviceFeePct: pct(pricing.serviceFeeBps), vipFeePct: pct(pricing.vipFeeBps), dutyEstimatePct: pct(pricing.dutyEstimateBps),
+      cargoRateTMTPerKg: num(pricing.cargoRatePerKg, s.cargoRateTMTPerKg), expressRateTMTPerKg: num(pricing.expressRatePerKg, s.expressRateTMTPerKg),
+      cnyToTmt: num(pricing.fx.CNY?.rate, s.cnyToTmt), usdToTmt: num(pricing.fx.USD?.rate, s.usdToTmt),
+    };
+    const byId = new Map(d.suppliers.map((x) => [x.id, x]));
+    // Local suppliers keep their local workflow data (documents, payouts); the server adds the recorded trust level.
+    // Sellers created by imports exist only on the server and are taken as served (nulls, not invented metrics).
+    for (const x of suppliers) { const cur = byId.get(x.id); byId.set(x.id, cur ? { ...cur, trust: x.trust } : x); }
+    d.suppliers = [...byId.values()];
+    d.products = products;
+  });
+}
+
+/**
+ * GitHub Pages build (no server): a scheduled GitHub Action imports real products with the same server pipeline and
+ * publishes them next to the page as catalog.json (no keys inside). Without that file the bundled demo stays.
+ */
+const PAGES_BUILD = typeof __PAGES__ === 'boolean' && __PAGES__;
+function hydrateFromSnapshot(): Promise<void> {
+  hydrating ??= (async () => {
+    const r = await fetch('./catalog.json', { cache: 'no-cache' });
+    if (!r.ok) return;
+    const j = (await r.json()) as { pricing: PublicPricing; suppliers: Supplier[]; products: Product[] };
+    if (!Array.isArray(j.products) || !j.products.length || !Array.isArray(j.suppliers) || !j.pricing) return;
+    applyCatalog(j.pricing, j.suppliers, j.products);
+  })().catch((e) => { console.warn('[catalog] snapshot not loaded', e); });
+  return hydrating;
+}
+
 export const catalogReady = () => hydrating ?? Promise.resolve();
 
 /** Replaces one product in the mirror after a server write. */

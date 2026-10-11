@@ -639,7 +639,7 @@ export function Img({ src, alt, className, imgClassName, eager, fallback }: { sr
   return (
     <div className={cn('relative overflow-hidden bg-mist-2', className)}>
       {state === 'loading' ? <div className="skeleton absolute inset-0" aria-hidden /> : null}
-      {state !== 'err' ? <img ref={ref} src={src} alt={alt} loading={eager ? 'eager' : 'lazy'} decoding="async" onLoad={() => setState('ok')} onError={() => setState('err')} className={cn('zoom-target absolute inset-0 size-full object-cover', state === 'ok' ? 'img-in' : 'opacity-0', imgClassName)} /> : null}
+      {state !== 'err' ? <img ref={ref} src={src} alt={alt} loading={eager ? 'eager' : 'lazy'} decoding="async" referrerPolicy="no-referrer" onLoad={() => setState('ok')} onError={() => setState('err')} className={cn('zoom-target absolute inset-0 size-full object-cover', state === 'ok' ? 'img-in' : 'opacity-0', imgClassName)} /> : null}
     </div>
   );
 }
