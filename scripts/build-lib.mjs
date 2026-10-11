@@ -80,6 +80,7 @@ export function writeHtml({ jsFile, cssFile, dev }) {
   const tpl = fs.readFileSync(path.join(SRC, 'index.html'), 'utf8');
   const reload = dev ? `<script>new EventSource('/__reload').onmessage=()=>location.reload()</script>` : '';
   const html = tpl
+    .replace('<!--SPLASH-->', fs.readFileSync(path.join(SRC, 'splash.html'), 'utf8'))
     .replace('<!--CSS-->', `<link rel="stylesheet" href="/assets/${cssFile}">`)
     .replace('<!--JS-->', `<script type="module" src="/assets/${jsFile}"></script>${reload}`)
     .replaceAll('%SITE_URL%', SITE_URL);

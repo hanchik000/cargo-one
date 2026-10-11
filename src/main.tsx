@@ -163,3 +163,5 @@ createRoot(document.getElementById('root')!).render(
     </I18nProvider>
   </StrictMode>,
 );
+// Launch animation (src/splash.html): tell it the app has rendered; it leaves after its minimum time.
+requestAnimationFrame(() => (window as unknown as { __coSplashReady?: () => void }).__coSplashReady?.());

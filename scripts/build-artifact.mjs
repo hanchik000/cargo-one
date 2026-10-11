@@ -24,6 +24,7 @@ const html = `<title>CARGO ONE</title>
 <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800&family=Unbounded:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>${css}</style>
 <noscript>CARGO ONE requires JavaScript.</noscript>
+${fs.readFileSync(path.join(ROOT, 'src', 'splash.html'), 'utf8')}
 <div id="root"></div>
 <script>${js}</script>
 ${PAGES ? '' : `<script>${human}</script>`}
