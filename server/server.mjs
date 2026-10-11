@@ -109,7 +109,8 @@ export function createAppServer({ distDir, dev = false, onDevClient } = {}) {
         let originHost = null;
         try { originHost = origin ? new URL(origin).host : null; } catch { return send(403, { error: 'bad_origin' }); }
         // Extra allowed public hosts, e.g. the Codespaces forwarded address (set by .devcontainer/start.sh).
-        const allowed = (process.env.ALLOWED_ORIGIN_HOSTS || '').split(',').map((h) => h.trim().toLowerCase()).filter(Boolean);
+        // SPACE_HOST: the public address Hugging Face Spaces gives the container.
+        const allowed = [...(process.env.ALLOWED_ORIGIN_HOSTS || '').split(','), process.env.SPACE_HOST || ''].map((h) => h.trim().toLowerCase()).filter(Boolean);
         const fwd = String(req.headers['x-forwarded-host'] || '').split(',')[0].trim();
         const ok = !origin || originHost === host || originHost === req.headers.host || (process.env.TRUST_PROXY === '1' && originHost === fwd) || allowed.includes(String(originHost).toLowerCase());
         if (!ok) return send(403, { error: 'bad_origin' });
