@@ -90,6 +90,24 @@ function CategoryRail({ category, setCategory }: { category: string; setCategory
   );
 }
 
+/** Static GitHub Pages site: a search request goes to GitHub (issue "search: …" by the owner); CI imports the
+ *  results with the key kept in GitHub secrets and republishes the site within a few minutes. */
+const PAGES_BUILD = typeof __PAGES__ === 'boolean' && __PAGES__;
+function GithubSearchRequest({ q }: { q: string }) {
+  const { t } = useI18n();
+  if (!PAGES_BUILD || LIVE_SEARCH_ENABLED || q.trim().length < 2) return null;
+  const href = `https://github.com/hanchik000/cargo-one/issues/new?title=${encodeURIComponent(`search: ${q.trim()}`)}&body=${encodeURIComponent(t('ghs.issue_body'))}`;
+  return (
+    <div className="mb-8 flex flex-col gap-3 rounded-[22px] bg-paper p-5 shadow-[var(--shadow-soft)] sm:flex-row sm:items-center">
+      <div className="min-w-0 flex-1">
+        <div className="text-[15px] font-semibold">{t('ghs.title', { q: q.trim() })}</div>
+        <p className="mt-1 text-[12.5px] leading-relaxed text-muted">{t('ghs.body')}</p>
+      </div>
+      <a href={href} target="_blank" rel="noopener noreferrer" className="press inline-flex h-12 shrink-0 items-center justify-center gap-2 rounded-full bg-ink px-6 text-[15px] font-semibold tracking-[-0.01em] text-on-ink"><IconSearch className="size-[18px]" aria-hidden />{t('ghs.cta')}</a>
+    </div>
+  );
+}
+
 /** Live results from the marketplace (Taobao through OT Commerce) for any query; local catalogue results follow below. */
 function LiveResults({ q }: { q: string }) {
   const { t } = useI18n();
@@ -210,6 +228,7 @@ export function ShopPage() {
         </aside>
         <section aria-live="polite" className="min-w-0">
           {LIVE_SEARCH_ENABLED && q ? <LiveResults q={q} /> : null}
+          {q ? <GithubSearchRequest q={q} /> : null}
           {list.loading && !list.data ? <SkeletonGrid count={9} className="grid grid-cols-2 gap-x-4 gap-y-8 md:grid-cols-3" />
             : list.error ? <ErrorState error={list.error} onRetry={list.reload} />
             : !items.length ? (

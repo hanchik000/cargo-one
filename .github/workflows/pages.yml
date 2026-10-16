@@ -1,7 +1,9 @@
-# Publishes the static CARGO ONE site to GitHub Pages (branch gh-pages) with REAL AliExpress products:
+# Publishes the static CARGO ONE site to GitHub Pages (branch gh-pages) with REAL Taobao products:
 # the real server imports them through OT Commerce (secret OTAPI_KEY) and exports catalog.json (no keys inside).
 # The import result is cached between runs, so a rebuild does not spend paid calls again.
 # Runs on every push to main and by hand (Actions → "Publish site" → Run workflow; tick "refresh" to re-import).
+# Search requests: an issue titled "search: <query>" opened by the repository owner imports one page of Taobao results
+# for that query (1 OT call), republishes the site, answers in the issue and closes it. Other people's issues are ignored.
 name: Publish site
 on:
   push:
@@ -12,13 +14,17 @@ on:
         description: Import the products again (17 OT Commerce calls)
         type: boolean
         default: false
+  issues:
+    types: [opened]
 permissions:
   contents: write
+  issues: write
 concurrency:
   group: pages
   cancel-in-progress: false
 jobs:
   publish:
+    if: github.event_name != 'issues' || (startsWith(github.event.issue.title, 'search:') && github.event.issue.user.login == github.repository_owner)
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
@@ -39,6 +45,14 @@ jobs:
         run: node scripts/build-artifact.mjs --pages
         env:
           LIVE_SEARCH_ORIGIN: ${{ vars.LIVE_SEARCH_ORIGIN }}
+      - name: Search request from an issue
+        if: github.event_name == 'issues'
+        run: node --disable-warning=ExperimentalWarning scripts/search-import.mjs search-result.json
+        env:
+          SEARCH_QUERY: ${{ github.event.issue.title }}
+          OTAPI_KEY: ${{ secrets.OTAPI_KEY }}
+          OTAPI_PROVIDER: Taobao
+          DATA_DIR: .data-pages
       - name: Import real products and export catalog.json
         run: node scripts/export-pages-catalog.mjs pages/catalog.json
         env:
@@ -68,3 +82,16 @@ jobs:
           git add -A
           git commit -qm "Publish ${GITHUB_SHA::7}"
           git push -q -f "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}" gh-pages
+      - name: Answer the search request
+        if: github.event_name == 'issues' && always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ISSUE: ${{ github.event.issue.number }}
+        run: |
+          if [ -f search-result.json ]; then
+            msg=$(node -e 'const r=require("./search-result.json");console.log(r.ok?`Готово: найдено ${r.found} товаров по запросу «${r.query}». Через 1–2 минуты обновите сайт: https://hanchik000.github.io/cargo-one/#/shop?q=${encodeURIComponent(r.query)}`:`Не получилось (${r.error}${r.detail?": "+r.detail:""}). Попробуйте другой запрос.`)')
+          else
+            msg="Не получилось выполнить поиск. Попробуйте ещё раз."
+          fi
+          gh issue comment "$ISSUE" -R "$GITHUB_REPOSITORY" --body "$msg"
+          gh issue close "$ISSUE" -R "$GITHUB_REPOSITORY"
