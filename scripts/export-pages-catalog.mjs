@@ -56,7 +56,7 @@ try {
   for (const p of products) for (const im of p.images || []) if (typeof im.src === 'string' && /^https:\/\//.test(im.src)) im.src = candidates(im.src).at(-1);
   const real = products.filter((p) => p.origin === 'imported' && p.status === 'published' && !p.sample).length;
   const sources = await get('/api/admin/catalog/sources').catch(() => null);
-  const ot = sources?.adapters?.find((a) => a.id === 'ot-aliexpress') || null;
+  const ot = sources?.adapters?.find((a) => a.kind === 'aggregator_api') || null;
   const runs = (sources?.runs || []).slice(0, 5).map((r) => ({ status: r.status, created: r.created, updated: r.updated, unchanged: r.unchanged, failed: r.failed, errors: (r.errors || []).slice(0, 3) }));
   const diag = { autoseed: state(), adapter: ot && { available: ot.available, reason: ot.reason, usage: ot.usage, stats: ot.stats }, runs, real, total: products.length };
   if (!real) { writeStatus({ result: 'no_real_products', ...diag }); console.log('no real products imported — catalog.json not written (demo stays)'); stop(0); }

@@ -5,7 +5,7 @@
 // never runs again. Disable with CATALOG_AUTOSEED=0.
 import fs from 'node:fs';
 import path from 'node:path';
-import { getAdapter } from './sources/adapter.mjs';
+import { ADAPTERS } from './sources/adapter.mjs';
 import { runImport } from './importer.mjs';
 import { publishImported, setDemoVisible } from './storefront.mjs';
 import { STARTER_PAGE, starterFor } from '../../src/shared/starter.mjs';
@@ -27,7 +27,7 @@ export function autoSeedStatus() {
 }
 
 /** Runs (once) in the background. Returns a summary; never throws. */
-export function autoSeed(db, { adapter = getAdapter('ot-aliexpress'), queries = starterFor(adapter?.provider), log = (m) => console.log('[autoseed] ' + m) } = {}) {
+export function autoSeed(db, { adapter = ADAPTERS.find((a) => a.kind === 'aggregator_api'), queries = starterFor(adapter?.provider), log = (m) => console.log('[autoseed] ' + m) } = {}) {
   if (running) return running;
   running = (async () => {
     if (process.env.CATALOG_AUTOSEED === '0') return { skipped: 'disabled' };
