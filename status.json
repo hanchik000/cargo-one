@@ -1,0 +1,55 @@
+{
+ "at": "2026-10-16T14:35:20.222Z",
+ "result": "no_real_products",
+ "autoseed": {
+  "done": [],
+  "finishedAt": null,
+  "published": 0
+ },
+ "adapter": {
+  "available": true,
+  "reason": null,
+  "usage": {
+   "callsToday": 2,
+   "errorsToday": 2,
+   "lastError": "AccessDenied",
+   "dailyLimit": 60
+  },
+  "stats": {
+   "products": 0,
+   "errors": 0,
+   "stale": 0,
+   "lastSync": null
+  }
+ },
+ "runs": [
+  {
+   "status": "failed",
+   "created": 0,
+   "updated": 0,
+   "unchanged": 0,
+   "failed": 0,
+   "errors": [
+    {
+     "code": "adapter_error",
+     "detail": "AccessDenied"
+    }
+   ]
+  },
+  {
+   "status": "failed",
+   "created": 0,
+   "updated": 0,
+   "unchanged": 0,
+   "failed": 0,
+   "errors": [
+    {
+     "code": "adapter_error",
+     "detail": "AccessDenied"
+    }
+   ]
+  }
+ ],
+ "real": 0,
+ "total": 40
+}
