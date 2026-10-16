@@ -8,7 +8,7 @@ import path from 'node:path';
 import { getAdapter } from './sources/adapter.mjs';
 import { runImport } from './importer.mjs';
 import { publishImported, setDemoVisible } from './storefront.mjs';
-import { STARTER_PAGE, STARTER_QUERIES } from '../../src/shared/starter.mjs';
+import { STARTER_PAGE, starterFor } from '../../src/shared/starter.mjs';
 
 const ACTOR = 'system:autoseed';
 const stateFile = () => path.join(path.resolve(process.env.DATA_DIR || '.data'), 'autoseed.json');
@@ -27,7 +27,7 @@ export function autoSeedStatus() {
 }
 
 /** Runs (once) in the background. Returns a summary; never throws. */
-export function autoSeed(db, { adapter = getAdapter('ot-aliexpress'), queries = STARTER_QUERIES, log = (m) => console.log('[autoseed] ' + m) } = {}) {
+export function autoSeed(db, { adapter = getAdapter('ot-aliexpress'), queries = starterFor(adapter?.provider), log = (m) => console.log('[autoseed] ' + m) } = {}) {
   if (running) return running;
   running = (async () => {
     if (process.env.CATALOG_AUTOSEED === '0') return { skipped: 'disabled' };

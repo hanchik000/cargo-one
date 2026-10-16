@@ -1,5 +1,5 @@
 // Admin → Catalogue sources: adapter status, sync health and import runs (server build).
-import { STARTER_PAGE, STARTER_QUERIES } from '@/shared/starter.mjs';
+import { STARTER_PAGE, starterFor } from '@/shared/starter.mjs';
 import { useState } from 'react';
 import { useI18n } from '@/i18n';
 import { useAction, useQuery } from '@/lib/hooks';
@@ -19,13 +19,13 @@ interface ImportResult { id: string; status: string; published?: number; created
 interface PricingInfo { fx: Record<string, { rate: string; source: string; asOf: string }>; serviceFeeBps: number; vipFeeBps: number; marginBps: number; dutyEstimateBps: number; cargoRatePerKg: string; expressRatePerKg: string; minCargo: string; tariffIsDemo: boolean }
 
 /** Ready-made starter set: popular English queries per CARGO ONE category (AliExpress search works best in English). */
-const STARTER = STARTER_QUERIES;
 const PAGE = STARTER_PAGE;
 const callsFor = (n: number, details: boolean) => Math.ceil(n / PAGE) + (details ? n : 0);
 
 /** Search import for a paid aggregator: every page of 40 results is 1 call; "full details" adds 1 call per item. */
 function SearchImport({ adapter, pending, onRun, onBatch }: { adapter: AdapterInfo; pending: boolean; onRun: (body: Record<string, unknown>) => void; onBatch: (bodies: Record<string, unknown>[], hideDemo: boolean) => void }) {
   const { t, tk } = useI18n();
+  const STARTER = starterFor(adapter.provider);
   const [q, setQ] = useState('');
   const [limit, setLimit] = useState('40');
   const [cat, setCat] = useState('electronics');

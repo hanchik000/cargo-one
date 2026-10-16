@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { useI18n } from '@/i18n';
 import { Link, navigate, useLocation, useParams, useQueryParam } from '@/lib/router';
+import { liveSearch, LIVE_SEARCH_ENABLED, type LivePage } from '@/services/liveSearch';
 import { useDebounced, useQuery } from '@/lib/hooks';
 import { productService } from '@/services/productService';
 import type { ProductSort } from '@/services/productService';
@@ -89,6 +90,43 @@ function CategoryRail({ category, setCategory }: { category: string; setCategory
   );
 }
 
+/** Live results from the marketplace (Taobao through OT Commerce) for any query; local catalogue results follow below. */
+function LiveResults({ q }: { q: string }) {
+  const { t } = useI18n();
+  const [pages, setPages] = useState<LivePage[]>([]);
+  const [state, setState] = useState<'idle' | 'loading' | 'error'>('idle');
+  const [err, setErr] = useState('');
+  const load = async (page: number) => {
+    setState('loading');
+    try { const r = await liveSearch(q, page); setPages((prev) => (page === 1 ? [r] : [...prev, r])); setState('idle'); }
+    catch (e) { setErr(e instanceof Error ? e.message : 'server_error'); setState('error'); }
+  };
+  useEffect(() => { setPages([]); if (q.trim().length >= 2) void load(1); }, [q]); // eslint-disable-line react-hooks/exhaustive-deps
+  if (q.trim().length < 2) return null;
+  const items = pages.flatMap((p) => p.items).filter((p, i, a) => a.findIndex((x) => x.id === p.id) === i);
+  const last = pages.at(-1);
+  const provider = last?.provider || 'Taobao';
+  return (
+    <section className="mb-12" aria-live="polite">
+      <div className="mb-4 flex flex-wrap items-baseline gap-x-3 gap-y-1">
+        <h2 className="text-[19px] font-semibold tracking-[-0.01em]">{t('live.title', { source: provider })}</h2>
+        {last?.total ? <span className="num text-[13px] text-muted">{t('live.total', { n: last.total.toLocaleString('ru-RU') })}</span> : null}
+        <span className="text-[12px] text-faint">{t('live.note')}</span>
+      </div>
+      {state === 'loading' && !items.length ? <SkeletonGrid count={6} className="grid grid-cols-2 gap-x-4 gap-y-8 md:grid-cols-3" />
+        : state === 'error' && !items.length ? <Notice tone="warn">{t(err === 'not_configured' ? 'live.not_configured' : err === 'daily_limit' || err === 'rate_limited' ? 'live.limit' : 'live.error')}</Notice>
+        : !items.length ? <p className="text-[14px] text-muted">{t('live.empty')}</p>
+        : (
+          <>
+            <div className="stagger grid grid-cols-2 gap-x-3 gap-y-9 md:grid-cols-3 md:gap-x-4">{items.map((p) => <ProductCard key={p.id} product={p} />)}</div>
+            {last?.hasMore ? <div className="mt-8 flex justify-center"><Button variant="secondary" loading={state === 'loading'} onClick={() => load((last?.page || 1) + 1)}>{t('common.load_more')}</Button></div> : null}
+          </>
+        )}
+      <h2 className="mt-12 text-[19px] font-semibold tracking-[-0.01em]">{t('live.catalog')}</h2>
+    </section>
+  );
+}
+
 export function ShopPage() {
   const { t, tk, lang } = useI18n();
   const params = useParams();
@@ -171,6 +209,7 @@ export function ShopPage() {
           </div>
         </aside>
         <section aria-live="polite" className="min-w-0">
+          {LIVE_SEARCH_ENABLED && q ? <LiveResults q={q} /> : null}
           {list.loading && !list.data ? <SkeletonGrid count={9} className="grid grid-cols-2 gap-x-4 gap-y-8 md:grid-cols-3" />
             : list.error ? <ErrorState error={list.error} onRetry={list.reload} />
             : !items.length ? (

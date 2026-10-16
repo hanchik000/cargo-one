@@ -71,7 +71,7 @@ export function esbuildOptions({ dev, target = 'server', assetBase = '/', outdir
     jsx: 'automatic',
     metafile: true,
     tsconfig: path.join(ROOT, 'tsconfig.json'),
-    define: { 'process.env.NODE_ENV': JSON.stringify(dev ? 'development' : 'production'), __DEV__: String(dev), __ASSET_BASE__: JSON.stringify(assetBase), __TARGET__: JSON.stringify(target), __PAGES__: String(!!pages) },
+    define: { 'process.env.NODE_ENV': JSON.stringify(dev ? 'development' : 'production'), __DEV__: String(dev), __ASSET_BASE__: JSON.stringify(assetBase), __TARGET__: JSON.stringify(target), __PAGES__: String(!!pages), __LIVE_SEARCH_ORIGIN__: JSON.stringify(process.env.LIVE_SEARCH_ORIGIN || '') },
     logLevel: 'warning',
   };
 }

@@ -33,14 +33,17 @@ jobs:
         uses: actions/cache/restore@v4
         with:
           path: .data-pages
-          key: catalog-${{ github.run_id }}
-          restore-keys: catalog-
+          key: catalog-taobao-${{ github.run_id }}
+          restore-keys: catalog-taobao-
       - name: Build static site
         run: node scripts/build-artifact.mjs --pages
+        env:
+          LIVE_SEARCH_ORIGIN: ${{ vars.LIVE_SEARCH_ORIGIN }}
       - name: Import real products and export catalog.json
         run: node scripts/export-pages-catalog.mjs pages/catalog.json
         env:
           OTAPI_KEY: ${{ secrets.OTAPI_KEY }}
+          OTAPI_PROVIDER: Taobao
           DATA_DIR: .data-pages
           CATALOG_REFRESH: ${{ inputs.refresh && '1' || '0' }}
       - name: Save imported catalogue
@@ -48,7 +51,12 @@ jobs:
         uses: actions/cache/save@v4
         with:
           path: .data-pages
-          key: catalog-${{ github.run_id }}
+          key: catalog-taobao-${{ github.run_id }}
+      - name: Keep the previous products if this import produced none
+        run: |
+          if [ ! -f pages/catalog.json ]; then
+            git fetch -q --depth 1 origin gh-pages && git show origin/gh-pages:catalog.json > pages/catalog.json && echo "kept previous catalog.json" || rm -f pages/catalog.json
+          fi
       - name: Publish to gh-pages
         run: |
           cd pages

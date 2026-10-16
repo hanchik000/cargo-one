@@ -64,7 +64,7 @@ try {
   const { suppliers } = await get('/api/catalog/suppliers?lang=ru');
   const pricing = await get('/api/catalog/pricing?lang=ru');
   fs.mkdirSync(path.dirname(path.resolve(out)), { recursive: true });
-  fs.writeFileSync(out, JSON.stringify({ generatedAt: new Date().toISOString(), source: 'OT Commerce (AliExpress), cached listings', pricing, suppliers, products }));
+  fs.writeFileSync(out, JSON.stringify({ generatedAt: new Date().toISOString(), source: `OT Commerce (${process.env.OTAPI_PROVIDER || 'Aliexpress'}), cached listings`, pricing, suppliers, products }));
   console.log(`✓ ${out}: ${real} real products (${products.length} incl. hidden demo), ${suppliers.length} suppliers`);
   stop(0);
 } catch (e) {

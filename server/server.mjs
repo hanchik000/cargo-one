@@ -9,6 +9,7 @@ import { handleCatalogApi, catalogDb } from './catalog/api.mjs';
 import { handleImageProxy } from './image-proxy.mjs';
 import { autoSeed } from './catalog/autoseed.mjs';
 import { carPhotosPayload } from './car-photos.mjs';
+import { handleLiveSearch } from './live-search.mjs';
 
 const MIME = {
   '.html': 'text/html; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.css': 'text/css; charset=utf-8',
@@ -94,6 +95,9 @@ export function createAppServer({ distDir, dev = false, onDevClient } = {}) {
     if (pathname === '/img') {
       try { if (await handleImageProxy(req, res, url)) return; } catch (e) { console.error(e); if (!res.headersSent) { res.writeHead(502); res.end(); } return; }
     }
+
+    // Live marketplace search (any query, through OT Commerce; the key stays on the server)
+    if (pathname === '/api/live-search') return handleLiveSearch(req, res, url);
 
     // Real photos of the car models (Wikimedia Commons, public)
     if (pathname === '/api/media/car-photos' && req.method === 'GET') return send(200, await carPhotosPayload());
